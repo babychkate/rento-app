@@ -1,1 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+.step-btn-ring::after {
+  content: '';
+  position: absolute;
+  inset: -11px;
+  border-radius: 50%;
+  padding: 6px;
+  border: 5px solid transparent;
+  background: linear-gradient(
+      50deg,
+      rgba(120, 150, 255, 1) 10%,
+      rgba(210, 220, 255, 1) 60%,
+      #2048c7 70%,
+      #0b2d8f 85%,
+      #001550 100%
+    )
+    border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  box-shadow:
+    0 4px 12px rgba(0, 25, 100, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.65);
+  z-index: -1;
+}
