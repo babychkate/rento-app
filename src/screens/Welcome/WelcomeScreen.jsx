@@ -6,7 +6,7 @@ import {
   HomeIcon,
   HeartIcon,
   FireIcon,
-} from '../../components/Icons/icons';
+} from '../../components/Icons/Icons';
 
 const CHIPS = [
   // Row 1
