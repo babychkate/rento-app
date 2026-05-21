@@ -77,10 +77,10 @@ const WelcomeScreen = ({ onNext }) => {
 
       {/* Hero text */}
       <div className="absolute left-0 right-0 bottom-50 flex flex-col items-center">
-        <h1 className="font-montserrat font-medium text-[24px] leading-none text-white text-center mb-3">
+        <h1 className="font-montserrat font-semibold text-[24px] leading-tight text-white text-center mb-3">
           ВІТАЄМО У<br />RENTO!
         </h1>
-        <p className="font-montserrat font-thin text-[16px] leading-[122%] text-white text-center">
+        <p className="font-montserrat text-[16px] leading-[122%] text-white text-center">
           тут ви можете...
         </p>
       </div>
