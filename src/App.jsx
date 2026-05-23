@@ -3,6 +3,7 @@ import WelcomeScreen from './screens/Welcome/WelcomeScreen';
 import LoginScreen from './screens/Login/LoginScreen';
 import RegisterScreen from './screens/Register/RegisterScreen';
 import StepIndicator from './components/StepIndicator/StepIndicator';
+import CategoryScreen from './screens/Category/CategoryScreen';
 
 const App = () => {
   const [screen, setScreen] = useState('welcome');
@@ -19,7 +20,7 @@ const App = () => {
       {screen === 'login' && (
         <LoginScreen
           onBack={() => setScreen('welcome')}
-          onNext={() => console.log('logged in')}
+          onNext={() => setScreen('category')}
           onForgot={() => console.log('forgot')}
           onRegister={() => setScreen('register')}
         />
@@ -27,11 +28,17 @@ const App = () => {
       {screen === 'register' && (
         <RegisterScreen
           onBack={() => setScreen('login')}
-          onNext={() => console.log('registered')}
+          onNext={() => setScreen('category')}
           onLogin={() => setScreen('login')}
         />
       )}
 
+      {screen === 'category' && (
+        <CategoryScreen
+          onBack={() => setScreen('register')}
+          onNext={() => console.log('category selected')}
+        />
+      )}
     </div>
   );
 };
