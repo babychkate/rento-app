@@ -6,7 +6,7 @@ const CategoryCard = ({ icon, label, selected, onClick }) => (
       'flex items-center gap-2',
       'border-[1.2px] cursor-pointer transition-all duration-200',
       'font-montserrat text-[14px] font-bold leading-[120%] tracking-[-0.01em] text-left',
-      'backdrop-blur-[16px]',
+      'backdrop-blur-lg',
       selected
         ? [
             'border-white/45 text-[#002475]',
