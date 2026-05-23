@@ -18,7 +18,7 @@ const StepIndicator = ({ step = 1, position = 'absolute' }) => {
         'border-[0.2px] border-white/80',
         'shadow-[inset_1px_1px_3px_rgba(255,255,255,1),inset_-2px_-3px_6px_rgba(0,30,120,0.15),0px_6px_12px_rgba(0,20,90,0.15)]',
         'flex items-center justify-center',
-        'font-(family-name:--font-montserrat) font-bold text-[18px] text-[#003285]',
+        'ont-montserrat font-bold text-[18px] text-[#003285]',
         'z-10 step-btn-ring',
       ].join(' ')}
     >
