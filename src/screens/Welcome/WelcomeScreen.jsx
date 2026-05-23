@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Chip from '../../components/Chip/Chip';
-import StepButton from '../../components/StepIndacator/StepIndicator';
+import StepIndicator from '../../components/StepIndacator/StepIndicator';
 import {
   SettingsIcon,
   StarIcon,
@@ -92,7 +92,7 @@ const WelcomeScreen = ({ onLogin, onRegister }) => {
       </div>
 
       {/* Step button */}
-      <StepButton step={1} />
+      <StepIndicator step={1} />
     </div>
   );
 };
