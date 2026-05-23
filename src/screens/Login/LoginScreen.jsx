@@ -16,11 +16,10 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
   const [password, setPassword] = useState('');
 
   return (
-    // LoginScreen і RegisterScreen:
-<div className="flex flex-col w-[430px] min-h-[932px] bg-[#f1f2f6] font-montserrat overflow-y-auto px-6">
+    <div className="flex flex-col w-full h-full bg-[#f1f2f6] font-montserrat px-6">
 
       {/* Top bar */}
-      <div className="flex items-center justify-center relative pt-13 pb-7">
+      <div className="flex items-center justify-center relative pt-13 pb-7 shrink-0">
         <button
           onClick={onBack}
           className="absolute left-0 flex items-center bg-transparent border-none cursor-pointer"
@@ -67,14 +66,12 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
           </span>
           Continue with Google
         </BtnPill>
-
         <BtnPill>
           <span className="w-7 h-7 rounded-md bg-white/20 border border-white/50 flex items-center justify-center shrink-0 text-white text-[10px] font-bold tracking-tight">
             Дія
           </span>
           Continue with Дія
         </BtnPill>
-
         <BtnPill>
           <span className="w-7 h-7 rounded-md bg-white/15 flex items-center justify-center shrink-0">
             <AppleIcon />
@@ -86,16 +83,16 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
       {/* Register link */}
       <p className="text-center mt-7 text-[13px] font-bold text-[#0f1e5c]">
         Немає акаунту?{' '}
-        <span
-          onClick={onRegister}
-          className="text-[#0052ff] font-bold cursor-pointer"
-        >
+        <span onClick={onRegister} className="text-[#0052ff] font-bold cursor-pointer">
           Зареєструйся
         </span>
       </p>
 
       {/* Step button */}
-        <StepIndicator step={2} />
+      <div className="flex justify-center mt-auto pb-[60px]">
+        <StepIndicator step={2} position="relative" />
+      </div>
+
     </div>
   );
 };

@@ -2,9 +2,11 @@ import { useState } from 'react';
 import WelcomeScreen from './screens/Welcome/WelcomeScreen';
 import LoginScreen from './screens/Login/LoginScreen';
 import RegisterScreen from './screens/Register/RegisterScreen';
+import StepIndicator from './components/StepIndicator/StepIndicator';
 
 const App = () => {
   const [screen, setScreen] = useState('welcome');
+  
 
   return (
     <div className="w-[430px] h-[932px] relative overflow-hidden mx-auto">
@@ -29,6 +31,7 @@ const App = () => {
           onLogin={() => setScreen('login')}
         />
       )}
+
     </div>
   );
 };

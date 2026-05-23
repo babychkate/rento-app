@@ -12,17 +12,16 @@ const BackIcon = () => (
 );
 
 const RegisterScreen = ({ onBack, onNext, onLogin }) => {
-  const [name, setName]           = useState('');
-  const [email, setEmail]         = useState('');
-  const [password, setPassword]   = useState('');
-  const [confirm, setConfirm]     = useState('');
+  const [name, setName]         = useState('');
+  const [email, setEmail]       = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm]   = useState('');
 
   return (
-// LoginScreen і RegisterScreen:
-<div className="flex flex-col w-[430px] min-h-[932px] bg-[#f1f2f6] font-montserrat overflow-y-auto px-6">
+    <div className="flex flex-col w-full min-h-full bg-[#f1f2f6] font-montserrat overflow-y-auto px-6 pb-[60px]">
 
       {/* Top bar */}
-      <div className="flex items-center relative pt-13 pb-7 gap-2">
+      <div className="flex items-center relative pt-13 pb-7 gap-2 shrink-0">
         <button
           onClick={onBack}
           className="flex items-center bg-transparent border-none cursor-pointer shrink-0"
@@ -80,14 +79,12 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
           </span>
           Continue with Google
         </BtnPill>
-
         <BtnPill>
           <span className="w-7 h-7 rounded-md bg-white/20 border border-white/50 flex items-center justify-center shrink-0 text-white text-[10px] font-bold tracking-tight">
             Дія
           </span>
           Continue with Дія
         </BtnPill>
-
         <BtnPill>
           <span className="w-7 h-7 rounded-md bg-white/15 flex items-center justify-center shrink-0">
             <AppleIcon />
@@ -99,18 +96,16 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
       {/* Login link */}
       <p className="text-center mt-5 text-[13px] font-bold text-[#0f1e5c]">
         Вже є акаунт?{' '}
-        <span
-          onClick={onLogin}
-          className="text-[#0052ff] font-bold cursor-pointer"
-        >
+        <span onClick={onLogin} className="text-[#0052ff] font-bold cursor-pointer">
           Увійти
         </span>
       </p>
 
-      {/* Step button
-      <div className="flex justify-center mt-7">
-        <StepIndicator step={3} onClick={onNext} />
-      </div> */}
+      {/* Step button — в потоці, скролиться разом з контентом */}
+      <div className="flex justify-center mt-8 pb-[60px]">
+        <StepIndicator step={3} position="relative" />
+      </div>
+
     </div>
   );
 };
