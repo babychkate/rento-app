@@ -9,7 +9,7 @@ const App = () => {
   
 
   return (
-    <div className="w-[430px] h-[932px] relative overflow-hidden mx-auto">
+   <div className="w-[430px] h-[932px] relative overflow-y-auto mx-auto">
       {screen === 'welcome' && (
         <WelcomeScreen
           onLogin={() => setScreen('login')}
