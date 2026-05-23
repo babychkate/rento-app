@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import Chip from '../../components/Chip/Chip';
-import StepIndicator from '../../components/StepIndicator/StepIndicator';
+import StepIndicator from '../../components/StepIndicator/StepIndicator.jsx';
 import {
   SettingsIcon,
   StarIcon,
   HomeIcon,
   HeartIcon,
   FireIcon,
-} from '../../components/Icons/Icons';
+} from '../../components/Icons/Icons.jsx';
 
 const CHIPS = [
   // Row 1
@@ -92,7 +92,7 @@ const WelcomeScreen = ({ onLogin, onRegister }) => {
       </div>
 
       {/* Step button */}
-      <StepIndicator step={1} />
+      <StepIndicator step={1} onClick={onLogin} />
     </div>
   );
 };

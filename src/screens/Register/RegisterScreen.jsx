@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
-import StepIndicator from '../../components/StepIndicator/StepIndicator';
-import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons';
+import StepIndicator from '../../components/StepIndicator/StepIndicator.jsx';
+import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons.jsx';
 
 const BackIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
@@ -108,7 +108,7 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
 
       {/* Step button
       <div className="flex justify-center mt-7">
-        <StepButton step={3} onClick={onNext} />
+        <StepIndicator step={3} onClick={onNext} />
       </div> */}
     </div>
   );
