@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Chip from '../../components/Chip/Chip';
-import StepIndicator from '../../components/StepIndacator/StepIndicator';
+import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import {
   SettingsIcon,
   StarIcon,

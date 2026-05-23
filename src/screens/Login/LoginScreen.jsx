@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
-import StepButton from '../../components/StepIndacator/StepIndicator.jsx';
-import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons.jsx';
+import StepIndicator from '../../components/StepIndicator/StepIndicator';
+import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons';
 
 const BackIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
