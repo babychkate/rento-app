@@ -102,7 +102,7 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
       </p>
 
       {/* Step button — в потоці, скролиться разом з контентом */}
-      <div className="flex justify-center mt-8 pb-[60px]">
+      <div className="flex justify-center mt-16">
         <StepIndicator step={3} position="relative" />
       </div>
 
