@@ -33,7 +33,7 @@ const CHIPS = [
 const NavLink = ({ onClick, children }) => (
   <span
     onClick={onClick}
-    className="text-white text-[20px] font-medium leading-[122%] underline decoration-solid cursor-pointer font-montserrat"
+    className="text-white text-[20px] font-medium leading-[122%] no-underline cursor-pointer font-montserrat"
   >
     {children}
   </span>
