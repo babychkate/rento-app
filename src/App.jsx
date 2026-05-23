@@ -15,6 +15,7 @@ const App = () => {
       if (!wrapperRef.current) return;
       const s = Math.min(window.innerWidth / DESIGN_WIDTH, window.innerHeight / DESIGN_HEIGHT);
       wrapperRef.current.style.transform = `scale(${s})`;
+      wrapperRef.current.style.transformOrigin = 'top center';
     };
     scale();
     window.addEventListener('resize', scale);
@@ -22,11 +23,27 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: '#000' }}>
-      <div ref={wrapperRef} style={{ width: DESIGN_WIDTH, height: DESIGN_HEIGHT, transformOrigin: 'center center', flexShrink: 0 }}>
-
+    // зовнішній контейнер — скролиться
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      overflowY: 'auto',
+      display: 'flex',
+      justifyContent: 'center',
+      background: '#000',
+    }}>
+      {/* внутрішній — масштабується, але росте разом з контентом */}
+      <div ref={wrapperRef} style={{
+        width: DESIGN_WIDTH,
+        minHeight: DESIGN_HEIGHT,
+        flexShrink: 0,
+        transformOrigin: 'top center',
+      }}>
         {screen === 'welcome' && (
-          <WelcomeScreen onNext={() => setScreen('login')} />
+          <WelcomeScreen
+            onLogin={() => setScreen('login')}
+            onRegister={() => setScreen('register')}
+          />
         )}
         {screen === 'login' && (
           <LoginScreen
@@ -43,7 +60,6 @@ const App = () => {
             onLogin={() => setScreen('login')}
           />
         )}
-
       </div>
     </div>
   );
