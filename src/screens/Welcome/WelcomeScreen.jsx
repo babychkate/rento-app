@@ -54,7 +54,7 @@ const WelcomeScreen = ({ onLogin, onRegister }) => {
     ].join(' ')}>
 
       {/* Chips cloud */}
-      <div className="relative w-full h-[540px] shrink-0">
+      <div className="relative w-full h-135 shrink-0">
         {CHIPS.map(({ variant, iconOnly, label, icon, style }, i) => {
           const originalTransform = style.transform ?? '';
           const chipStyle = {

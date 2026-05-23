@@ -89,7 +89,7 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
       </p>
 
       {/* Step button */}
-      <div className="flex justify-center mt-auto pb-[60px]">
+      <div className="flex justify-center mt-auto pb-15">
         <StepIndicator step={2} position="relative" />
       </div>
 

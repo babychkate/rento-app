@@ -18,7 +18,7 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
   const [confirm, setConfirm]   = useState('');
 
   return (
-    <div className="flex flex-col w-full min-h-full bg-[#f1f2f6] font-montserrat overflow-y-auto px-6 pb-[60px]">
+    <div className="flex flex-col w-full min-h-full bg-[#f1f2f6] font-montserrat overflow-y-auto px-6 pb-15">
 
       {/* Top bar */}
       <div className="flex items-center relative pt-13 pb-7 gap-2 shrink-0">
