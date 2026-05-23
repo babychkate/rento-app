@@ -2,7 +2,7 @@ import { useState } from 'react';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
-import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons';
+import { GoogleIcon, AppleIcon, DiaIcon } from '../../components/Icons/SocialIcons';
 
 const BackIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
@@ -26,7 +26,7 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
         >
           <BackIcon />
         </button>
-        <span className="text-[22px] font-bold text-[#0f1e5c]">Увійти</span>
+        <span className="text-[22px] font-bold text-[#012A81]">Увійти</span>
       </div>
 
       {/* Fields */}
@@ -46,42 +46,36 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
       />
 
       {/* Login button */}
-      <BtnPill className="text-[16px] mt-6" onClick={onNext}>
+      <BtnPill className="text-[16px] font-semibold mt-6" onClick={onNext}>
         Увійти
       </BtnPill>
 
       {/* Forgot password */}
       <p
         onClick={onForgot}
-        className="text-center mt-3.5 text-[13px] font-bold text-[#0f1e5c] cursor-pointer"
+        className="text-center mt-3.5 text-[13px] font-bold text-[#012A81] cursor-pointer"
       >
         Забули пароль?
       </p>
 
       {/* Social logins */}
       <div className="mt-8 flex flex-col gap-3">
-        <BtnPill>
-          <span className="w-7 h-7 rounded-md bg-white flex items-center justify-center shrink-0">
+        <BtnPill className="font-semibold">
             <GoogleIcon />
-          </span>
-          Continue with Google
+          Продовжити з Google
         </BtnPill>
-        <BtnPill>
-          <span className="w-7 h-7 rounded-md bg-white/20 border border-white/50 flex items-center justify-center shrink-0 text-white text-[10px] font-bold tracking-tight">
-            Дія
-          </span>
-          Continue with Дія
+        <BtnPill className="font-semibold">
+          <DiaIcon />
+          Продовжити з Дія
         </BtnPill>
-        <BtnPill>
-          <span className="w-7 h-7 rounded-md bg-white/15 flex items-center justify-center shrink-0">
-            <AppleIcon />
-          </span>
-          Continue with Apple
+        <BtnPill className="font-semibold">
+          <AppleIcon />
+          Продовжити з Apple
         </BtnPill>
       </div>
 
       {/* Register link */}
-      <p className="text-center mt-7 text-[13px] font-bold text-[#0f1e5c]">
+      <p className="text-center mt-7 text-[13px] font-bold text-[#012A81]">
         Немає акаунту?{' '}
         <span onClick={onRegister} className="text-[#0052ff] font-bold cursor-pointer">
           Зареєструйся

@@ -31,17 +31,17 @@ const InputField = ({ label, type = 'text', placeholder, value, onChange }) => {
 
   const inputClass = [
     'w-full px-[18px] py-[14px] rounded-full',
-    'border-[2.5px] border-[#2979ff] bg-white',
+    'border-[2.5px] border-[#2979ff] bg-[#dde5f6]',
     'font-[family-name:var(--font-montserrat)] text-[14px] text-[#0f1e5c]',
     'outline-none appearance-none',
     'shadow-[inset_0_3px_8px_rgba(41,121,255,0.08),0_4px_14px_rgba(41,121,255,0.15),inset_0_-2px_0_rgba(41,121,255,0.12)]',
-    'placeholder:text-[#b0b8d8]',
+    'placeholder:text-[#4b5b7e]',  // ← темніший сірий
     isPassword ? 'pr-[50px]' : '',
   ].join(' ');
 
   return (
     <div className="w-full">
-      <p className="text-[13px] font-semibold text-[#0f1e5c] mb-1.75 mt-4">
+      <p className="text-[13px] font-semibold text-[#012A81] mb-1.75 mt-4">  {/* ← #012A81 */}
         {label}
       </p>
       <div className="relative w-full">
