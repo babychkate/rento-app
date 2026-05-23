@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
-import StepIndicator from '../../components/StepIndicator/StepIndicator.jsx';
-import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons.jsx';
+import StepIndicator from '../../components/StepIndicator/StepIndicator';
+import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons';
 
 const BackIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
@@ -18,7 +18,8 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
   const [confirm, setConfirm]     = useState('');
 
   return (
-    <div className="relative w-107.5 min-h-233 bg-[#f1f2f6] font-montserrat overflow-hidden px-6 pb-10">
+// LoginScreen і RegisterScreen:
+<div className="flex flex-col w-[430px] min-h-[932px] bg-[#f1f2f6] font-montserrat overflow-y-auto px-6">
 
       {/* Top bar */}
       <div className="flex items-center relative pt-13 pb-7 gap-2">

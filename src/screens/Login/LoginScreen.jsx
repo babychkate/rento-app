@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
-import StepIndicator from '../../components/StepIndicator/StepIndicator.jsx';
-import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons.jsx';
+import StepIndicator from '../../components/StepIndicator/StepIndicator';
+import { GoogleIcon, AppleIcon } from '../../components/Icons/SocialIcons';
 
 const BackIcon = () => (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
@@ -16,7 +16,8 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
   const [password, setPassword] = useState('');
 
   return (
-    <div className="flex flex-col w-107.5 min-h-233 bg-[#f1f2f6] font-montserrat overflow-hidden px-6">
+    // LoginScreen і RegisterScreen:
+<div className="flex flex-col w-[430px] min-h-[932px] bg-[#f1f2f6] font-montserrat overflow-y-auto px-6">
 
       {/* Top bar */}
       <div className="flex items-center justify-center relative pt-13 pb-7">
@@ -94,9 +95,7 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
       </p>
 
       {/* Step button */}
-      <div className="flex justify-center mt-10.5 mb-12.5">
-        <StepIndicator step={2} onClick={onNext} />
-      </div>
+        <StepIndicator step={2} />
     </div>
   );
 };
