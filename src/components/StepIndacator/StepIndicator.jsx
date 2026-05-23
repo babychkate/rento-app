@@ -1,6 +1,6 @@
 /**
  * Step indicator — не кнопка, просто показує номер кроку
- * @param {number | string} step
+ * @param {number | string}         step
  * @param {'absolute' | 'relative'} position
  */
 const StepIndicator = ({ step = 1, position = 'absolute' }) => {
