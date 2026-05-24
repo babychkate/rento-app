@@ -15,7 +15,7 @@ const HomeScreen = ({ onLogout }) => {
   const { user } = useAuth();
   const [activeTab, setActiveTab]         = useState('home');
   const [search, setSearch]               = useState('');
-  const [activeType, setActiveType]       = useState(null);
+  const [activeType, setActiveType]       = useState([]);
   const [activeFilters, setActiveFilters] = useState([]);
   const [cityView, setCityView]           = useState(null);
   const [showFilters, setShowFilters]     = useState(false);
