@@ -143,8 +143,14 @@ const PropertyDetailScreen = ({ property, onBack }) => {
 
   // Навігація до підекранів
   if (screen === 'phototour') {
-    return <PhotoTourScreen property={property} onBack={() => setScreen(null)} />;
-  }
+  return (
+    <PhotoTourScreen
+      property={property}
+      sections={property.photos}   // ← додай цей рядок
+      onBack={() => setScreen(null)}
+    />
+  );
+}
   if (screen === 'landlord') {
     return <LandlordScreen property={property} onBack={() => setScreen(null)} />;
   }
