@@ -119,7 +119,7 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
 
       {/* Step button */}
       <div className="flex justify-center mt-16">
-        <StepIndicator step={3} position="relative" />
+        <StepIndicator step={2} position="relative" />
       </div>
 
     </div>
