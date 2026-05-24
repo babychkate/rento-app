@@ -91,7 +91,7 @@ const HomeScreen = ({ onLogout }) => {
               placeholder="Введіть місто або вулицю"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 px-[18px] py-[14px] rounded-full
+              className="flex-1 px-4.5 py-3.5 rounded-full
                 border-[2.5px] border-[#2979ff] bg-[#dde5f6]
                 font-montserrat text-[14px] text-[#0f1e5c]
                 outline-none appearance-none
@@ -100,7 +100,7 @@ const HomeScreen = ({ onLogout }) => {
             />
             <button
               onClick={() => setShowFilters(true)}
-              className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center
+              className="w-12 h-12 rounded-full shrink-0 flex items-center justify-center
                 border-[1.5px] border-white/60 cursor-pointer
                 bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)]
                 shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]"
