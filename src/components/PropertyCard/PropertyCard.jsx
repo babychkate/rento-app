@@ -19,11 +19,13 @@ const HeartIcon = ({ filled }) => (
   </svg>
 );
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, onClick}) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <div className="shrink-0 w-60 h-65 rounded-[28px] overflow-hidden relative">
+    <div
+      onClick={onClick}
+       className="shrink-0 w-60 h-65 rounded-[28px] overflow-hidden relative cursor-pointer">
       <img
         src={property.image}
         alt={property.address}
@@ -46,9 +48,9 @@ const PropertyCard = ({ property }) => {
           <p className="text-white/85 text-[12px] font-medium">{property.address}</p>
         </div>
         <button
-          onClick={() => setLiked(p => !p)}
-          className="bg-transparent border-none cursor-pointer p-0"
-        >
+  onClick={(e) => { e.stopPropagation(); setLiked(p => !p); }}
+  className="bg-transparent border-none cursor-pointer p-0"
+>
           <HeartIcon filled={liked} />
         </button>
       </div>

@@ -10,6 +10,8 @@ import {
   FilterIcon, ArrowIcon,
 } from '../../components/Icons/HomeNavIcons';
 import { PROPERTIES, CITIES, TYPE_LABELS, QUICK_FILTERS, TAG_TO_SECTION} from '../../data/properties';
+import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
+
 
 const matchRoomsLogic = (propertyRooms, selectedRooms) => {
   if (!selectedRooms.length) return true;
@@ -40,6 +42,7 @@ const INITIAL_FILTERS = {
 };
 
 const HomeScreen = ({ onLogout }) => {
+  const [selectedProperty, setSelectedProperty] = useState(null); // ← додай
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('home');
   const [cityView,  setCityView]  = useState(null);
@@ -144,6 +147,15 @@ const toggleQuickTag = (tag) => {
   }, [filters]);
 
   const byCity = (city) => filtered.filter(p => p.city === city);
+
+if (selectedProperty) {
+  return (
+    <PropertyDetailScreen
+      property={selectedProperty}
+      onBack={() => setSelectedProperty(null)}
+    />
+  );
+}
 
   // Відкриття розширених — передаємо поточний стан
   if (showFilters) {
@@ -269,8 +281,12 @@ const toggleQuickTag = (tag) => {
               <div className="flex gap-4 px-6 pb-2"
                 style={{ overflowX: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {items.map(p => (
-                  <PropertyCard key={p.id} property={p} />
-                ))}
+  <PropertyCard
+    key={p.id}
+    property={p}
+    onClick={() => setSelectedProperty(p)}  // ← додай
+  />
+))}
               </div>
             </div>
           );

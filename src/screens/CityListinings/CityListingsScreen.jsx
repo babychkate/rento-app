@@ -3,6 +3,7 @@ import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
 import { TYPE_LABELS, TYPE_SECTION_LABELS } from '../../data/properties';
+import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 
 const BackIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -25,11 +26,11 @@ const HeartIcon = ({ filled }) => (
   </svg>
 );
 
-const VerticalPropertyCard = ({ property }) => {
+const VerticalPropertyCard = ({ property, onClick }) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <div className="w-full h-55 rounded-[28px] overflow-hidden relative cursor-pointer
+    <div onClick={onClick} className="w-full h-55 rounded-[28px] overflow-hidden relative cursor-pointer
       shadow-[0_8px_28px_rgba(0,30,140,0.15)]">
       <img
         src={property.image}
@@ -50,8 +51,7 @@ const VerticalPropertyCard = ({ property }) => {
           <p className="text-white text-[20px] font-bold">{property.price}/ місяць</p>
           <p className="text-white/85 text-[13px] font-medium">{property.address}</p>
         </div>
-        <button
-          onClick={() => setLiked(p => !p)}
+        <button onClick={(e) => { e.stopPropagation(); setLiked(p => !p); }}
           className="bg-transparent border-none cursor-pointer p-0"
         >
           <HeartIcon filled={liked} />
@@ -63,6 +63,7 @@ const VerticalPropertyCard = ({ property }) => {
 
 const CityListingsScreen = ({ city, filteredProperties, onBack, onLogoClick }) => {
   const [activeTab, setActiveTab] = useState('home');
+  const [selectedProperty, setSelectedProperty] = useState(null); // ← додай
 
   // Групуємо по типу — тільки ті що пройшли фільтр
   const byType = (type) => filteredProperties.filter(p => p.city === city && p.type === type);
@@ -70,6 +71,16 @@ const CityListingsScreen = ({ city, filteredProperties, onBack, onLogoClick }) =
 const sections = Object.entries(TYPE_SECTION_LABELS)
   .map(([key, label]) => ({ key, label, items: byType(key) }))
   .filter(s => s.items.length > 0);
+
+  // ← додай перед return
+  if (selectedProperty) {
+    return (
+      <PropertyDetailScreen
+        property={selectedProperty}
+        onBack={() => setSelectedProperty(null)}
+      />
+    );
+  }
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat">
@@ -133,8 +144,12 @@ const sections = Object.entries(TYPE_SECTION_LABELS)
               </p>
               <div className="flex flex-col gap-4 px-6">
                 {items.map(p => (
-                  <VerticalPropertyCard key={p.id} property={p} />
-                ))}
+  <VerticalPropertyCard
+    key={p.id}
+    property={p}
+    onClick={() => setSelectedProperty(p)}  // ← додай
+  />
+))}
               </div>
             </div>
           ))
