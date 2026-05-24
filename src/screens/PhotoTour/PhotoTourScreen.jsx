@@ -54,35 +54,35 @@ const SectionPhotoGrid = ({ photos, onPhotoClick }) => (
   <div className="px-6" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
     {photos[0] && (
       <div onClick={() => onPhotoClick(0)}
-        className="cursor-pointer rounded-[16px] overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
+        className="cursor-pointer rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
         style={{ gridRow: 'span 2', height: 298 }}>
         <img src={photos[0]} alt="" className="w-full h-full object-cover" />
       </div>
     )}
     {photos[1] && (
       <div onClick={() => onPhotoClick(1)}
-        className="cursor-pointer rounded-[16px] overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
+        className="cursor-pointer rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
         style={{ height: 140 }}>
         <img src={photos[1]} alt="" className="w-full h-full object-cover" />
       </div>
     )}
     {photos[2] && (
       <div onClick={() => onPhotoClick(2)}
-        className="cursor-pointer rounded-[16px] overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
+        className="cursor-pointer rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
         style={{ height: 140 }}>
         <img src={photos[2]} alt="" className="w-full h-full object-cover" />
       </div>
     )}
     {photos[3] && (
       <div onClick={() => onPhotoClick(3)}
-        className="cursor-pointer rounded-[16px] overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
+        className="cursor-pointer rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
         style={{ height: 180 }}>
         <img src={photos[3]} alt="" className="w-full h-full object-cover" />
       </div>
     )}
     {photos[4] && (
       <div onClick={() => onPhotoClick(4)}
-        className="cursor-pointer rounded-[16px] overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
+        className="cursor-pointer rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,30,140,0.1)]"
         style={{ height: 180 }}>
         <img src={photos[4]} alt="" className="w-full h-full object-cover" />
       </div>
@@ -153,10 +153,10 @@ const PhotoTourScreen = ({ property, onBack, sections: propSections }) => {
             return (
               <div
                 key={section.id}
-                className="flex-shrink-0 flex flex-col items-center gap-2 cursor-pointer"
+                className="shrink-0 flex flex-col items-center gap-2 cursor-pointer"
                 onClick={() => handleThumbClick(section.id)}
               >
-                <div className="w-[74px] h-[60px] rounded-[14px] overflow-hidden shadow-[0_3px_10px_rgba(0,30,140,0.12)]">
+                <div className="w-18.5 h-15 rounded-[14px] overflow-hidden shadow-[0_3px_10px_rgba(0,30,140,0.12)]">
                   <img src={section.photos[0]} alt={section.label}
                     className="w-full h-full object-cover" />
                 </div>

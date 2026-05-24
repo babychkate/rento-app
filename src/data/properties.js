@@ -19,7 +19,7 @@ export const PROPERTIES = [
     coordinates: { lat: 49.8326, lng: 24.0161 },
     landlord: {
       name: 'Надія Юхимчук',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
     },
     amenities: {
       general: ['Wi-Fi', 'Балкон'],
