@@ -89,4 +89,10 @@ export const TYPE_LABELS = {
   room: 'Кімната',
 };
 
+export const TYPE_SECTION_LABELS = {
+  apartment: 'Квартири',
+  house:     'Будинки',
+  room:      'Кімнати',
+};
+
 export const QUICK_FILTERS = ['pet friendly', 'ліфт', 'укриття', 'паркінг'];

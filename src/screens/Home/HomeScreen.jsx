@@ -24,13 +24,18 @@ const HomeScreen = ({ onLogout }) => {
     setActiveFilters(prev =>
       prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]
     );
+  
+  const toggleType = (type) =>
+  setActiveType(prev =>
+    prev.includes(type) ? prev.filter(x => x !== type) : [...prev, type]
+  );
 
   const filtered = useMemo(() => {
     return PROPERTIES.filter(p => {
       const matchSearch = search.trim() === '' ||
         p.city.toLowerCase().includes(search.toLowerCase()) ||
         p.address.toLowerCase().includes(search.toLowerCase());
-      const matchType    = !activeType || p.type === activeType;
+      const matchType = activeType.length === 0 || activeType.includes(p.type);
       const matchFilters = activeFilters.length === 0 ||
         activeFilters.every(f => p.tags.includes(f));
       return matchSearch && matchType && matchFilters;
@@ -40,7 +45,16 @@ const HomeScreen = ({ onLogout }) => {
   const byCity = (city) => filtered.filter(p => p.city === city);
 
   if (showFilters) return <FiltersScreen onBack={() => setShowFilters(false)} />;
-  if (cityView)    return <CityListingsScreen city={cityView.city} onBack={() => setCityView(null)} />;
+  if (cityView) {
+    return (
+      <CityListingsScreen
+        city={cityView.city}
+        filteredProperties={filtered}  // ← передаємо вже відфільтровані
+        onBack={() => setCityView(null)}
+        onLogoClick={() => setCityView(null)}  // ← лого теж повертає на головну
+      />
+    );
+  }
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat">
@@ -117,13 +131,13 @@ const HomeScreen = ({ onLogout }) => {
     style={{ overflowX: 'auto', scrollbarWidth: 'none', msOverflowStyle: 'none', paddingBottom: '2px' }}
   >
     {Object.entries(TYPE_LABELS).map(([key, label]) => (
-      <FilterChip
-        key={key}
-        label={label}
-        active={activeType === key}
-        onClick={() => setActiveType(prev => prev === key ? null : key)}
-      />
-    ))}
+  <FilterChip
+    key={key}
+    label={label}
+    active={activeType.includes(key)}
+    onClick={() => toggleType(key)}
+  />
+))}
   </div>
 </div>
 
