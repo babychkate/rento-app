@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAuth } from '../Context/AuthContext';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import {
@@ -23,7 +24,14 @@ const CATEGORIES = [
 ];
 
 const CategoryScreen = ({ onBack, onNext }) => {
+  const { updateUser } = useAuth();
   const [selected, setSelected] = useState(null);
+
+  const handleContinue = () => {
+    if (!selected) return;
+    updateUser({ category: selected });
+    onNext();
+  };
 
   return (
     <div className={[
@@ -56,7 +64,7 @@ const CategoryScreen = ({ onBack, onNext }) => {
         ))}
       </div>
 
-      {/* Bottom text — як на Welcome/Login */}
+      {/* Bottom text */}
       <div className="flex flex-col items-center mt-15 gap-3 text-center">
         <p className="text-white text-[30px] font-semibold leading-[100%] mb-3">ХТО ТИ?</p>
         <p className="text-white text-[16px] font-normal leading-[130%] max-w-72.5">
@@ -64,10 +72,10 @@ const CategoryScreen = ({ onBack, onNext }) => {
         </p>
       </div>
 
-      {/* Продовжити + степ — як на Welcome */}
+      {/* Продовжити + степ */}
       <div className="flex flex-col items-center gap-5 mt-auto pb-15">
         <span
-          onClick={selected ? onNext : undefined}
+          onClick={handleContinue}
           className={[
             'text-[20px] font-medium leading-[122%] font-montserrat transition-opacity duration-200 mb-10',
             selected
