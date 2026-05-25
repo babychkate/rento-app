@@ -6,6 +6,7 @@ import VerificationScreen from '../Verification/VerificationScreen';
 import PropertyMap from '../../components/PropertyMap/PropertyMap';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import ContractScreen from '../Contract/ContractScreen';
+import SecurityScreen from '../Security/SecurityScreen';
 
 // ─── ІКОНКИ ───────────────────────────────────────────────────────────────────
 
@@ -143,31 +144,37 @@ const PropertyDetailScreen = ({ property, onBack }) => {
     const [activeTab, setActiveTab] = useState('home');
 
   // Навігація до підекранів
-  if (screen === 'phototour') {
-  return (
-    <PhotoTourScreen
-      property={property}
-      sections={property.photos}   // ← додай цей рядок
-      onBack={() => setScreen(null)}
-    />
-  );
-}
-  if (screen === 'landlord') {
-    return <LandlordScreen property={property} onBack={() => setScreen(null)} />;
-  }
-  if (screen === 'identity' || screen === 'security') {
+  if (screen === 'identity') {
     return <VerificationScreen type={screen} onBack={() => setScreen(null)} />;
   }
 
-if (screen === 'contract') {
-  return (
-    <ContractScreen
-      property={property}
-      onBack={() => setScreen(null)}
-      onFinish={() => setScreen(null)} // ← додай
-    />
-  );
+  if (screen === 'phototour') {
+    return (
+      <PhotoTourScreen
+        property={property}
+        sections={property.photos}   // ← додай цей рядок
+        onBack={() => setScreen(null)}
+      />
+    );
+  }
+
+  if (screen === 'landlord') {
+    return <LandlordScreen property={property} onBack={() => setScreen(null)} />;
+  }
+
+  if (screen === 'security') {
+  return <SecurityScreen onBack={() => setScreen(null)} />;
 }
+
+  if (screen === 'contract') {
+    return (
+      <ContractScreen
+        property={property}
+        onBack={() => setScreen(null)}
+        onFinish={() => setScreen(null)} // ← додай
+      />
+    );
+  }
 
   const typeLabel = TYPE_LABELS[property.type] ?? 'Житло';
 
