@@ -8,6 +8,7 @@ import FiltersScreen from '../Filters/FiltersScreen';
 import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 import FavoritesScreen from '../Favourites/FavouritesScreen';
 import { SearchIcon } from '../../components/Icons/Icons';
+import ProfileScreen from '../Profile/ProfileScreen';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК
 import MessagesScreen from '../Messages/MessagesScreen';   // Екран для 'search'
@@ -38,6 +39,7 @@ const INITIAL_FILTERS = {
 
 const HomeScreen = ({ onLogout }) => {
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('home');
   const [cityView, setCityView] = useState(null);
@@ -139,6 +141,15 @@ const HomeScreen = ({ onLogout }) => {
     );
   }
 
+  if (showProfile) {
+  return (
+    <ProfileScreen
+      onBack={() => setShowProfile(false)}
+      onLogout={onLogout}
+    />
+  );
+}
+
   // --- ДИНАМІЧНИЙ РЕНДЕР КОНТЕНТУ ВКЛАДОК ---
   const renderMainContent = () => {
     switch (activeTab) {
@@ -163,7 +174,7 @@ const HomeScreen = ({ onLogout }) => {
                 <button className="bg-transparent border-none cursor-pointer p-0">
                   <BellIcon />
                 </button>
-                <button onClick={onLogout} className="bg-transparent border-none cursor-pointer p-0">
+                <button onClick={() => setShowProfile(true)} className="bg-transparent border-none cursor-pointer p-0">
                   <ProfileIcon />
                 </button>
               </div>
