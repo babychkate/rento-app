@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useFavorites } from '../../screens/Context/FavouritesContext';
 
 const StarIcon = () => (
   <svg width="18" height="18" viewBox="0 0 23 22" fill="none">
@@ -19,13 +19,14 @@ const HeartIcon = ({ filled }) => (
   </svg>
 );
 
-const PropertyCard = ({ property, onClick}) => {
-  const [liked, setLiked] = useState(false);
+const PropertyCard = ({ property, onClick }) => {
+  const { isPropertyLiked, toggleProperty } = useFavorites();
+  const liked = isPropertyLiked(property.id);
 
   return (
     <div
       onClick={onClick}
-       className="shrink-0 w-60 h-65 rounded-[28px] overflow-hidden relative cursor-pointer">
+      className="shrink-0 w-60 h-65 rounded-[28px] overflow-hidden relative cursor-pointer">
       <img
         src={property.image}
         alt={property.address}
@@ -48,9 +49,9 @@ const PropertyCard = ({ property, onClick}) => {
           <p className="text-white/85 text-[12px] font-medium">{property.address}</p>
         </div>
         <button
-  onClick={(e) => { e.stopPropagation(); setLiked(p => !p); }}
-  className="bg-transparent border-none cursor-pointer p-0"
->
+          onClick={(e) => { e.stopPropagation(); toggleProperty(property.id); }}
+          className="bg-transparent border-none cursor-pointer p-0"
+        >
           <HeartIcon filled={liked} />
         </button>
       </div>

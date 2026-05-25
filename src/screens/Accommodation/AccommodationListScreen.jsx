@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useFavorites } from '../Context/FavouritesContext'; // ← Підключаємо контекст
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
@@ -19,42 +20,54 @@ const StarIcon = () => (
 );
 
 const HeartIcon = ({ filled }) => (
-  <svg width="38" height="38" viewBox="0 0 42 42" fill="none">
-    <path d="M24.5189 26.2766C23.8026 27.0369 22.5293 28.3835 21.7267 29.232C21.3319 29.6493 20.6693 29.6497 20.2751 29.2319C18.6188 27.4771 14.5384 23.1534 12.4378 20.924C11.4757 19.9028 11 18.5718 11 17.2293C11 15.8868 11.4757 14.5444 12.4378 13.5232C14.3622 11.4923 17.4757 11.4923 19.4 13.5232L20.2615 14.4438C20.6558 14.8651 21.3238 14.8662 21.7195 14.4462L22.5892 13.5232C24.5135 11.4923 27.6162 11.4923 29.5405 13.5232C30.5243 14.5444 31 15.8754 31 17.2293C31 18.5603 30.5243 19.9028 29.5622 20.924L26.2492 24.4402"
-      stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"
-      fill={filled ? 'white' : 'none'}/>
+  <svg 
+    width="38" 
+    height="38" 
+    viewBox="0 0 42 42" 
+    fill={filled ? "white" : "none"} // ← тепер це працює динамічно!
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path 
+      d="M24.5189 26.2766C23.8026 27.0369 22.5293 28.3835 21.7267 29.232C21.3319 29.6493 20.6693 29.6497 20.2751 29.2319C18.6188 27.4771 14.5384 23.1534 12.4378 20.924C11.4757 19.9028 11 18.5718 11 17.2293C11 15.8868 11.4757 14.5444 12.4378 13.5232C14.3622 11.4923 17.4757 11.4923 19.4 13.5232L20.2615 14.4438C20.6558 14.8651 21.3238 14.8662 21.7195 14.4462L22.5892 13.5232C24.5135 11.4923 27.6162 11.4923 29.5405 13.5232C30.5243 14.5444 31 15.8754 31 17.2293C31 18.5603 30.5243 19.9028 29.5622 20.924L26.2492 24.4402"
+      stroke="white" 
+      strokeWidth="1.4" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+      // Переконайся, що тут НЕМАЄ внутрішнього fill="white", інакше він усе переб'є
+    />
   </svg>
 );
 
 const VerticalPropertyCard = ({ property, onClick }) => {
-  const [liked, setLiked] = useState(false);
+  const { likedProperties, toggleProperty } = useFavorites(); // ← Отримуємо глобальний стан
+  const isLiked = likedProperties.has(property.id); // Перевіряємо, чи цей ID є в обраному
 
   return (
-    <div onClick={onClick} className="w-full h-55 rounded-[28px] overflow-hidden relative cursor-pointer
-      shadow-[0_8px_28px_rgba(0,30,140,0.15)]">
+    <div onClick={onClick} className="w-full h-55 rounded-[28px] overflow-hidden relative cursor-pointer shadow-[0_8px_28px_rgba(0,30,140,0.15)]">
       <img
         src={property.image}
         alt={property.address}
         className="w-full h-full object-cover"
       />
       {/* Badge */}
-      <div className="absolute top-3.5 right-3.5 bg-[#3173FD] rounded-xl px-2.5 py-1
-        flex items-center gap-1 text-white text-[12px] font-medium">
+      <div className="absolute top-3.5 right-3.5 bg-[#3173FD] rounded-xl px-2.5 py-1 flex items-center gap-1 text-white text-[12px] font-medium">
         <StarIcon />
         {property.rating}
       </div>
       {/* Overlay */}
-      <div className="absolute bottom-0 left-0 right-0
-        bg-linear-to-t from-[rgba(16,58,150,0.85)] via-[rgba(49,115,253,0.25)] to-transparent
-        px-4.5 pb-4.5 pt-10 flex justify-between items-end">
+      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[rgba(16,58,150,0.85)] via-[rgba(49,115,253,0.25)] to-transparent px-4.5 pb-4.5 pt-10 flex justify-between items-end">
         <div className="flex flex-col gap-0.5">
           <p className="text-white text-[20px] font-bold">{property.price}/ місяць</p>
           <p className="text-white/85 text-[13px] font-medium">{property.address}</p>
         </div>
-        <button onClick={(e) => { e.stopPropagation(); setLiked(p => !p); }}
+        <button 
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            toggleProperty(property.id); // ← Перемикаємо глобально
+          }}
           className="bg-transparent border-none cursor-pointer p-0"
         >
-          <HeartIcon filled={liked} />
+          <HeartIcon filled={isLiked} /> {/* Рендериться залежно від глобального лайку */}
         </button>
       </div>
     </div>
@@ -63,16 +76,15 @@ const VerticalPropertyCard = ({ property, onClick }) => {
 
 const CityListingsScreen = ({ city, filteredProperties, onBack, onLogoClick }) => {
   const [activeTab, setActiveTab] = useState('home');
-  const [selectedProperty, setSelectedProperty] = useState(null); // ← додай
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   // Групуємо по типу — тільки ті що пройшли фільтр
   const byType = (type) => filteredProperties.filter(p => p.city === city && p.type === type);
 
-const sections = Object.entries(TYPE_SECTION_LABELS)
-  .map(([key, label]) => ({ key, label, items: byType(key) }))
-  .filter(s => s.items.length > 0);
+  const sections = Object.entries(TYPE_SECTION_LABELS)
+    .map(([key, label]) => ({ key, label, items: byType(key) }))
+    .filter(s => s.items.length > 0);
 
-  // ← додай перед return
   if (selectedProperty) {
     return (
       <PropertyDetailScreen
@@ -144,12 +156,12 @@ const sections = Object.entries(TYPE_SECTION_LABELS)
               </p>
               <div className="flex flex-col gap-4 px-6">
                 {items.map(p => (
-  <VerticalPropertyCard
-    key={p.id}
-    property={p}
-    onClick={() => setSelectedProperty(p)}  // ← додай
-  />
-))}
+                  <VerticalPropertyCard
+                    key={p.id}
+                    property={p}
+                    onClick={() => setSelectedProperty(p)}
+                  />
+                ))}
               </div>
             </div>
           ))

@@ -18,6 +18,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8326, lng: 24.0161 },
     landlord: {
+      id: 'l1', // Додано унікальний ID для Надії
       name: 'Надія Юхимчук',
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
     },
@@ -54,7 +55,6 @@ export const PROPERTIES = [
         label: 'ванна',
         photos: [
           'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
-          
           'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80',
           'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
           'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80',
@@ -79,7 +79,7 @@ export const PROPERTIES = [
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
         rating: 5,
         date: '1 тиждень тому',
-        text: "Дуже чисто, є все необхідне (рушники, посуд, праска), приємна хазяйка зустріла вчасно! До супермаркету йшли 10 хвилин. Поряд є кав'ярні та ресторани.",
+        text: "Дуже чисто, є все необхідне (рушники, посуд, праска), приємна хазяйка зустріла вчасно! До supermarket-у йшли 10 хвилин. Поряд є кав'ярні та ресторани.",
       },
       {
         id: 'r2',
@@ -118,6 +118,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8395, lng: 23.9887 },
     landlord: {
+      id: 'l2', // Додано ID для Василя
       name: 'Василь Коваль',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
     },
@@ -210,6 +211,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8280, lng: 24.0412 },
     landlord: {
+      id: 'l3', // Додано ID для Олени
       name: 'Олена Мельник',
       avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80',
     },
@@ -271,6 +273,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4421, lng: 30.5181 },
     landlord: {
+      id: 'l4', // Додано ID для Дмитра
       name: 'Дмитро Ткаченко',
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
     },
@@ -351,6 +354,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4501, lng: 30.5234 },
     landlord: {
+      id: 'l5', // Додано ID для Марини
       name: 'Марина Сидоренко',
       avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80',
     },
@@ -388,7 +392,6 @@ export const PROPERTIES = [
         photos: [
           'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
           'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80',
-        
           'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
           'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80',
         ],
@@ -438,11 +441,12 @@ export const PROPERTIES = [
     floor: null,
     totalArea: 200,
     livingArea: 150,
-    heating: 'Індивідуальне опалення',
+    heating: 'Індивідуальное опалення',
     rentalTerm: 'Довгострокова оренда',
     image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4279, lng: 30.5146 },
     landlord: {
+      id: 'l6', // Додано ID для Богдана
       name: 'Богдан Олійник',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
     },
@@ -527,6 +531,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 46.4825, lng: 30.7233 },
     landlord: {
+      id: 'l7', // Додано ID для Ніни
       name: 'Ніна Захаренко',
       avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
     },
@@ -607,6 +612,7 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 46.4851, lng: 30.7312 },
     landlord: {
+      id: 'l8', // Додано ID для Ігоря
       name: 'Ігор Петренко',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
     },
@@ -716,3 +722,125 @@ export const TAG_TO_SECTION = {
 
 // Сет тегів що показуються як quickTags на головній
 export const QUICK_FILTER_SET = new Set(QUICK_FILTERS);
+
+export const ROOMMATES = [
+  {
+    id: 'rm1',
+    name: 'Андрій Мельник',
+    subtitle: 'Студент',
+    rating: 4.9,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    age: 22,
+    city: 'Львів',
+    tags: ['Без вечірок', 'Любить тишу', 'Чистота важлива'],
+    description: 'Навчаюсь на 4 курсі. Спокійний спосіб життя, ціную порядок і комфорт.',
+  },
+
+  {
+    id: 'rm2',
+    name: 'Анастасія Сидоренко',
+    subtitle: 'Маркетолог',
+    rating: 5.0,
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
+    age: 26,
+    city: 'Київ',
+    tags: ['Не палить', 'Окремий простір', 'Чистота важлива'],
+    description: 'Працюю віддалено. Люблю спокійну атмосферу та повагу до особистого простору.',
+  },
+
+  {
+    id: 'rm3',
+    name: 'Олег Романюк',
+    subtitle: 'Дизайнер',
+    rating: 4.7,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    age: 28,
+    city: 'Одеса',
+    tags: ['Можна з тваринами', 'Любить спілкування', 'Гості дозволені'],
+    description: 'Працюю дизайнером, маю кота. Люблю легку та дружню атмосферу вдома.',
+  },
+
+  {
+    id: 'rm4',
+    name: 'Ірина Коваль',
+    subtitle: 'UX/UI дизайнер',
+    rating: 4.8,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80',
+    age: 24,
+    city: 'Львів',
+    tags: ['Не палить', 'Без вечірок', 'Любить тишу'],
+    description: 'Ціную чистоту, спокій і комфортне співмешкання без шуму.',
+  },
+
+  {
+    id: 'rm5',
+    name: 'Максим Гнатюк',
+    subtitle: 'Фотограф',
+    rating: 4.6,
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    age: 27,
+    city: 'Київ',
+    tags: ['Нічний графік', 'Гості дозволені', 'Любить спілкування'],
+    description: 'Часто працюю вечорами. Відкритий до комунікації та спільного дозвілля.',
+  },
+
+  {
+    id: 'rm6',
+    name: 'Софія Бойко',
+    subtitle: 'Студентка магістратури',
+    rating: 4.9,
+    avatar: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=400&q=80',
+    age: 23,
+    city: 'Тернопіль',
+    tags: ['Ранній графік', 'Чистота важлива', 'Без гостей'],
+    description: 'Люблю тишу та порядок. Встаю рано і багато навчаюсь.',
+  },
+
+  {
+    id: 'rm7',
+    name: 'Дмитро Левицький',
+    subtitle: 'Аналітик',
+    rating: 4.8,
+    avatar: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=400&q=80',
+    age: 30,
+    city: 'Харків',
+    tags: ['Не палить', 'Окремий простір', 'Без вечірок'],
+    description: 'Спокійний та відповідальний. Поважаю особисті кордони співмешканців.',
+  },
+
+  {
+    id: 'rm8',
+    name: 'Марія Ткачук',
+    subtitle: 'SMM менеджер',
+    rating: 4.7,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+    age: 25,
+    city: 'Івано-Франківськ',
+    tags: ['Любить спілкування', 'Спільне дозвілля', 'Гості дозволені'],
+    description: 'Люблю дружню атмосферу вдома та легке спілкування з сусідами.',
+  },
+
+  {
+    id: 'rm9',
+    name: 'Владислав Кравець',
+    subtitle: 'Бариста',
+    rating: 4.5,
+    avatar: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=400&q=80',
+    age: 24,
+    city: 'Луцьк',
+    tags: ['Ранній графік', 'Не палить', 'Любить тишу'],
+    description: 'Працюю зранку, тому вдома ціную спокій і комфорт.',
+  },
+
+  {
+    id: 'rm10',
+    name: 'Христина Данилюк',
+    subtitle: 'HR менеджер',
+    rating: 5.0,
+    avatar: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=400&q=80',
+    age: 29,
+    city: 'Чернівці',
+    tags: ['Чистота важлива', 'Не палить', 'Окремий простір'],
+    description: 'Шукаю комфортне та спокійне співмешкання з повагою до особистого простору.',
+  },
+];
