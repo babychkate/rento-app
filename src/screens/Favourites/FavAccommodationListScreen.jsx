@@ -39,7 +39,7 @@ const FavVerticalPropertyCard = ({ property, onClick }) => {
 };
 
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ЕКРАНУ СПИСКУ ───────────────────────────────────────
-const FavPropertiesListScreen = ({ favProperties, onBack, onPropertyClick }) => {
+const FavAccommodationListScreen = ({ favProperties, onBack, onPropertyClick }) => {
   
   // Фільтрація по типах без прив'язки до міст
   const byType = (type) => favProperties.filter(p => p.type === type);
@@ -117,4 +117,4 @@ const FavPropertiesListScreen = ({ favProperties, onBack, onPropertyClick }) => 
   );
 };
 
-export default FavPropertiesListScreen;
+export default FavAccommodationListScreen;

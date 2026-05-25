@@ -7,8 +7,9 @@ import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 import RoommateScreen from '../Roommate/AllRoomatesScreen'; 
 import FavPropertiesListScreen from './FavAccommodationListScreen';
 
-// 1. ІМПОРТУЄМО НАШ ОНОВЛЕНИЙ ЕКРАН ОРЕНДОДАВЦІВ
-import LandlordsListScreen from './FavLandlordsListScreen'; // Перевір правильність шляху до файлу!
+// 1. ІМПОРТУЄМО НАШІ ОНОВЛЕНІ ЕКРАНИ ДЛЯ СПИСКІВ
+import LandlordsListScreen from './FavLandlordsListScreen'; 
+import FavRoommatesListScreen from './FavRoommatesListScreen'; // <--- НАШ НОВИЙ ІМПОРТ
 
 // ─── ІКОНКИ ────────────────────────────────────────────────────────────────
 const BackIcon = () => (
@@ -34,34 +35,6 @@ const HeartIcon = () => (
     <path d="M24.5189 26.2766C23.8026 27.0369 22.5293 28.3835 21.7267 29.232C21.3319 29.6493 20.6693 29.6497 20.2751 29.2319C18.6188 27.4771 14.5384 23.1534 12.4378 20.924C11.4757 19.9028 11 18.5718 11 17.2293C11 15.8868 11.4757 14.5444 12.4378 13.5232C14.3622 11.4923 17.4757 11.4923 19.4 13.5232L20.2615 14.4438C20.6558 14.8651 21.3238 14.8662 21.7195 14.4462L22.5892 13.5232C24.5135 11.4923 27.6162 11.4923 29.5405 13.5232C30.5243 14.5444 31 15.8754 31 17.2293C31 18.5603 30.5243 19.9028 29.5622 20.924L26.2492 24.4402"
       stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="white"/>
   </svg>
-);
-
-// ─── ВЕРТИКАЛЬНА КАРТКА (для списків) ─────────────────
-const VertFavCard = ({ image, rating, mainText, subText, onLike, onClick }) => (
-  <div
-    onClick={onClick}
-    className="w-full rounded-[28px] overflow-hidden relative cursor-pointer"
-    style={{ height: '220px', boxShadow: '0 8px 28px rgba(0,30,140,0.15)' }}
-  >
-    <img src={image} alt={mainText} className="w-full h-full object-cover" />
-    <div className="absolute top-3.5 right-3.5 bg-[#3173FD] rounded-xl px-2.5 py-1 flex items-center gap-1 text-white text-[12px] font-medium">
-      <StarIcon />
-      {rating}
-    </div>
-    <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-10 flex justify-between items-end"
-      style={{ background: 'linear-gradient(to top, rgba(16,58,150,0.85), rgba(49,115,253,0.25), transparent)' }}>
-      <div className="flex flex-col gap-0.5">
-        <p className="text-white text-[18px] font-bold">{mainText}</p>
-        <p className="text-white/85 text-[13px] font-medium">{subText}</p>
-      </div>
-      <button
-        onClick={(e) => { e.stopPropagation(); onLike?.(); }}
-        className="bg-transparent border-none cursor-pointer p-0"
-      >
-        <HeartIcon />
-      </button>
-    </div>
-  </div>
 );
 
 // ─── ГОРИЗОНТАЛЬНА КАРТКА (для головного екрану обраного) ────────────────────────
@@ -106,31 +79,6 @@ const FavSection = ({ title, items, onArrowClick, renderCard }) => {
   );
 };
 
-// ─── СПИСОК КАТЕГОРІЇ (лишаємо тільки для співмешканців) ───────────────────
-const FavListScreen = ({ title, items, onBack, renderCard }) => (
-  <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
-    <div className="absolute inset-0 pointer-events-none z-0"
-      style={{ background: 'linear-gradient(180deg, rgba(148,93,233,0.45) 0%, rgba(99,138,255,0.55) 7%, rgba(79,118,255,0.35) 13%, #ffffff 25%, #ffffff 100%)' }} />
-    <div className="relative z-10 flex flex-col flex-1 min-h-0 pb-10" style={{ overflowY: 'auto', scrollbarWidth: 'none' }}>
-      <div className="flex items-center gap-3 px-6 pt-14 pb-6">
-        <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-0">
-          <BackIcon />
-        </button>
-        <h1 className="font-bold text-[28px] text-[#012A81]">{title}</h1>
-      </div>
-      <div className="flex flex-col gap-4 px-6">
-        {items.length === 0 ? (
-          <p className="text-[14px] text-[#8a9ab8] text-center pt-8">У цьому списку поки немає обраного</p>
-        ) : (
-          <div className="flex flex-col gap-4">
-            {items.map(renderCard)}
-          </div>
-        )}
-      </div>
-    </div>
-  </div>
-);
-
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ────────────────────────────────────────────────────
 const FavoritesScreen = ({ onGoHome }) => {
   const {
@@ -149,8 +97,6 @@ const FavoritesScreen = ({ onGoHome }) => {
 
   const favProperties = PROPERTIES.filter(p => arrProperties.includes(p.id));
   
-  // Трансформуємо дані: витягуємо чистий об'єкт орендодавця, 
-  // але додаємо йому рейтинг та адресу від житла для відображення в картці
   const favLandlords = PROPERTIES
     .filter(p => p.landlord && arrLandlords.includes(p.landlord.id))
     .map(p => ({
@@ -202,24 +148,22 @@ const FavoritesScreen = ({ onGoHome }) => {
     );
   }
 
-  // 2. ОНОВЛЕНИЙ РОУТИНГ ДЛЯ ОРЕНДОДАВЦІВ (ПІДКЛЮЧАЄМО НАШ ЕКРАН)
-if (view === 'landlords-list') {
-  return (
-    <LandlordsListScreen
-      landlordsList={favLandlords}
-      likedLandlords={likedLandlords} // Це Set
-      onBack={() => setView(null)}
-      onLogoClick={onGoHome}
-      onToggleFavorite={(id) => toggleLandlord(id)}
-      onOpenDetails={(landlord) => {
-        setPreviousView('landlords-list');
-        // Передаємо повний об'єкт, щоб LandlordScreen мав доступ до landlord.id
-        setSelected({ landlord: landlord, rating: landlord.rating, address: landlord.address });
-        setView('landlord-detail');
-      }}
-    />
-  );
-}
+  if (view === 'landlords-list') {
+    return (
+      <LandlordsListScreen
+        landlordsList={favLandlords}
+        likedLandlords={likedLandlords}
+        onBack={() => setView(null)}
+        onLogoClick={onGoHome}
+        onToggleFavorite={(id) => toggleLandlord(id)}
+        onOpenDetails={(landlord) => {
+          setPreviousView('landlords-list');
+          setSelected({ landlord: landlord, rating: landlord.rating, address: landlord.address });
+          setView('landlord-detail');
+        }}
+      />
+    );
+  }
 
   if (view === 'roommate-detail' && selected) {
     return (
@@ -234,27 +178,20 @@ if (view === 'landlords-list') {
     );
   }
 
+  // 2. ПІДКЛЮЧАЄМО НАШ НОВИЙ ЕКРАН ДЛЯ СПИСКУ СПІВМЕШКАНЦІВ
   if (view === 'roommates-list') {
     return (
-      <FavListScreen
-        title="Обрані співмешканці"
-        items={favRoommates}
+      <FavRoommatesListScreen
+        roommatesList={favRoommates}
+        likedRoommates={likedRoommates} // Прокидаємо Set з контексту
         onBack={() => setView(null)}
-        renderCard={(r) => (
-          <VertFavCard
-            key={r.id}
-            image={r.avatar}
-            rating={r.rating}
-            mainText={r.name}
-            subText={r.subtitle}
-            onLike={() => toggleRoommate(r.id)} 
-            onClick={() => {
-              setPreviousView('roommates-list');
-              setSelected(r);
-              setView('roommate-detail');
-            }}
-          />
-        )}
+        onLogoClick={onGoHome}
+        onToggleFavorite={(id) => toggleRoommate(id)}
+        onOpenDetails={(roommate) => {
+          setPreviousView('roommates-list');
+          setSelected(roommate);
+          setView('roommate-detail');
+        }}
       />
     );
   }
