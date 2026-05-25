@@ -50,7 +50,7 @@ const Step2Stub = ({ onBack }) => (
   </div>
 );
 
-const ContractFormScreen = ({ property, onBack, onCancel }) => {
+const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
   const [name,       setName]       = useState('');
   const [surname,    setSurname]    = useState('');
   const [rnokpp,     setRnokpp]     = useState('');
@@ -98,6 +98,7 @@ const ContractFormScreen = ({ property, onBack, onCancel }) => {
         property={property}
         userData={{ name, surname, rnokpp }}
         onBack={() => setShowStep2(false)}
+        onFinish={onFinish}
       />
     );
   }

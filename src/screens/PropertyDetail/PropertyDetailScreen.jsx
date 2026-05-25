@@ -159,11 +159,12 @@ const PropertyDetailScreen = ({ property, onBack }) => {
     return <VerificationScreen type={screen} onBack={() => setScreen(null)} />;
   }
 
-  if (screen === 'contract') {
+if (screen === 'contract') {
   return (
     <ContractScreen
       property={property}
       onBack={() => setScreen(null)}
+      onFinish={() => setScreen(null)} // ← додай
     />
   );
 }

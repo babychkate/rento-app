@@ -107,7 +107,7 @@ const CONTRACT_PAGES = [PAGE_1, PAGE_2, PAGE_3, PAGE_4];
 
 
 
-const ContractReviewScreen = ({ property, userData, onBack }) => {
+const ContractReviewScreen = ({ property, userData, onBack, onFinish }) => {
   const [page,      setPage]      = useState(0);
   const [agreed,    setAgreed]    = useState(false);
   const [showDia,   setShowDia]   = useState(false);
@@ -143,6 +143,7 @@ const ContractReviewScreen = ({ property, userData, onBack }) => {
         contractNumber={contractNumber}
         today={today}
         onBack={() => setShowDia(false)}
+        onFinish={onFinish}
       />
     );
   }
