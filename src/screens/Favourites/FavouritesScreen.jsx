@@ -4,7 +4,7 @@ import { PROPERTIES, ROOMMATES } from '../../data/properties';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import LandlordScreen from '../Landlord/LandlordScreen';
 import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
-import RoommateScreen from '../Roommate/RoommateScreen'; 
+import RoommateScreen from '../Roommate/AllRoomatesScreen'; 
 import FavPropertiesListScreen from './FavAccommodationListScreen';
 
 // 1. ІМПОРТУЄМО НАШ ОНОВЛЕНИЙ ЕКРАН ОРЕНДОДАВЦІВ

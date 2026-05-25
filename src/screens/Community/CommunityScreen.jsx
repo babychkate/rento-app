@@ -4,6 +4,7 @@ import BottomNav from '../../components/BottomNav/BottomNav';
 import BazaarScreen from '../Bazaar/BazaarScreen';
 import FilterChip from '../../components/FilterChip/FilterChip';
 import { SearchIcon } from '../../components/Icons/Icons';
+import AllRoommatesScreen from '../Roommate/AllRoomatesScreen';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК (для синхронізації табів)
 import MessagesScreen from '../Messages/MessagesScreen';
@@ -187,9 +188,9 @@ const CommunityScreen = ({ onBack }) => {
     return <BazaarScreen onBack={() => setInnerView(null)} />;
   }
 
-  if (innerView === 'all') {
-    return <AllRoommatesStub onBack={() => setInnerView(null)} />;
-  }
+if (innerView === 'all') {
+  return <AllRoommatesScreen onBack={() => setInnerView(null)} />;
+}
 
   if (innerView?.type === 'roommate') {
     return (
