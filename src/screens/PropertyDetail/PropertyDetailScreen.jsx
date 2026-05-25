@@ -5,6 +5,7 @@ import LandlordScreen from '../Landlord/LandlordScreen';
 import VerificationScreen from '../Verification/VerificationScreen';
 import PropertyMap from '../../components/PropertyMap/PropertyMap';
 import BottomNav from '../../components/BottomNav/BottomNav';
+import ContractScreen from '../Contract/ContractScreen';
 
 // ─── ІКОНКИ ───────────────────────────────────────────────────────────────────
 
@@ -154,9 +155,18 @@ const PropertyDetailScreen = ({ property, onBack }) => {
   if (screen === 'landlord') {
     return <LandlordScreen property={property} onBack={() => setScreen(null)} />;
   }
-  if (screen === 'identity' || screen === 'security' || screen === 'contract') {
+  if (screen === 'identity' || screen === 'security') {
     return <VerificationScreen type={screen} onBack={() => setScreen(null)} />;
   }
+
+  if (screen === 'contract') {
+  return (
+    <ContractScreen
+      property={property}
+      onBack={() => setScreen(null)}
+    />
+  );
+}
 
   const typeLabel = TYPE_LABELS[property.type] ?? 'Житло';
 
