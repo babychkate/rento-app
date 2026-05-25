@@ -3,6 +3,7 @@ import { ROOMMATES } from '../../data/properties';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import BazaarScreen from '../Bazaar/BazaarScreen';
 import FilterChip from '../../components/FilterChip/FilterChip';
+import { SearchIcon } from '../../components/Icons/Icons';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК (для синхронізації табів)
 import MessagesScreen from '../Messages/MessagesScreen';
@@ -18,12 +19,10 @@ const BackIcon = () => (
   </svg>
 );
 
-const SearchIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2.5"
-    strokeLinecap="round" strokeLinejoin="round" stroke="#718096"
-    width="20" height="20">
-    <circle cx="11" cy="11" r="8" />
-    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+const FilterIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <path d="M4 6H20M7 12H17M10 18H14" stroke="white" strokeWidth="2.5" 
+      strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -156,7 +155,7 @@ const UserCard = ({ roommate, onClick }) => {
   );
 };
 
-// ─── ГОЛОВНИЙ КОМПОНЕНТ ────────────────────────────────────────────────────
+// ─── GODOMAIN COMPONENT ────────────────────────────────────────────────────
 
 const CommunityScreen = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState('profile'); // Поточна вкладка за дефолтом — Спільнота ('profile')
@@ -235,6 +234,7 @@ const CommunityScreen = ({ onBack }) => {
             {/* ЗАГОЛОВОК */}
             <p className="px-6 pb-5 font-semibold text-[20px] text-[#0052FF]">Пошук сусіда</p>
 
+
             {/* ШВИДКІ ФІЛЬТРИ В СТИЛІ HOMESCREEN */}
             <p className="px-6 pb-3 font-bold text-[14px] text-[#012A81]">Швидкі фільтри</p>
             <div className="flex flex-col gap-2.5 pb-6">
@@ -257,24 +257,22 @@ const CommunityScreen = ({ onBack }) => {
               ))}
             </div>
 
-            {/* ПОШУК ПО МІСТУ */}
-            <p className="px-6 pb-2.5 font-bold text-[13px] text-[#012A81]">
-              Вкажіть місто, село, район, вулицю
-            </p>
-            <div className="px-6 pb-7">
-              <div className="relative flex items-center">
-                <span className="absolute left-4 pointer-events-none">
-                  <SearchIcon />
-                </span>
-                <input
-                  type="text"
-                  value={citySearch}
-                  onChange={e => setCitySearch(e.target.value)}
-                  placeholder="Введіть локацію..."
-                  className="w-full h-[48px] rounded-full pl-12 pr-5 text-[14px] font-semibold text-[#012A81] bg-[#dde5f6] border-[2px] border-[#2979ff] outline-none shadow-[inset_0_2px_4px_rgba(41,121,255,0.05)] placeholder:text-[#4b5b7e]"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                />
-              </div>
+            {/* АДАПТОВАНИЙ ПОШУКОВИК З ЛУПОЮ ТА КНОПКОЮ ФІЛЬТРА */}
+            <div className="px-6 pb-5">
+              <div className="flex items-center gap-3">
+                <div className="relative flex-1">
+                  <div className="absolute left-4.5 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+                    <SearchIcon />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Введіть місто"
+                    value={citySearch}
+                    onChange={e => setCitySearch(e.target.value)}
+                    className="w-full pl-12 pr-4.5 py-3.5 rounded-full border-[2.5px] border-[#2979ff] bg-[#dde5f6] font-montserrat text-[14px] text-[#0f1e5c] outline-none appearance-none shadow-[inset_0_3px_8px_rgba(41,121,255,0.08),0_4px_14px_rgba(41,121,255,0.15),inset_0_-2px_0_rgba(41,121,255,0.12)] placeholder:text-[#4b5b7e]"
+                  />
+                </div>
+                </div>
             </div>
 
             {/* РЕКОМЕНДОВАНІ */}

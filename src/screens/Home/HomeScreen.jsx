@@ -7,6 +7,7 @@ import CityListingsScreen from '../Accommodation/AccommodationListScreen';
 import FiltersScreen from '../Filters/FiltersScreen';
 import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 import FavoritesScreen from '../Favourites/FavouritesScreen';
+import { SearchIcon } from '../../components/Icons/Icons';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК
 import MessagesScreen from '../Messages/MessagesScreen';   // Екран для 'search'
@@ -173,21 +174,31 @@ const HomeScreen = ({ onLogout }) => {
               Знайди своє<br />омріяне житло!
             </p>
 
-            {/* Search */}
-            <div className="px-6 pb-5">
-              <div className="flex items-center gap-3">
-                <input
-                  type="text"
-                  placeholder="Введіть місто або вулицю"
-                  value={filters.city}
-                  onChange={e => setSearch(e.target.value)}
-                  className="flex-1 px-4.5 py-3.5 rounded-full border-[2.5px] border-[#2979ff] bg-[#dde5f6] font-montserrat text-[14px] text-[#0f1e5c] outline-none appearance-none shadow-[inset_0_3px_8px_rgba(41,121,255,0.08),0_4px_14px_rgba(41,121,255,0.15),inset_0_-2px_0_rgba(41,121,255,0.12)] placeholder:text-[#4b5b7e]"
-                />
-                <button onClick={() => setShowFilters(true)} className="w-12 h-12 rounded-full shrink-0 flex items-center justify-center border-[1.5px] border-white/60 cursor-pointer bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)] shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]">
-                  <FilterIcon />
-                </button>
-              </div>
-            </div>
+           {/* Search */}
+<div className="px-6 pb-5">
+  <div className="flex items-center gap-3">
+    <div className="relative flex-1">
+      {/* Іконка лупи, позиціонована всередині інпута */}
+      <div className="absolute left-4.5 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+        <SearchIcon />
+      </div>
+      <input
+        type="text"
+        placeholder="Введіть місто або вулицю"
+        value={filters.city}
+        onChange={e => setSearch?.(e.target.value) || setFilters?.(prev => ({ ...prev, city: e.target.value }))}
+        className="w-full pl-12 pr-4.5 py-3.5 rounded-full border-[2.5px] border-[#2979ff] bg-[#dde5f6] font-montserrat text-[14px] text-[#0f1e5c] outline-none appearance-none shadow-[inset_0_3px_8px_rgba(41,121,255,0.08),0_4px_14px_rgba(41,121,255,0.15),inset_0_-2px_0_rgba(41,121,255,0.12)] placeholder:text-[#4b5b7e]"
+      />
+    </div>
+    {/* Кнопка фільтра, яка викликає модалку */}
+    <button 
+      onClick={() => setShowFilters(true)} 
+      className="w-12 h-12 rounded-full shrink-0 flex items-center justify-center border-[1.5px] border-white/60 cursor-pointer bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)] shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]"
+    >
+      <FilterIcon />
+    </button>
+  </div>
+</div>
 
             {/* Type filters */}
             <div className="px-6 pb-1">

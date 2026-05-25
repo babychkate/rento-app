@@ -5,6 +5,7 @@ import {
   LIGHT_OPTIONS, LIVING_OPTIONS, PLANNING_OPTIONS,
   WALLS_OPTIONS, RENTAL_OPTIONS, OFFER_OPTIONS, TAG_TO_SECTION,
 } from '../../data/properties';
+import { SearchIcon } from '../../components/Icons/Icons';
 
 const BackIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -24,14 +25,6 @@ const ChevronDown = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
     stroke="#2979ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9"/>
-  </svg>
-);
-
-const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-    stroke="#2979ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"/>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
   </svg>
 );
 
@@ -301,7 +294,7 @@ const QUICK_FILTER_SET = new Set([
           <div className="absolute left-4.5 top-1/2 -translate-y-1/2 pointer-events-none">
             <SearchIcon />
           </div>
-          <input type="text" placeholder="Пошук" value={city}
+          <input type="text" placeholder="Введість місто або вулицю" value={city}
             onChange={e => setCity(e.target.value)}
             className="w-full pl-11.5 pr-4.5 py-3.5 rounded-full
               border-[2.5px] border-[#2979ff] bg-[#dde5f6]
