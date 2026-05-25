@@ -148,7 +148,7 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
     <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
 
       {/* TOP BAR */}
-      <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4 flex-shrink-0">
+      <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4 shrink-0">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
@@ -164,7 +164,7 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
         {/* Крок */}
-        <div className="mt-4 mb-4 flex-shrink-0">
+        <div className="mt-4 mb-4 shrink-0">
           <span className="font-bold text-[17px] text-[#012A81]">Крок 3/3</span>
         </div>
 
@@ -194,7 +194,7 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
           <button
             type="button"
             onClick={onFinish}
-            className="w-full py-[16px] rounded-full font-bold text-[16px] text-white
+            className="w-full py-4 rounded-full font-bold text-[16px] text-white
               border-[1.5px] border-white/60 cursor-pointer
               bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)]
               shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]">
@@ -205,7 +205,7 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
       </div>
 
       {/* BOTTOM NAV */}
-      <div className="relative z-10 flex-shrink-0">
+      <div className="relative z-10 shrink-0">
         <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </div>

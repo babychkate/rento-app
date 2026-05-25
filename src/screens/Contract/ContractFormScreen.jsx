@@ -10,8 +10,8 @@ const Input = ({ label, placeholder, value, onChange, type = 'text' }) => (
       placeholder={placeholder}
       value={value}
       onChange={e => onChange(e.target.value)}
-      className="w-full px-[18px] py-[14px] rounded-full
-        border-[2px] border-[#2979ff] bg-[#dde5f6]
+      className="w-full px-4.5 py-4.5 rounded-full
+        border-2 border-[#2979ff] bg-[#dde5f6]
         font-montserrat text-[14px] text-[#0f1e5c]
         outline-none appearance-none
         shadow-[inset_0_3px_8px_rgba(41,121,255,0.08),0_4px_14px_rgba(41,121,255,0.15)]
@@ -191,10 +191,10 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
             className="sr-only"
           />
           <div className={[
-            'w-5 h-5 rounded-[5px] flex items-center justify-center flex-shrink-0 transition-all duration-200',
+            'w-5 h-5 rounded-[5px] flex items-center justify-center shrink-0 transition-all duration-200',
             useProfile
-              ? 'bg-[#2979ff] border-[2px] border-[#2979ff]'
-              : 'bg-white border-[2px] border-[#2979ff]',
+              ? 'bg-[#2979ff] border-2 border-[#2979ff]'
+              : 'bg-white border-2 border-[#2979ff]',
           ].join(' ')}>
             {useProfile && (
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -214,7 +214,7 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
             onClick={() => { if (isValid) setShowStep2(true); }}
             disabled={!isValid}
             className={[
-              'w-full py-[16px] rounded-full font-bold text-[16px] text-white',
+              'w-full py-4 rounded-full font-bold text-[16px] text-white',
               'border-[1.5px] border-white/60 transition-opacity duration-200',
               'bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)]',
               isValid
@@ -225,8 +225,8 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
           </button>
           <button
             onClick={onCancel}
-            className="w-full py-[16px] rounded-full font-bold text-[16px] text-[#012A81]
-              bg-white border-[2px] border-[rgba(41,121,255,0.2)] cursor-pointer
+            className="w-full py-4 rounded-full font-bold text-[16px] text-[#012A81]
+              bg-white border-2 border-[rgba(41,121,255,0.2)] cursor-pointer
               shadow-[0_3px_10px_rgba(0,30,120,0.08)]">
             Скасувати
           </button>
