@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { NOTIFICATIONS as INITIAL_NOTIFICATIONS } from '../../data/properties';
+import { BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import ProfileScreen from '../Profile/ProfileScreen';
 
 // ─── ІКОНКИ ───────────────────────────────────────────────────────────────────
 
@@ -81,10 +83,12 @@ const NotifModal = ({ notif, onClose }) => (
 
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ───────────────────────────────────────────────────────
 
-const NotificationsScreen = ({ onBack }) => {
+const NotificationsScreen = ({ onBack, onLogout }) => {
   const [activeTab, setActiveTab]       = useState('home');
   const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
-  const [selected, setSelected]         = useState(null);
+  const [selected, setSelected] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -94,6 +98,19 @@ const NotificationsScreen = ({ onBack }) => {
     );
     setSelected(notif);
   };
+
+    if (showProfile) {
+  return (
+    <ProfileScreen
+      onBack={() => setShowProfile(false)}
+      onLogout={onLogout}
+    />
+  );
+  }
+  
+  if (showNotifications) {
+  return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
+}
 
   return (
     // position: relative — щоб модалка з absolute позиціонувалась всередині
@@ -131,21 +148,13 @@ const NotificationsScreen = ({ onBack }) => {
 
           {/* Право: дзвіночок + профіль (як на HomeScreen) */}
           <div className="flex items-center gap-2.5">
-            {/* Дзвіночок */}
-            <button className="bg-transparent border-none cursor-pointer p-0">
-              <svg width="32" height="34" viewBox="0 0 42 42" fill="none">
-                <path d="M26.67 33.95C26.67 37.02 24.13 39.5 21 39.5C17.87 39.5 15.33 37.02 15.33 33.95H9.39C6.88 33.95 5.63 33.95 5.38 33.77C5.1 33.57 5.04 33.46 5 33.12C4.97 32.81 5.73 31.56 7.25 29.04C8.59 26.83 9.66 23.74 9.66 19.52C9.66 16.97 10.85 14.52 12.98 12.72C14.31 11.59 15.84 10.8 17.6 10.34C16.78 9.51 16.27 8.37 16.27 7.13C16.27 4.57 18.39 2.5 21 2.5C23.61 2.5 25.73 4.57 25.73 7.13C25.73 8.37 25.22 9.51 24.4 10.34C26.16 10.8 27.69 11.59 29.02 12.72C31.15 14.52 32.34 16.97 32.34 19.52C32.34 23.74 33.41 26.83 34.75 29.04C36.27 31.56 37.03 32.81 37 33.12C36.96 33.46 36.9 33.57 36.62 33.77C36.37 33.95 35.12 33.95 32.61 33.95H26.67Z"
-                  stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            {/* Профіль */}
-            <button className="bg-transparent border-none cursor-pointer p-0">
-              <svg width="32" height="34" viewBox="0 0 42 42" fill="none">
-                <path d="M22.89 39H34.7C35.97 39 37.19 38.5 38.09 37.6C38.99 36.7 39.5 35.47 39.5 34.2V33.91C39.5 32.33 38.72 30.84 37.4 29.95L28.18 23.65C27.57 23.23 27.27 23.02 27.1 22.82C26.58 22.22 26.46 21.59 26.73 20.85C26.81 20.6 27.07 20.23 27.58 19.49C33.68 10.58 27.01 3 21 3C14.99 3 8.32 10.58 14.42 19.48C14.93 20.22 15.18 20.6 15.27 20.84C15.54 21.59 15.42 22.22 14.9 22.82C14.73 23.02 14.42 23.23 13.81 23.65L4.67 29.85C3.31 30.78 2.5 32.31 2.5 33.96C2.5 35.36 3.12 36.68 4.2 37.58L4.43 37.77C5.47 38.59 6.51 38.97 7.6 39H8.42"
-                  stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
+                          <button onClick={() => setShowNotifications(true)} className="bg-transparent border-none cursor-pointer p-0">
+                            <BellIcon />
+                          </button>
+                          <button onClick={() => setShowProfile(true)} className="bg-transparent border-none cursor-pointer p-0">
+                            <ProfileIcon />
+                          </button>
+                        </div>
         </div>
 
         {/* Лічильник непрочитаних — під хедером */}
