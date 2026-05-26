@@ -9,6 +9,7 @@ import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 import FavoritesScreen from '../Favourites/FavouritesScreen';
 import { SearchIcon } from '../../components/Icons/Icons';
 import ProfileScreen from '../Profile/ProfileScreen';
+import NotificationsScreen from '../Notifications/NotificationsScreen';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК
 import MessagesScreen from '../Messages/MessagesScreen';   // Екран для 'search'
@@ -40,6 +41,7 @@ const INITIAL_FILTERS = {
 const HomeScreen = ({ onLogout }) => {
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('home');
   const [cityView, setCityView] = useState(null);
@@ -148,6 +150,10 @@ const HomeScreen = ({ onLogout }) => {
       onLogout={onLogout}
     />
   );
+  }
+  
+  if (showNotifications) {
+  return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
 }
 
   // --- ДИНАМІЧНИЙ РЕНДЕР КОНТЕНТУ ВКЛАДОК ---
@@ -171,7 +177,7 @@ const HomeScreen = ({ onLogout }) => {
                 <RentoLogo />
               </button>
               <div className="flex items-center gap-2.5">
-                <button className="bg-transparent border-none cursor-pointer p-0">
+                <button onClick={() => setShowNotifications(true)} className="bg-transparent border-none cursor-pointer p-0">
                   <BellIcon />
                 </button>
                 <button onClick={() => setShowProfile(true)} className="bg-transparent border-none cursor-pointer p-0">
