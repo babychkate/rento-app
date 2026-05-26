@@ -82,7 +82,7 @@ const ProfileScreen = ({ onBack, onLogout }) => {
         </div>
 
         {/* HERO ФОТО */}
-        <div className="mx-6 rounded-[28px] overflow-hidden relative h-[300px]"
+        <div className="mx-6 rounded-[28px] overflow-hidden relative h-75"
           style={{ boxShadow: '0 8px 28px rgba(0,30,140,0.15)' }}>
           <img
             src={
@@ -96,7 +96,7 @@ const ProfileScreen = ({ onBack, onLogout }) => {
             background: 'linear-gradient(180deg, transparent 35%, rgba(49,115,253,0.45) 65%, rgba(0,50,200,0.82) 100%)',
           }} />
           <span
-            className="absolute bottom-[18px] left-5 font-bold text-[26px] text-white"
+            className="absolute bottom-4.5 left-5 font-bold text-[26px] text-white"
             style={{ textShadow: '0 2px 8px rgba(0,20,100,0.4)' }}
           >
             {user?.name?.split(' ')[0] ?? 'Вікторія'}

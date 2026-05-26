@@ -98,7 +98,7 @@ const CallingOverlay = ({ chat, onEnd }) => {
       </div>
 
       <button onClick={onEnd}
-        className="w-[68px] h-[68px] rounded-full border-none cursor-pointer flex items-center justify-center active:scale-95 transition-transform"
+        className="w-17 h-17 rounded-full border-none cursor-pointer flex items-center justify-center active:scale-95 transition-transform"
         style={{ background: '#ef4444', boxShadow: '0 8px 24px rgba(239,68,68,0.5)' }}>
         <svg width="30" height="30" viewBox="0 0 24 24" fill="white" style={{ transform: 'rotate(135deg)' }}>
           <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
@@ -191,7 +191,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onOpenNotifications, onOpenProfile
         <div className="flex items-center justify-between">
 
           {/* Назад */}
-          <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1 flex-shrink-0">
+          <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1 shrink-0">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 18l-6-6 6-6" />
@@ -207,7 +207,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onOpenNotifications, onOpenProfile
               boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
             }}>
             <img src={chat.avatar} alt={chat.name}
-              className="w-11 h-11 rounded-full object-cover flex-shrink-0" />
+              className="w-11 h-11 rounded-full object-cover shrink-0" />
             <div className="flex flex-col items-center">
               <span className="font-bold text-[15px] text-[#3b82f6] leading-tight">
                 {chat.name.split(' ')[0]}
@@ -220,7 +220,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onOpenNotifications, onOpenProfile
 
           {/* Дзвінок */}
           <button onClick={() => setCalling(true)}
-            className="w-[46px] h-[46px] rounded-full border-none cursor-pointer flex items-center justify-center active:scale-95 transition-transform flex-shrink-0"
+            className="w-11.5 h-11.5 rounded-full border-none cursor-pointer flex items-center justify-center active:scale-95 transition-transform shrink-0"
             style={{ background: '#4f83ff', boxShadow: '0 4px 14px rgba(79,131,255,0.4)' }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
@@ -270,7 +270,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onOpenNotifications, onOpenProfile
       {/* ── ПОЛЕ ВВОДУ ── */}
       <div className="absolute bottom-6 left-0 right-0 px-5">
         <div className="flex items-center gap-2">
-          <div className="flex-1 flex items-center h-[52px] rounded-[30px] px-6"
+          <div className="flex-1 flex items-center h-13 rounded-[30px] px-6"
             style={{ background: '#e5ecf9', border: '2px solid #2563eb' }}>
             <input
               ref={inputRef}
@@ -283,7 +283,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onOpenNotifications, onOpenProfile
             />
           </div>
           <button onClick={handleSend} disabled={!input.trim()}
-            className="w-[52px] h-[52px] rounded-full border-none cursor-pointer flex items-center justify-center shrink-0 transition-all active:scale-95"
+            className="w-13 h-13 rounded-full border-none cursor-pointer flex items-center justify-center shrink-0 transition-all active:scale-95"
             style={{
               background: input.trim() ? 'linear-gradient(135deg,#3b82f6 0%,#0052FF 100%)' : '#c7d5f8',
               boxShadow: input.trim() ? '0 4px 14px rgba(0,82,255,0.35)' : 'none',
