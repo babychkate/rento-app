@@ -890,3 +890,63 @@ export const NOTIFICATIONS = [
   },
 ];
 
+// src/data/chats.js
+
+export const CHATS = [
+  {
+    id: 'c1',
+    name: 'Надія Юхимчук',
+    role: 'орендодавець',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Привіт! Квартира ще доступна, можемо домовитися про перегляд.',
+    time: '20:57',
+    unread: 2,
+  },
+  {
+    id: 'c2',
+    name: 'Анастасія Сидоренко',
+    role: 'сусід',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Привіт, я бачила ваш профіль у спільноті, давайте поговоримо!',
+    time: '18:30',
+    unread: 1,
+  },
+  {
+    id: 'c3',
+    name: 'Василь Коваль',
+    role: 'орендодавець',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Добрий день! Будинок на Городоцькій — ціна остаточна.',
+    time: 'вчора',
+    unread: 0,
+  },
+  {
+    id: 'c4',
+    name: 'Олег Романюк',
+    role: 'сусід',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Окей, давайте зустрінемось у середу ввечері.',
+    time: 'вчора',
+    unread: 0,
+  },
+  {
+    id: 'c5',
+    name: 'Олена Мельник',
+    role: 'орендодавець',
+    avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Кімната вільна з першого числа, умови обговоримо.',
+    time: 'пн',
+    unread: 0,
+  },
+  {
+    id: 'c6',
+    name: 'Ірина Коваль',
+    role: 'сусід',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+    lastMessage: 'Звучить добре, я теж люблю тишу і порядок!',
+    time: 'нд',
+    unread: 0,
+  },
+];
+
+
