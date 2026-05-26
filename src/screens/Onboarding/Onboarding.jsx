@@ -2,28 +2,10 @@ import { useState } from 'react';
 import { useAuth } from '../Context/AuthContext';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
-import {
-  FamilyIcon, PetIcon, CoupleIcon,
-  SoloIcon, FreelancerIcon, StudentIcon,
-} from '../../components/Icons/CategoryIcons';
+import { BackIcon } from '../../components/Icons/Icons';
+import { ONBOARDING_CATEGORIES } from '../../data/onboardingCategories';
 
-const BackIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-    stroke="#0052ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-);
-
-const CATEGORIES = [
-  { id: 'family',     icon: <FamilyIcon />,     label: "сім'я<br>з дітьми" },
-  { id: 'pet',        icon: <PetIcon />,         label: 'власник<br>хвостика' },
-  { id: 'couple',     icon: <CoupleIcon />,      label: 'пара' },
-  { id: 'solo',       icon: <SoloIcon />,        label: 'одинак' },
-  { id: 'freelancer', icon: <FreelancerIcon />,  label: 'фрілансер' },
-  { id: 'student',    icon: <StudentIcon />,     label: 'студент' },
-];
-
-const CategoryScreen = ({ onBack, onNext }) => {
+const OnboardingScreen = ({ onBack, onNext }) => {
   const { updateUser } = useAuth();
   const [selected, setSelected] = useState(null);
 
@@ -53,10 +35,10 @@ const CategoryScreen = ({ onBack, onNext }) => {
 
       {/* Cards grid */}
       <div className="grid grid-cols-2 gap-x-5 gap-y-10 mt-4">
-        {CATEGORIES.map(({ id, icon, label }) => (
+        {ONBOARDING_CATEGORIES.map(({ id, Icon, label }) => (
           <CategoryCard
             key={id}
-            icon={icon}
+            icon={<Icon />}
             label={label}
             selected={selected === id}
             onClick={() => setSelected(id)}
@@ -92,4 +74,4 @@ const CategoryScreen = ({ onBack, onNext }) => {
   );
 };
 
-export default CategoryScreen;
+export default OnboardingScreen;

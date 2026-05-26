@@ -5,7 +5,7 @@ import { AuthProvider } from './screens/Context/AuthContext';
 import WelcomeScreen  from './screens/Welcome/WelcomeScreen';
 import LoginScreen    from './screens/Login/LoginScreen';
 import RegisterScreen from './screens/Register/RegisterScreen';
-import CategoryScreen from './screens/Category/CategoryScreen';
+import CategoryScreen from './screens/Onboarding/Onboarding';
 import HomeScreen     from './screens/Home/HomeScreen';
 
 const App = () => {
