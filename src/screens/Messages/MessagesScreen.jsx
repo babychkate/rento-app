@@ -6,33 +6,8 @@ import { SearchIcon } from '../../components/Icons/Icons';
 import { BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
 import ProfileScreen from '../Profile/ProfileScreen';
 import NotificationsScreen from '../Notifications/NotificationsScreen';
+import ChatScreen from '../Chat/ChatScreen';
 
-// ─── ЗАГЛУШКА ЧАТУ ────────────────────────────────────────────────────────────
-
-const ChatStub = ({ chat, onBack }) => (
-  <div className="relative w-full h-full flex flex-col font-montserrat bg-[#f1f2f6]">
-    <div className="flex items-center justify-between px-6 pt-14 pb-4">
-      <button onClick={onBack}
-        className="w-9 h-9 flex items-center justify-center bg-transparent border-none cursor-pointer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M15 19l-7-7 7-7" stroke="#0052FF" strokeWidth="3"
-            strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      <div className="flex items-center gap-2">
-        <img src={chat.avatar} alt={chat.name}
-          className="w-8 h-8 rounded-full object-cover" />
-        <span className="font-bold text-[18px] text-[#012A81]">{chat.name}</span>
-      </div>
-      <div className="w-9" />
-    </div>
-    <div className="flex flex-col items-center justify-center flex-1 gap-3 px-6">
-      <span className="text-[44px]">💬</span>
-      <p className="font-bold text-[17px] text-[#012A81] text-center">Чат із {chat.name.split(' ')[0]}</p>
-      <p className="text-[13px] text-[#718096] text-center">Повноцінний чат буде доступний незабаром</p>
-    </div>
-  </div>
-);
 
 // ─── КАРТКА ЧАТУ ──────────────────────────────────────────────────────────────
 
@@ -146,11 +121,6 @@ const MessagesScreen = ({ onBack, onLogout }) => {
     [search]
   );
 
-  // ── Чат-заглушка ──────────────────────────────────────────────────────────
-  if (openChat) {
-    return <ChatStub chat={openChat} onBack={() => setOpenChat(null)} />;
-  }
-
       if (showProfile) {
   return (
     <ProfileScreen
@@ -162,6 +132,16 @@ const MessagesScreen = ({ onBack, onLogout }) => {
   
   if (showNotifications) {
   return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
+  }
+  
+    if (openChat) {
+    return <ChatScreen
+      chat={openChat}
+      onBack={() => setOpenChat(null)}
+      onGoHome={onBack}
+      onOpenNotifications={() => { setShowNotifications(true) }}
+      onOpenProfile={() => { setShowProfile(true) }}
+    />
 }
 
   return (
