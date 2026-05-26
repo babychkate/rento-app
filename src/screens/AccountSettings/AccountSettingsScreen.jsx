@@ -173,7 +173,7 @@ const AccountSettingsScreen = ({ onBack }) => {
         {/* TOP BAR */}
         <div className="flex items-center pt-14 pb-8 px-6">
           <button onClick={onBack}
-            className="w-9 h-9 flex items-center justify-start bg-transparent border-none cursor-pointer flex-shrink-0">
+            className="w-9 h-9 flex items-center justify-start bg-transparent border-none cursor-pointer shrink-0">
             <BackIcon />
           </button>
           <span className="font-bold text-[24px] text-[#012A81] flex-1 text-center mr-9">
@@ -226,9 +226,9 @@ const AccountSettingsScreen = ({ onBack }) => {
             <button onClick={() => fileRef.current?.click()}
               className="relative bg-transparent border-none cursor-pointer p-0">
               <img src={avatarSrc} alt="Аватарка"
-                className="w-[110px] h-[110px] rounded-full object-cover"
+                className="w-27.5 h-27.5 rounded-full object-cover"
                 style={{ border: '3px solid #0052FF' }} />
-              <div className="absolute bottom-0 right-0 w-[34px] h-[34px] rounded-full bg-[#0052FF] flex items-center justify-center"
+              <div className="absolute bottom-0 right-0 w-8.5 h-8.5 rounded-full bg-[#0052FF] flex items-center justify-center"
                 style={{ border: '3px solid #f1f2f6', boxShadow: '0 4px 10px rgba(0,82,255,0.3)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                   stroke="white" strokeWidth="3" strokeLinecap="round">
@@ -275,7 +275,7 @@ const AccountSettingsScreen = ({ onBack }) => {
           {/* ─── КНОПКИ ─── */}
           <div className="flex flex-col gap-4 pb-6">
             <button onClick={handleSave} disabled={!canSave}
-              className="w-full h-[54px] rounded-[27px] font-bold text-[16px] text-white border-none transition-all"
+              className="w-full h-13.5 rounded-[27px] font-bold text-[16px] text-white border-none transition-all"
               style={{
                 background: canSave
                   ? 'linear-gradient(180deg,#5386ff 0%,#0052ff 100%)'
@@ -288,7 +288,7 @@ const AccountSettingsScreen = ({ onBack }) => {
             </button>
 
             <button onClick={handleCancel} disabled={!isDirty}
-              className="w-full h-[54px] rounded-[27px] font-bold text-[16px] text-white border-none transition-all"
+              className="w-full h-13.5 rounded-[27px] font-bold text-[16px] text-white border-none transition-all"
               style={{
                 background: isDirty
                   ? 'linear-gradient(180deg,#5386ff 0%,#0052ff 100%)'
