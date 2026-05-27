@@ -32,11 +32,12 @@ export const BackIcon = () => (
 );
 
 export const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-    stroke="#2979ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"/>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-  </svg>
+<svg width="38" height="38" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25.7944 22.5166C26.3559 21.4986 26.6885 20.337 26.722 19.0976C26.8348 14.9188 23.5039 11.4388 19.2822 11.3248C15.0605 11.2108 11.5467 14.506 11.4339 18.6848C11.321 22.8636 14.6519 26.3436 18.8736 26.4576C20.5063 26.5017 22.033 26.0359 23.2982 25.2063C23.7306 24.9228 24.3113 24.94 24.6787 25.3038L31.091 31.651" stroke="#012A81" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M23.2069 15.0292C21.1049 12.8227 18.0303 12.4266 15.1903 14.6827" stroke="#012A81" stroke-width="1.4" stroke-linecap="round"/>
+</svg>
+
+
 );
 
 export const FilterIcon = () => (
