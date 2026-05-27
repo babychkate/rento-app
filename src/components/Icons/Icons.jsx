@@ -50,8 +50,8 @@ export const FilterIcon = () => (
 export const ArrowIcon = () => (
   <svg width="34" height="34" viewBox="0 0 42 42" fill="none">
     <path d="M21 30L31.6248 22.6444C32.7736 21.8491 32.7736 20.1509 31.6248 19.3556L21 12"
-      stroke="#012A81" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M28.5 21H10.5" stroke="#012A81" strokeWidth="1.8"
+      stroke="#0052FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M28.5 21H10.5" stroke="#0052FF" strokeWidth="1.8"
       strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
