@@ -18,8 +18,8 @@ import TinderScreen from '../Tinder/TinderScreen';       // Екран для 'p
 
 import {
   RentoLogo, BellIcon, ProfileIcon,
-  FilterIcon, ArrowIcon,
-} from '../../components/Icons/HomeNavIcons';
+} from '../../components/Icons/NavIcons';
+import { ArrowIcon, FilterIcon } from '../../components/Icons/Icons';
 import { PROPERTIES, CITIES, TYPE_LABELS, QUICK_FILTERS, TAG_TO_SECTION} from '../../data/properties';
 
 const matchRoomsLogic = (propertyRooms, selectedRooms) => {

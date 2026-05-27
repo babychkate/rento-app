@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { NOTIFICATIONS as INITIAL_NOTIFICATIONS } from '../../data/properties';
-import { BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import { BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import ProfileScreen from '../Profile/ProfileScreen';
 
 // ─── ІКОНКИ ───────────────────────────────────────────────────────────────────

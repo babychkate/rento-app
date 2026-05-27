@@ -1,14 +1,14 @@
 import {
-  NavHomeIcon, NavSearchIcon, NavFavIcon,
-  NavProfileIcon, NavPlantIcon,
-} from '../Icons/HomeNavIcons';
+  NavHomeIcon, NavMessagesIcon, NavFavIcon,
+  NavCommunityIcon, NavTinderIcon,
+} from '../Icons/NavIcons';
 
 const NAV_ITEMS = [
   { id: 'home',      Icon: NavHomeIcon    },
-  { id: 'search',    Icon: NavSearchIcon  },
+  { id: 'messages',    Icon: NavMessagesIcon  },
   { id: 'favorites', Icon: NavFavIcon     },
-  { id: 'profile',   Icon: NavProfileIcon },
-  { id: 'plant',     Icon: NavPlantIcon   },
+  { id: 'community',   Icon: NavCommunityIcon },
+  { id: 'tinder',     Icon: NavTinderIcon   },
 ];
 
 const BottomNav = ({ activeTab, onTabChange }) => (

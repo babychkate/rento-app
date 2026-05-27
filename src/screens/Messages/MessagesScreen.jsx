@@ -3,7 +3,7 @@ import { useAuth } from '../Context/AuthContext';
 import { CHATS } from '../../data/properties';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { SearchIcon } from '../../components/Icons/Icons';
-import { BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import { BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import ProfileScreen from '../Profile/ProfileScreen';
 import NotificationsScreen from '../Notifications/NotificationsScreen';
 import ChatScreen from '../Chat/ChatScreen';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFavorites } from '../Context/FavouritesContext'; 
 import BottomNav from '../../components/BottomNav/BottomNav';
-import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import { RoommateCard } from '../../components/RoommateCard/RoommateCard'; // Впевнись, що шлях правильний
 import { BackIcon } from '../../components/Icons/Icons';
 

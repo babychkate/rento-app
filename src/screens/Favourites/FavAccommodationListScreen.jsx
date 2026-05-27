@@ -1,5 +1,5 @@
 import { useFavorites } from '../Context/FavouritesContext';
-import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import { TYPE_SECTION_LABELS } from '../../data/properties';
 import { StarIcon, HeartIcon, BackIcon } from "../../components/Icons/Icons";
 

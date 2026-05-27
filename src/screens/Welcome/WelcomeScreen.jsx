@@ -7,7 +7,7 @@ import {
   HomeIcon,
   HeartIcon,
   FireIcon,
-} from '../../components/Icons/Icons.jsx';
+} from '../../components/Icons/WelcomeIcons.jsx';
 
 const CHIPS = [
   { variant: 'light', label: 'є світло',       style: { top: 36,  left: '50%', transform: 'translateX(-50%) rotate(-6deg)' } },

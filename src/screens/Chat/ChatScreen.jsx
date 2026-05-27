@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/HomeNavIcons';
+import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 
 // ─── ПОЧАТКОВІ ПОВІДОМЛЕННЯ ───────────────────────────────────────────────────
 
