@@ -18,9 +18,21 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8326, lng: 24.0161 },
     landlord: {
-      id: 'l1', // Додано унікальний ID для Надії
+      id: 'l1',
       name: 'Надія Юхимчук',
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+      rating: 4.9,
+      bio: [
+        'Перевірений орендодавець',
+        '4 роки досвіду на платформі',
+        'Швидка комунікація та заселення',
+        'Високий рівень довіри серед орендарів',
+      ],
+      contacts: {
+        phone: '+380671234567',
+        instagram: '@nadiia.yukhymchuk',
+        telegram: '@nadiia_rento',
+      },
     },
     amenities: {
       general: ['Wi-Fi', 'Балкон'],
@@ -118,10 +130,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8395, lng: 23.9887 },
     landlord: {
-      id: 'l2', // Додано ID для Василя
-      name: 'Василь Коваль',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l2',
+  name: 'Василь Коваль',
+  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+  rating: 4.7,
+  bio: [
+    'Перевірений орендодавець',
+    '6 років досвіду на платформі',
+    'Власник кількох об\'єктів',
+    'Завжди на зв\'язку',
+  ],
+  contacts: {
+    phone: '+380632345678',
+    instagram: '@vasyl.koval',
+    telegram: '@vasyl_rento',
+  },
+},
     amenities: {
       general: ['Є паркінг', 'Двір'],
       bathroom: ['Пральна машина', 'Засоби для прибирання'],
@@ -211,10 +235,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 49.8280, lng: 24.0412 },
     landlord: {
-      id: 'l3', // Додано ID для Олени
-      name: 'Олена Мельник',
-      avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l3',
+  name: 'Олена Мельник',
+  avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80',
+  rating: 4.5,
+  bio: [
+    'Перевірений орендодавець',
+    '2 роки досвіду на платформі',
+    'Доброзичлива та відповідальна',
+    'Швидке заселення',
+  ],
+  contacts: {
+    phone: '+380503456789',
+    instagram: '@olena.melnyk',
+    telegram: '@olena_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Спільна кухня'],
       bathroom: ['Спільна ванна', 'Засоби для прибирання'],
@@ -273,10 +309,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4421, lng: 30.5181 },
     landlord: {
-      id: 'l4', // Додано ID для Дмитра
-      name: 'Дмитро Ткаченко',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l4',
+  name: 'Дмитро Ткаченко',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+  rating: 4.7,
+  bio: [
+    'Перевірений орендодавець',
+    '5 років досвіду на платформі',
+    'Квартири в центрі міста',
+    'Прозорі умови оренди',
+  ],
+  contacts: {
+    phone: '+380674567890',
+    instagram: '@dmytro.tkachenko',
+    telegram: '@dmytro_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Є укриття', 'Працює ліфт'],
       bathroom: ['Фен', 'Засоби для прибирання'],
@@ -354,10 +402,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4501, lng: 30.5234 },
     landlord: {
-      id: 'l5', // Додано ID для Марини
-      name: 'Марина Сидоренко',
-      avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l5',
+  name: 'Марина Сидоренко',
+  avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80',
+  rating: 4.8,
+  bio: [
+    'Перевірений орендодавець',
+    '3 роки досвіду на платформі',
+    'Можна з тваринами',
+    'Гнучкі умови оренди',
+  ],
+  contacts: {
+    phone: '+380935678901',
+    instagram: '@maryna.sydorenko',
+    telegram: '@maryna_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Є паркінг', 'Балкон', 'Можна з тваринами'],
       bathroom: ['Фен', 'Пральна машина', 'Засоби для прибирання'],
@@ -446,10 +506,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 50.4279, lng: 30.5146 },
     landlord: {
-      id: 'l6', // Додано ID для Богдана
-      name: 'Богдан Олійник',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l6',
+  name: 'Богдан Олійник',
+  avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+  rating: 4.6,
+  bio: [
+    'Перевірений орендодавець',
+    '7 років досвіду на платформі',
+    'Великі будинки для родин',
+    'Власна керуюча компанія',
+  ],
+  contacts: {
+    phone: '+380676789012',
+    instagram: '@bohdan.oliinyk',
+    telegram: '@bohdan_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Є паркінг', 'Двір', 'Барбекю'],
       bathroom: ['Пральна машина', 'Сушарка', 'Засоби для прибирання'],
@@ -531,10 +603,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 46.4825, lng: 30.7233 },
     landlord: {
-      id: 'l7', // Додано ID для Ніни
-      name: 'Ніна Захаренко',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l7',
+  name: 'Ніна Захаренко',
+  avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+  rating: 4.4,
+  bio: [
+    'Перевірений орендодавець',
+    '2 роки досвіду на платформі',
+    'Квартири біля моря',
+    'Привітна господиня',
+  ],
+  contacts: {
+    phone: '+380507890123',
+    instagram: '@nina.zakharenko',
+    telegram: '@nina_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Балкон', 'Можна з тваринами'],
       bathroom: ['Фен', 'Засоби для прибирання'],
@@ -612,10 +696,22 @@ export const PROPERTIES = [
     image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=400&q=80',
     coordinates: { lat: 46.4851, lng: 30.7312 },
     landlord: {
-      id: 'l8', // Додано ID для Ігоря
-      name: 'Ігор Петренко',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
-    },
+  id: 'l8',
+  name: 'Ігор Петренко',
+  avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+  rating: 4.2,
+  bio: [
+    'Перевірений орендодавець',
+    '1 рік досвіду на платформі',
+    'Бюджетні варіанти',
+    'Є пандус та укриття',
+  ],
+  contacts: {
+    phone: '+380638901234',
+    instagram: '@ihor.petrenko',
+    telegram: '@ihor_rento',
+  },
+},
     amenities: {
       general: ['Wi-Fi', 'Є укриття', 'Є пандус'],
       bathroom: ['Спільна ванна'],

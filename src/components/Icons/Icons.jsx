@@ -114,3 +114,17 @@ export const CloseIcon = () => (
       stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
+
+export const VerifiedIcon = () => (
+  <svg width="26" height="26" viewBox="0 0 42 42" fill="none">
+    <path d="M35.2912 9.97429C34.8714 9.45643 34.1227 8.6615 33.6489 8.19351C30.3979 4.98235 25.9305 3 21 3C11.0589 3 3 11.0589 3 21C3 30.9411 11.0589 39 21 39C30.9411 39 39 30.9411 39 21C39 18.8672 38.6291 16.821 37.9482 14.9225" stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M13.1514 22.353L16.7953 27.0018C17.1654 27.474 17.8651 27.5162 18.2894 27.092L35.292 10.0894" stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+export const ShieldIcon = () => (
+  <svg width="26" height="26" viewBox="0 0 42 42" fill="none">
+    <path d="M37.824 8.71191L21.6457 2.14918C21.4095 2.05336 21.1456 2.05136 20.908 2.14359L4.72551 8.4243C4.29883 8.5899 4.03904 9.02404 4.09477 9.47833L6.15839 26.2978C6.35645 27.912 7.20129 29.3767 8.49943 30.3564L20.6756 39.5454C21.0321 39.8145 21.5238 39.8145 21.8803 39.5454L34.0565 30.3564C35.3546 29.3767 36.1995 27.912 36.3975 26.2978L37.796 14.8997" stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M12.3701 22.7123L16.1516 27.0389C16.5183 27.4585 17.1573 27.4974 17.5722 27.1253L38 8.80521" stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);

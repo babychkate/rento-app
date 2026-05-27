@@ -73,9 +73,16 @@ const AccommodationDetailScreen = ({ property, onBack, activeTab, onTabChange })
     );
   }
 
-  if (screen === 'landlord') {
-    return <LandlordScreen property={property} onBack={() => setScreen(null)} />;
-  }
+if (screen === 'landlord') {
+  return (
+    <LandlordScreen
+      property={property}
+      onBack={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   if (screen === 'security') {
   return <SecurityScreen onBack={() => setScreen(null)} />;
