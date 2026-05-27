@@ -4,7 +4,7 @@ import FilterChip from '../../components/FilterChip/FilterChip';
 import { SearchIcon } from '../../components/Icons/Icons';
 import RoommateScreen from './RoommateScreen';
 import { UserCard } from '../../components/Cards/UserCard/UserCard';
-import { BackIcon, StarIcon, ArrowIcon } from '../../components/Icons/Icons';
+import { BackIcon } from '../../components/Icons/Icons';
 
 // ─── УСІ ТЕГИ ─────────────────────────────────────────────────────────────
 
@@ -12,7 +12,7 @@ const ALL_TAGS = [...new Set(ROOMMATES.flatMap(r => r.tags))].sort();
 
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ────────────────────────────────────────────────────
 
-const AllRoommatesScreen = ({ onBack }) => {
+const AllRoommatesScreen = ({ onBack, activeTab, onTabChange }) => {
   const [citySearch, setCitySearch] = useState('');
   const [activeTags, setActiveTags] = useState([]);
   const [selectedRoommate, setSelectedRoommate] = useState(null);
@@ -34,14 +34,16 @@ const AllRoommatesScreen = ({ onBack }) => {
   );
 
   // ── Деталі сусіда ──────────────────────────────────────────────────────
-  if (selectedRoommate) {
-    return (
-      <RoommateScreen
-        roommate={selectedRoommate}
-        onBack={() => setSelectedRoommate(null)}
-      />
-    );
-  }
+if (selectedRoommate) {
+  return (
+    <RoommateScreen
+      roommate={selectedRoommate}
+      onBack={() => setSelectedRoommate(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   // Розбиваємо теги на два рядки
   const row1 = ALL_TAGS.slice(0, Math.ceil(ALL_TAGS.length / 2));
@@ -73,7 +75,7 @@ const AllRoommatesScreen = ({ onBack }) => {
           {/* <span className="text-[13px] font-semibold text-[#a0aec0]">{filtered.length}</span> */}
         </div>
 
-        {/* ФІЛЬТРИ */}
+        {/* ФІЛЬТРИ
         <div className="flex flex-col gap-2.5 pb-5">
           {[row1, row2].map((row, ri) => (
             <div key={ri} className="px-6">
@@ -92,14 +94,14 @@ const AllRoommatesScreen = ({ onBack }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* ПОШУК */}
         <div className="px-6 pb-6">
           <div className="relative flex items-center">
-            <div className="absolute left-4.5 top-1/2 -translate-y-1/2 pointer-events-none z-10">
-              <SearchIcon />
-            </div>
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10">
+                <SearchIcon />
+              </div>
             <input
               type="text"
               placeholder="Введіть місто"
