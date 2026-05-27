@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="w-107.5 h-233 relative overflow-y-auto mx-auto">
+        <div className="w-107.5 h-233 relative mx-auto">
           {screen === 'welcome' && (
             <WelcomeScreen
               onLogin={() => setScreen('login')}

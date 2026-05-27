@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useFavorites } from '../Context/FavouritesContext'; // ← Підключаємо контекст
-import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import { TYPE_LABELS, TYPE_SECTION_LABELS } from '../../data/properties';

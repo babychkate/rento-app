@@ -1,12 +1,16 @@
+import logoIcon from '../../assets/pngs/logo.png';
+
 export const RentoLogo = () => (
   <div className="flex items-center gap-1.5">
-    <span className="font-montserrat font-bold text-[24px] leading-[100%] text-white">RENTO</span>
-    <svg width="27" height="29" viewBox="0 0 29 31" fill="none">
-      <path d="M12.7242 29.3627H7.35521H4.5C2.84315 29.3627 1.5 28.0195 1.5 26.3627V13.0456C1.5 12.1584 1.89275 11.3166 2.57269 10.7466L12.7665 2.20096C13.8817 1.26613 15.5069 1.26634 16.6217 2.20146L25.5815 9.71654C26.8518 10.782 27.017 12.6759 25.9503 13.9451L19.4981 21.6228"
-        stroke="white" strokeWidth="3" strokeLinecap="round"/>
-      <path d="M14.606 11.8628C17.9359 11.8629 20.8147 14.4069 20.8149 17.7583C20.8149 19.6678 19.8609 21.3386 18.436 22.3999C17.3744 23.1906 16.0408 23.6547 14.606 23.6548C11.2758 23.6548 8.39697 21.11 8.39697 17.7583C8.39719 14.4068 11.2759 11.8628 14.606 11.8628Z"
-        stroke="white" strokeWidth="3" strokeLinecap="round"/>
-    </svg>
+    <span className="font-montserrat font-bold text-[24px] leading-[100%] text-white">
+      RENTO
+    </span>
+
+    <img
+      src={logoIcon}
+      alt="Rento logo"
+      className="w-7 h-7 object-contain"
+    />
   </div>
 );
 

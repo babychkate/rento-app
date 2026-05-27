@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 const BottomNav = ({ activeTab, onTabChange }) => (
   <div className="fixed bottom-6 left-0 right-0 flex justify-center z-50 px-6">
     <div className="w-full max-w-85.5 h-16 flex justify-between items-center
-      bg-[rgba(162,191,255,0.75)] backdrop-blur-[20px]
+      bg-[rgba(130,170,255,0.75)] backdrop-blur-[20px]
       rounded-4xl border border-white/40
       shadow-[0_8px_24px_rgba(41,121,255,0.15)]
       px-1.5">
