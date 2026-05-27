@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import { BackIcon } from '../../components/Icons/Icons';
 import { ONBOARDING_CATEGORIES } from '../../data/onboardingCategories';
 
 const OnboardingScreen = ({ onBack, onNext }) => {
-  const { updateUser } = useAuth();
+  const { confirmRegistration } = useAuth();
   const [selected, setSelected] = useState(null);
 
   const handleContinue = () => {
     if (!selected) return;
-    updateUser({ category: selected });
+    confirmRegistration(selected);
     onNext();
   };
 

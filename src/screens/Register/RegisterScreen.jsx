@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import { GoogleIcon, AppleIcon, DiaIcon } from '../../components/Icons/SocialIcons';
 import { BackIcon } from '../../components/Icons/Icons';
 import { FieldError } from '../../components/FieldError/FieldError';
+import { GoogleAuthModal } from '../../modals/ModalGoogle';
+import { DiaAuthModal } from '../../modals/ModalDia';
+import { AppleAuthModal } from '../../modals/ModalApple';
 
 const RegisterScreen = ({ onBack, onNext, onLogin }) => {
   const { register } = useAuth();
@@ -13,7 +16,8 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm]   = useState('');
-  const [errors, setErrors]     = useState({});
+  const [errors, setErrors] = useState({});
+  const [socialModal, setSocialModal] = useState(null);
 
   const handleRegister = () => {
     setErrors({});
@@ -24,6 +28,13 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
     }
     onNext();
   };
+
+  const handleSocialSuccess = ({ name, email }) => {
+  setSocialModal(null);
+  // реєструємо або логінимо з цими даними
+  const result = register({ name, email, password: 'Social2024!', confirm: 'Social2024!' });
+  if (result.ok) onNext();
+};
 
   return (
     <div className="flex flex-col w-full min-h-full bg-[#f1f2f6] font-montserrat overflow-y-auto px-6 pb-15">
@@ -88,24 +99,19 @@ const RegisterScreen = ({ onBack, onNext, onLogin }) => {
 
       {/* Social logins */}
       <div className="mt-8 flex flex-col gap-3">
-        <BtnPill className="font-semibold">
-          <GoogleIcon />
-          Продовжити з Google
-        </BtnPill>
-        <BtnPill className="font-semibold">
-          <DiaIcon />
-          Продовжити з Дія
-        </BtnPill>
-        <BtnPill className="font-semibold">
-          <AppleIcon />
-          Продовжити з Apple
-        </BtnPill>
+        <BtnPill className="font-semibold" onClick={() => setSocialModal('google')}><GoogleIcon /> Продовжити з Google</BtnPill>
+        <BtnPill className="font-semibold" onClick={() => setSocialModal('dia')}><DiaIcon /> Продовжити з Дія</BtnPill>
+        <BtnPill className="font-semibold" onClick={() => setSocialModal('apple')}><AppleIcon /> Продовжити з Apple</BtnPill>
       </div>
 
       {/* Step button */}
       <div className="flex justify-center mt-16">
         <StepIndicator step={2} position="relative" />
       </div>
+
+      {socialModal === 'google' && <GoogleAuthModal onClose={() => setSocialModal(null)} onSuccess={handleSocialSuccess} />}
+      {socialModal === 'dia'    && <DiaAuthModal    onClose={() => setSocialModal(null)} onSuccess={handleSocialSuccess} />}
+      {socialModal === 'apple'  && <AppleAuthModal  onClose={() => setSocialModal(null)} onSuccess={handleSocialSuccess} />}
 
     </div>
   );

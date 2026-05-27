@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './screens/Context/AuthContext';
+import { AuthProvider } from './auth/AuthContext';
 
 import WelcomeScreen  from './screens/Welcome/WelcomeScreen';
 import LoginScreen    from './screens/Login/LoginScreen';
@@ -25,6 +25,7 @@ const App = () => {
             <LoginScreen
               onBack={() => setScreen('welcome')}
               onNext={() => setScreen('home')}
+              onNextToCategory={() => setScreen('category')}
               onForgot={() => console.log('forgot')}
               onRegister={() => setScreen('register')}
             />

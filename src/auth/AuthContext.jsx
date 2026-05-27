@@ -1,14 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 
-/**
- * AuthContext
- *
- * user shape:
- * {
- *   id, name, email, password, category, role, createdAt
- * }
- */
-
 const AuthContext   = createContext(null);
 const STORAGE_KEY   = 'rento_user';
 const ALL_USERS_KEY = 'rento_users';
@@ -42,16 +33,13 @@ const ALLOWED_DOMAINS = [
 const validateEmail = (raw) => {
   const email = raw.trim().toLowerCase();
   if (!email) return 'Введіть email';
-
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) return 'Невірний формат email';
-
   const domain = email.split('@')[1];
   if (!ALLOWED_DOMAINS.includes(domain)) {
     return `Домен @${domain} не підтримується. Використовуйте gmail.com, ukr.net, outlook.com тощо`;
   }
-
-  return null; // ок
+  return null;
 };
 
 // ─── валідація пароля ───────────────────────────────────────────────────────
@@ -68,16 +56,13 @@ const validatePassword = (password) => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(loadCurrentUser);
+  const [pendingUser, setPendingUser] = useState(null);
 
   const persistUser = useCallback((userData) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
     setUser(userData);
   }, []);
 
-  /**
-   * register({ name, email, password, confirm })
-   * Повертає { ok: true } або { ok: false, field: string, error: string }
-   */
   const register = useCallback(({ name, email, password, confirm }) => {
     if (!name.trim()) return { ok: false, field: 'name', error: "Введіть ваше ім'я" };
 
@@ -105,16 +90,19 @@ export const AuthProvider = ({ children }) => {
       createdAt: new Date().toISOString(),
     };
 
-    saveAllUsers([...allUsers, newUser]);
-    // Логінимо одразу — щоб CategoryScreen міг зберегти category через updateUser
-    persistUser(newUser);
+    setPendingUser(newUser);
     return { ok: true };
   }, []);
 
-  /**
-   * login({ email, password })
-   * Повертає { ok: true } або { ok: false, field: string, error: string }
-   */
+  const confirmRegistration = useCallback((category) => {
+    if (!pendingUser) return;
+    const finalUser = { ...pendingUser, category };
+    const allUsers = loadAllUsers();
+    saveAllUsers([...allUsers, finalUser]);
+    persistUser(finalUser);
+    setPendingUser(null);
+  }, [pendingUser, persistUser]);
+
   const login = useCallback(({ email, password }) => {
     const emailError = validateEmail(email);
     if (emailError) return { ok: false, field: 'email', error: emailError };
@@ -137,7 +125,6 @@ export const AuthProvider = ({ children }) => {
     return { ok: true };
   }, [persistUser]);
 
-  /** updateUser(fields) — часткове оновлення юзера */
   const updateUser = useCallback((fields) => {
     if (!user) return;
     const updated = { ...user, ...fields };
@@ -146,14 +133,13 @@ export const AuthProvider = ({ children }) => {
     persistUser(updated);
   }, [user, persistUser]);
 
-  /** logout */
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
     setUser(null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, register, login, updateUser, logout }}>
+    <AuthContext.Provider value={{ user, register, confirmRegistration, login, updateUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

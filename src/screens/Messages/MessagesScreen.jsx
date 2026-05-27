@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import { CHATS } from '../../data/properties';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { SearchIcon } from '../../components/Icons/Icons';

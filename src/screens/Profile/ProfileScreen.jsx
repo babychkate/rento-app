@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import SecurityScreen from '../Security/SecurityScreen';
 import AccountSettingsScreen from '../AccountSettings/AccountSettingsScreen';

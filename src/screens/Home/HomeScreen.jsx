@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 import FilterChip from '../../components/FilterChip/FilterChip';
 import PropertyCard from '../../components/PropertyCard/PropertyCard';
 import BottomNav from '../../components/BottomNav/BottomNav';
