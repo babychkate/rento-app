@@ -61,7 +61,7 @@ export const ArrowIcon = () => (
 );
 
 export const ArrowWhiteIcon = () => (
-  <svg width="38" height="38" viewBox="0 0 42 42" fill="none">
+  <svg width="48" height="48" viewBox="0 0 42 42" fill="none">
     <path d="M21 30L31.6248 22.6444C32.7736 21.8491 32.7736 20.1509 31.6248 19.3556L21 12"
       stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M28.5 21H10.5" stroke="#ffffff" strokeWidth="2"

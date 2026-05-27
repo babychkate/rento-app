@@ -47,7 +47,7 @@ const verificationItems = [
         </div>
 
         {/* HERO ФОТО */}
-        <div className="mx-6 rounded-[28px] overflow-hidden relative h-[300px] shadow-[0_8px_28px_rgba(0,30,140,0.18)]">
+        <div className="mx-6 rounded-[28px] overflow-hidden relative h-[400px] shadow-[0_8px_28px_rgba(0,30,140,0.18)]">
           <img src={landlord?.avatar} alt={landlord?.name}
             className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0" style={{

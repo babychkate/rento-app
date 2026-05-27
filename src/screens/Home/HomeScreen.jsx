@@ -159,49 +159,60 @@ if (cityView) {
       onProfile={() => setShowProfile(true)}
     />
   );
+  }
+  
+  if (activeTab === 'community') {
+  return (
+    <CommunityScreen
+      onBack={() => setActiveTab('home')}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+    />
+  );
+}
+
+if (activeTab === 'messages') {
+  return <MessagesScreen onBack={() => setActiveTab('home')} />;
+}
+
+if (activeTab === 'tinder') {
+  return <TinderScreen onBack={() => setActiveTab('home')} />;
+}
+
+if (activeTab === 'favorites') {
+  return <FavoritesScreen onBack={() => setActiveTab('home')} onGoHome={() => setActiveTab('home')} />;
 }
   // --- ДИНАМІЧНИЙ РЕНДЕР КОНТЕНТУ ВКЛАДОК ---
   const renderMainContent = () => {
-    switch (activeTab) {
-      case 'messages':
-        return <MessagesScreen onBack={() => setActiveTab('home')} />;
-      case 'favorites':
-        return <FavoritesScreen onBack={() => setActiveTab('home')} onGoHome={() => setActiveTab('home')} />;
-      case 'community':
-        return <CommunityScreen onBack={() => setActiveTab('home')} />;
-      case 'tinder':
-        return <TinderScreen onBack={() => setActiveTab('home')} />;
-      case 'home':
-      default:
+    
         return (
-          <>
-            
+          <>            
             <div className="relative shrink-0">
-  {/* Градієнт — висота батька */}
-  <div className="absolute inset-0 pointer-events-none z-0"
-    style={{ background: GRADIENTS.homeHeader }} />
+            {/* Градієнт — висота батька */}
+            <div className="absolute inset-0 pointer-events-none z-0"
+              style={{ background: GRADIENTS.homeHeader }} />
 
-  {/* Хедер */}
-  <div className="relative z-10 flex items-center justify-between px-6 pt-16 pb-12">
-    <button className="bg-transparent border-none cursor-pointer p-0">
-      <RentoLogo />
-    </button>
-    <div className="flex items-center gap-2.5">
-      <button onClick={() => setShowNotifications(true)} className="bg-transparent border-none cursor-pointer p-0">
-        <BellIcon />
-      </button>
-      <button onClick={() => setShowProfile(true)} className="bg-transparent border-none cursor-pointer p-0">
-        <ProfileIcon />
-      </button>
-    </div>
+            {/* Хедер */}
+            <div className="relative z-10 flex items-center justify-between px-6 pt-16 pb-12">
+              <button className="bg-transparent border-none cursor-pointer p-0">
+                <RentoLogo />
+              </button>
+              <div className="flex items-center gap-2.5">
+                <button onClick={() => setShowNotifications(true)} className="bg-transparent border-none cursor-pointer p-0">
+                  <BellIcon />
+                </button>
+                <button onClick={() => setShowProfile(true)} className="bg-transparent border-none cursor-pointer p-0">
+                  <ProfileIcon />
+                </button>
               </div>
               </div>
+              </div>
 
-  {/* Hero */}
-  <p className="relative z-10 px-6 pb-10 font-bold text-[28px] leading-[100%] text-[#012A81]">
-    Знайди своє<br />омріяне житло!
-  </p>
-            
+          {/* Hero */}
+          <p className="relative z-10 px-6 pb-10 font-bold text-[28px] leading-[100%] text-[#012A81]">
+            Знайди своє<br />омріяне житло!
+          </p>
+                    
             {/* Search */}
             <div className="px-6 pb-5">
               <div className="flex items-center gap-3">
@@ -275,7 +286,6 @@ if (cityView) {
             )}
           </>
         );
-    }
   };
 
   return (
