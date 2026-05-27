@@ -129,11 +129,11 @@ const CommunityScreen = ({ onBack, activeTab, onTabChange }) => {
 
         {/* ШВИДКІ ФІЛЬТРИ В СТИЛІ HOMESCREEN */}
         <p className="px-6 pb-3 font-bold text-[14px] text-[#012A81]">Швидкі фільтри</p>
-        <div className="flex flex-col gap-2 pb-6">
+        <div className="flex flex-col gap-2.5 pb-6">
           {[row1, row2].map((row, ri) => (
             <div key={ri} className="px-6">
               <div
-                className="flex gap-2 overflow-x-auto whitespace-nowrap"
+                className="flex gap-2.5 overflow-x-auto whitespace-nowrap"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingBottom: '2px' }}
               >
                 {row.map(tag => (
@@ -183,7 +183,7 @@ const CommunityScreen = ({ onBack, activeTab, onTabChange }) => {
         </div>
 
         {/* БАНЕР БАРАХОЛКА */}
-        <div className="px-6">
+        <div className="px-6 mb-4">
           <button
             onClick={() => setInnerView('bazaar')}
             className="w-full h-[180px] rounded-[28px] overflow-hidden relative flex items-center justify-between px-6 border-none cursor-pointer transition-transform duration-150 active:scale-[0.99]"
