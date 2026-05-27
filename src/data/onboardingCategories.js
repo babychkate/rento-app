@@ -1,7 +1,7 @@
 import {
   FamilyIcon, PetIcon, CoupleIcon,
   SoloIcon, FreelancerIcon, StudentIcon
-} from '../components/Icons/CategoryIcons';
+} from '../components/Icons/OnboardingIcons';
 
 export const ONBOARDING_CATEGORIES = [
   { id: 'family',     Icon: FamilyIcon,     label: "сім'я<br>з дітьми" },
