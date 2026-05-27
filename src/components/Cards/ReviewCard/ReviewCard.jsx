@@ -9,7 +9,7 @@ export const ReviewCard = ({ review }) => {
     <div className="shrink-0 w-77.5 rounded-3xl p-4.5 border border-white/80"
       style={{
         background: 'linear-gradient(180deg, #ACC5F8 5%, #FFFFFF 50%, #FFFFFF 100%)',
-        boxShadow: '0 10px 20px rgba(0,30,140,0.15)',
+        boxShadow: '4px 4px 12px 2px rgba(0,30,140,0.3)',
       }}>
       {/* Аватар + ім'я */}
       <div className="flex items-center gap-3 mb-2">
