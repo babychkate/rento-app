@@ -68,3 +68,17 @@ export const ArrowWhiteIcon = () => (
       strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+export const ChevronUp = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+    stroke="#2979ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+);
+
+export const ChevronDown = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+    stroke="#2979ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+);

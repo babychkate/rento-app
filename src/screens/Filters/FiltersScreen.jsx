@@ -1,32 +1,10 @@
 import { useState, useMemo } from 'react';
 import {
-  PROPERTIES, TYPE_LABELS, RADIUS_OPTIONS, ROOMS_OPTIONS,
-  HEATING_OPTIONS, RENOVATION_OPTIONS, BARRIER_OPTIONS,
-  LIGHT_OPTIONS, LIVING_OPTIONS, PLANNING_OPTIONS,
-  WALLS_OPTIONS, RENTAL_OPTIONS, OFFER_OPTIONS, TAG_TO_SECTION,
+  PROPERTIES, TYPE_LABELS, RADIUS_OPTIONS, ROOMS_OPTIONS, HEATING_OPTIONS, RENOVATION_OPTIONS, BARRIER_OPTIONS,
+  LIGHT_OPTIONS, LIVING_OPTIONS, PLANNING_OPTIONS, WALLS_OPTIONS, RENTAL_OPTIONS, OFFER_OPTIONS, TAG_TO_SECTION,
+  QUICK_FILTER_SET,
 } from '../../data/properties';
-import { SearchIcon } from '../../components/Icons/Icons';
-
-const BackIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M16 20L8 12L16 4" stroke="#3173FD" strokeWidth="3"
-      strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const ChevronUp = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-    stroke="#2979ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="18 15 12 9 6 15"/>
-  </svg>
-);
-
-const ChevronDown = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-    stroke="#2979ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="6 9 12 15 18 9"/>
-  </svg>
-);
+import { SearchIcon, BackIcon, ChevronDown, ChevronUp } from '../../components/Icons/Icons';
 
 const toggle = (arr, val) =>
   arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
@@ -39,7 +17,7 @@ const matchRoomsLogic = (propertyRooms, selectedRooms) => {
 };
 
 // Пігулка
-const Chip = ({ label, active, onClick, disabled }) => (
+const FilterChipExtended = ({ label, active, onClick, disabled }) => (
   <button
     onClick={disabled ? undefined : onClick}
     className={[
@@ -124,15 +102,9 @@ const SectionTitle = ({ title, warning }) => (
 
 const FiltersScreen = ({ initialFilters, onApply, onBack }) => {
 
-  // Які теги показуються як quickTags на головній
-const QUICK_FILTER_SET = new Set([
-  'Можна з тваринами', 'Працює ліфт', 'Є укриття',
-  'Є паркінг', 'Є пандус', 'Централізоване опалення', 'Довгострокова оренда',
-]);
   const [showExtra, setShowExtra] = useState(false);
 
   // Ініціалізуємо стан ПОВНІСТЮ з initialFilters — жодних перетворень,
-  // бо тепер HomeScreen передає єдиний узгоджений об'єкт
   const [types,      setTypes]      = useState(initialFilters.types      ?? []);
   const [quickTags,  setQuickTags]  = useState(initialFilters.quickTags  ?? []);
   const [city,       setCity]       = useState(initialFilters.city       ?? '');
@@ -283,7 +255,7 @@ const QUICK_FILTER_SET = new Set([
         {/* Тип житла */}
         <div className="flex flex-wrap gap-2.5">
           {Object.entries(TYPE_LABELS).map(([key, label]) => (
-            <Chip key={key} label={label} active={types.includes(key)}
+            <FilterChipExtended key={key} label={label} active={types.includes(key)}
               onClick={() => setTypes(t => toggle(t, key))} />
           ))}
         </div>
@@ -309,7 +281,7 @@ const QUICK_FILTER_SET = new Set([
         <SectionTitle title="Радіус пошуку" />
         <div className="flex flex-wrap gap-2.5">
           {RADIUS_OPTIONS.map(r => (
-            <Chip key={r} label={r} active={radius.includes(r)}
+            <FilterChipExtended key={r} label={r} active={radius.includes(r)}
               onClick={() => setRadius(v => toggle(v, r))} />
           ))}
         </div>
@@ -383,7 +355,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Ремонт" />
             <div className="flex flex-wrap gap-2.5">
               {RENOVATION_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={renovation.includes(r)}
+                <FilterChipExtended key={r} label={r} active={renovation.includes(r)}
                 onClick={() => toggleSectionTag(r, renovation, setRenovation)}/>
               ))}
             </div>
@@ -391,7 +363,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Безбар'єрність" />
             <div className="flex flex-wrap gap-2.5">
               {BARRIER_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={barrier.includes(r)}
+                <FilterChipExtended key={r} label={r} active={barrier.includes(r)}
                   onClick={() => toggleSectionTag(r, barrier, setBarrier)} />
               ))}
             </div>
@@ -399,7 +371,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Коли немає світла" />
             <div className="flex flex-wrap gap-2.5">
               {LIGHT_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={light.includes(r)}
+                <FilterChipExtended key={r} label={r} active={light.includes(r)}
                 onClick={() => toggleSectionTag(r, light, setLight)}/>
               ))}
             </div>
@@ -407,7 +379,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Умови проживання" />
             <div className="flex flex-wrap gap-2.5">
               {LIVING_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={living.includes(r)}
+                <FilterChipExtended key={r} label={r} active={living.includes(r)}
                   onClick={() => toggleSectionTag(r, living, setLiving)} />
               ))}
             </div>
@@ -415,7 +387,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Особливості планування" />
             <div className="flex flex-wrap gap-2.5">
               {PLANNING_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={planning.includes(r)}
+                <FilterChipExtended key={r} label={r} active={planning.includes(r)}
                   onClick={() => toggleSectionTag(r, planning, setPlanning)} />
               ))}
             </div>
@@ -423,7 +395,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Тип стін" />
             <div className="flex flex-wrap gap-2.5">
               {WALLS_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={walls.includes(r)}
+                <FilterChipExtended key={r} label={r} active={walls.includes(r)}
                  onClick={() => toggleSectionTag(r, walls, setWalls)} />
               ))}
             </div>
@@ -431,7 +403,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Опалення" />
             <div className="flex flex-wrap gap-2.5">
               {HEATING_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={heating.includes(r)}
+                <FilterChipExtended key={r} label={r} active={heating.includes(r)}
                  onClick={() => toggleSectionTag(r, heating, setHeating)} />
               ))}
             </div>
@@ -439,7 +411,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Тип пропозиції" />
             <div className="flex flex-wrap gap-2.5">
               {OFFER_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={offer.includes(r)}
+                <FilterChipExtended key={r} label={r} active={offer.includes(r)}
                  onClick={() => toggleSectionTag(r, offer, setOffer)} />
               ))}
             </div>
@@ -447,7 +419,7 @@ const QUICK_FILTER_SET = new Set([
             <SectionTitle title="Умови оренди" />
             <div className="flex flex-wrap gap-2.5">
               {RENTAL_OPTIONS.map(r => (
-                <Chip key={r} label={r} active={rental.includes(r)}
+                <FilterChipExtended key={r} label={r} active={rental.includes(r)}
                  onClick={() => toggleSectionTag(r, rental, setRental)} />
               ))}
             </div>
