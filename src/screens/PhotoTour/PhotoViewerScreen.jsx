@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CloseIcon } from '../../components/Icons/Icons';
 
 const PhotoViewerScreen = ({ photos, initialIndex = 0, onClose }) => {
   const [current, setCurrent] = useState(initialIndex);
@@ -27,9 +28,9 @@ const PhotoViewerScreen = ({ photos, initialIndex = 0, onClose }) => {
   
   {/* Кнопка залишається праворуч */}
   <button onClick={onClose} className="bg-transparent border-none cursor-pointer p-1">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-      <path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
+    <button onClick={onClose} className="bg-transparent border-none cursor-pointer p-1">
+  <CloseIcon />
+</button>
   </button>
 </div>
 

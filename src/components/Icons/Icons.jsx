@@ -106,3 +106,11 @@ export const PhotoTourIcon = () => (
   </svg>
 );
 
+export const CloseIcon = () => (
+  <svg width="38" height="38" viewBox="0 0 42 42" fill="none">
+    <path d="M12 31L19.5858 23.4142C20.3668 22.6332 21.6332 22.6332 22.4142 23.4142L30 31"
+      stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 12L19.5858 19.5858C20.3668 20.3668 21.6332 20.3668 22.4142 19.5858L30 12"
+      stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);

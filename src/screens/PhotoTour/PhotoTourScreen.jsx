@@ -1,53 +1,6 @@
 import { useState, useRef } from 'react';
 import { PhotoViewerScreen } from './PhotoViewerScreen';
-
-// ─── ДАНІ СЕКЦІЙ ─────────────────────────────────────────────────────────────
-const DEFAULT_SECTIONS = [
-  {
-    id: 'bedroom',
-    label: 'спальня',
-    photos: [
-      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=600&q=80',
-    ],
-  },
-  {
-    id: 'bathroom',
-    label: 'ванна',
-    photos: [
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1620626011761-996317702782?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80',
-    ],
-  },
-  {
-    id: 'living',
-    label: 'вітальня',
-    photos: [
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80',
-    ],
-  },
-  {
-    id: 'kitchen',
-    label: 'кухня',
-    photos: [
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80',
-    ],
-  },
-];
+import { BackIcon } from '../../components/Icons/Icons';
 
 // ─── ФОТО-ГРІД СЕКЦІЇ ────────────────────────────────────────────────────────
 const SectionPhotoGrid = ({ photos, onPhotoClick }) => (
@@ -92,7 +45,7 @@ const SectionPhotoGrid = ({ photos, onPhotoClick }) => (
 
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ───────────────────────────────────────────────────────
 const PhotoTourScreen = ({ property, onBack, sections: propSections }) => {
-  const sections = propSections ?? DEFAULT_SECTIONS;
+  const sections = propSections;
   const [activeSection, setActiveSection] = useState(sections[0]?.id ?? null);
   const [viewer, setViewer] = useState(null); // { sectionId, photoIndex } | null
 
@@ -127,12 +80,9 @@ const PhotoTourScreen = ({ property, onBack, sections: propSections }) => {
       {/* STICKY TOP BAR */}
       <div className="sticky top-0 z-10 bg-[#f1f2f6] flex items-center justify-between px-6 pt-14 pb-5">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 20L8 12L16 4" stroke="#3173FD" strokeWidth="3"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <BackIcon />
         </button>
-        <span className="font-bold text-[22px] text-[#0052FF]">Фототур</span>
+        <span className="font-bold text-[22px] text-[#012A81]">Фототур</span>
         <div className="w-8" />
       </div>
 
@@ -176,7 +126,7 @@ const PhotoTourScreen = ({ property, onBack, sections: propSections }) => {
         {/* СЕКЦІЇ */}
         {sections.map(section => (
           <div key={section.id} ref={el => { sectionRefs.current[section.id] = el; }}>
-            <p className="px-6 pt-7 pb-3.5 font-bold text-[22px] text-[#0052FF]">
+            <p className="px-6 pt-7 pb-3.5 font-bold text-[20px] text-[#0052FF]">
               {section.label.charAt(0).toUpperCase() + section.label.slice(1)}
             </p>
             <SectionPhotoGrid
