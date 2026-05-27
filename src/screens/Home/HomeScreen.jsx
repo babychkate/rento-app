@@ -5,7 +5,7 @@ import AccommodationCard from '../../components/Cards/AccommodationCard/Accommod
 import BottomNav from '../../components/BottomNav/BottomNav';
 import AccommodationListScreen from '../Accommodation/AccommodationListScreen';
 import FiltersScreen from '../Filters/FiltersScreen';
-import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
+import AccommodationDetailScreen from '../AccommodationDetail/AccommodationDetailScreen';
 import FavoritesScreen from '../Favourites/FavouritesScreen';
 import ProfileScreen from '../Profile/ProfileScreen';
 import NotificationsScreen from '../Notifications/NotificationsScreen';
@@ -76,6 +76,7 @@ const HomeScreen = ({ onLogout }) => {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setCityView(null); // ← додати
+    setSelectedProperty(null); // ← додати
   };
 
   // Фільтрація
@@ -109,7 +110,14 @@ const HomeScreen = ({ onLogout }) => {
   const byCity = (city) => filtered.filter(p => p.city === city);
 
 if (selectedProperty) {
-  return <PropertyDetailScreen property={selectedProperty} onBack={() => setSelectedProperty(null)} />;
+  return (
+    <AccommodationDetailScreen
+      property={selectedProperty}
+      onBack={() => setSelectedProperty(null)}
+      activeTab={activeTab}        // ← додати
+      onTabChange={handleTabChange} // ← додати
+    />
+  );
 }
 
 if (showFilters) {

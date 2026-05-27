@@ -1,53 +1,15 @@
 import { useState, useEffect } from 'react';
 import { TYPE_LABELS } from '../../data/properties';
+import PropertyMap from '../../components/PropertyMap/PropertyMap';
+import { ReviewCard } from '../../components/Cards/ReviewCard/ReviewCard';
+import BottomNav from '../../components/BottomNav/BottomNav';
 import PhotoTourScreen from '../PhotoTour/PhotoTourScreen';
 import LandlordScreen from '../Landlord/LandlordScreen';
 import VerificationScreen from '../Verification/VerificationScreen';
-import PropertyMap from '../../components/PropertyMap/PropertyMap';
-import BottomNav from '../../components/BottomNav/BottomNav';
 import ContractScreen from '../Contract/ContractScreen';
 import SecurityScreen from '../Security/SecurityScreen';
+import { BackIcon, StarIcon, ArrowIcon, LocationIcon, PhotoTourIcon } from '../../components/Icons/Icons';
 
-// ─── ІКОНКИ ───────────────────────────────────────────────────────────────────
-
-const BackIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
-      strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const StarIcon = ({ filled = true }) => (
-  <svg width="14" height="14" viewBox="0 0 23 22" fill="none">
-    <path d="M3.25907 11.6533L4.50719 12.6068C4.84022 12.8612 4.97928 13.2963 4.85555 13.6967L3.49665 18.0942C3.2092 19.0244 4.28545 19.7751 5.05914 19.1841L8.48099 16.57C8.83939 16.2962 9.33672 16.2962 9.69512 16.57L13.117 19.1841C13.8907 19.7751 14.9669 19.0244 14.6795 18.0942L13.3206 13.6967C13.1968 13.2963 13.3359 12.8612 13.6689 12.6068L17.2805 9.84777C18.0406 9.2671 17.63 8.05312 16.6734 8.05312H12.3142C11.8757 8.05312 11.4883 7.76737 11.3588 7.34836L10.0435 3.09181C9.7531 2.15213 8.42301 2.15214 8.13263 3.09181L6.81729 7.34836C6.68781 7.76737 6.30042 8.05312 5.86186 8.05312H1.50268C0.54615 8.05312 0.135509 9.2671 0.895623 9.84777L1.65139 10.4251"
-      stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-  </svg>
-);
-
-const LocationIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <path d="M18.5 11.033C18.5 14.4127 15.093 17.5642 12.8905 19.314C12.3685 19.7287 11.6315 19.7287 11.1095 19.314C8.90697 17.5642 5.5 14.4127 5.5 11.033C5.5 7.14877 8.13401 4 12 4C15.866 4 18.5 7.14877 18.5 11.033Z"
-      stroke="#0052FF" strokeWidth="1.5"/>
-    <path d="M14.5 10.5C14.5 11.8807 13.3807 13 12 13C10.6193 13 9.5 11.8807 9.5 10.5C9.5 9.11929 10.6193 8 12 8C13.3807 8 14.5 9.11929 14.5 10.5Z"
-      stroke="#0052FF" strokeWidth="1.5"/>
-  </svg>
-);
-
-const ArrowRightIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M8 4L16 12L8 20" stroke="#0052FF" strokeWidth="3"
-      strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
-
-const PhotoTourIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-    stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="9 18 15 12 9 6"/>
-  </svg>
-);
-
-// Іконки зручностей — мап по назві
 const AmenityIcon = ({ name }) => {
   const icons = {
     'Wi-Fi': (
@@ -81,7 +43,6 @@ const AmenityIcon = ({ name }) => {
     ),
   };
 
-  // Якщо є конкретна іконка — повертаємо її, інакше — загальний кружок
   if (icons[name]) return icons[name];
 
   return (
@@ -92,56 +53,10 @@ const AmenityIcon = ({ name }) => {
   );
 };
 
-// ─── КОМПОНЕНТ ВІДГУКУ ────────────────────────────────────────────────────────
-
-const ReviewCard = ({ review }) => {
-  const [expanded, setExpanded] = useState(false);
-  const isLong = review.text.length > 100;
-  const displayText = expanded || !isLong ? review.text : review.text.slice(0, 100) + '…';
-
-  return (
-    <div className="shrink-0 w-77.5 rounded-3xl p-4.5 border border-white/80"
-      style={{
-        background: 'linear-gradient(180deg, #ACC5F8 5%, #FFFFFF 50%, #FFFFFF 100%)',
-        boxShadow: '0 10px 20px rgba(0,30,140,0.15)',
-      }}>
-      {/* Аватар + ім'я */}
-      <div className="flex items-center gap-3 mb-2">
-        <img src={review.avatar} alt={review.name}
-          className="w-10 h-10 rounded-full object-cover shrink-0" />
-        <span className="font-bold text-[15px] text-black">{review.name}</span>
-      </div>
-
-      {/* Зірки + дата */}
-      <div className="flex items-center gap-2 mb-3">
-        <div className="flex gap-0.5">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <svg key={i} width="13" height="13" viewBox="0 0 24 24"
-              fill={i < review.rating ? '#8F94FB' : '#e2e8f0'}>
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
-          ))}
-        </div>
-        <span className="text-[13px] text-[#718096]">{review.date}</span>
-      </div>
-
-      {/* Текст */}
-      <p className="text-[13px] text-[#2D3748] leading-relaxed mb-1">{displayText}</p>
-      {isLong && (
-        <button onClick={() => setExpanded(p => !p)}
-          className="text-[13px] font-medium text-[#5A7BB5] bg-transparent border-none cursor-pointer p-0">
-          {expanded ? 'Згорнути' : 'Показати більше'}
-        </button>
-      )}
-    </div>
-  );
-};
-
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ───────────────────────────────────────────────────────
 
-const PropertyDetailScreen = ({ property, onBack }) => {
+const AccommodationDetailScreen = ({ property, onBack, activeTab, onTabChange }) => {
   const [screen, setScreen] = useState(null); // null | 'phototour' | 'landlord' | 'identity' | 'security' | 'contract'
-    const [activeTab, setActiveTab] = useState('home');
 
   // Навігація до підекранів
   if (screen === 'identity') {
@@ -152,7 +67,7 @@ const PropertyDetailScreen = ({ property, onBack }) => {
     return (
       <PhotoTourScreen
         property={property}
-        sections={property.photos}   // ← додай цей рядок
+        sections={property.photos}
         onBack={() => setScreen(null)}
       />
     );
@@ -222,11 +137,6 @@ const PropertyDetailScreen = ({ property, onBack }) => {
           </span>
         </div>
 
-        {/* ЦІНА
-        <p className="px-6 pt-2.5 font-bold text-[20px] text-[#0052FF]">
-          {property.price}<span className="text-[14px] font-medium text-[#4b5b7e]">/міс</span>
-        </p> */}
-
         {/* ОРЕНДОДАВЕЦЬ */}
         <h2 className="px-6 pt-9 pb-4 font-bold text-[16px] text-[#0052FF]">
           Профіль орендодавця
@@ -243,7 +153,7 @@ const PropertyDetailScreen = ({ property, onBack }) => {
           </div>
           <button onClick={() => setScreen('landlord')}
             className="bg-transparent border-none cursor-pointer p-1">
-            <ArrowRightIcon />
+            <ArrowIcon />
           </button>
         </div>
 
@@ -288,7 +198,7 @@ const PropertyDetailScreen = ({ property, onBack }) => {
 
         {/* ЩО ПОРУЧ — КАРТА */}
         <h2 className="px-6 pt-9 pb-4 font-bold text-[16px] text-[#0052FF]">Що поруч</h2>
-        <div className="mx-6 h-45 rounded-[20px] overflow-hidden shadow-[0_4px_16px_rgba(0,30,140,0.1)]">
+        <div className="mx-6 h-45 rounded-[20px] overflow-hidden shadow-[0_4px_16px_rgba(0,30,140,0.1)]" style={{ position: 'relative', zIndex: 0 }}>
           {property.coordinates ? (
             <PropertyMap
               coordinates={property.coordinates}
@@ -367,7 +277,7 @@ const PropertyDetailScreen = ({ property, onBack }) => {
               </div>
               <button onClick={() => setScreen(key)}
                 className="bg-transparent border-none cursor-pointer p-1 ml-auto">
-                <ArrowRightIcon />
+                <ArrowIcon />
               </button>
             </div>
             {idx < arr.length - 1 && (
@@ -375,13 +285,13 @@ const PropertyDetailScreen = ({ property, onBack }) => {
             )}
           </div>
         ))}
-
-        <div className="relative z-10">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
+
+      <div className="relative z-60">
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );
 };
 
-export default PropertyDetailScreen;
+export default AccommodationDetailScreen;

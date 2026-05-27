@@ -3,7 +3,7 @@ import { useFavorites } from '../Context/FavouritesContext';
 import { PROPERTIES, ROOMMATES } from '../../data/properties';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import LandlordScreen from '../Landlord/LandlordScreen';
-import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
+import AccommodationDetailScreen from '../AccommodationDetail/AccommodationDetailScreen';
 import RoommateScreen from '../Roommate/RoommateScreen'; 
 import FavPropertiesListScreen from './FavAccommodationListScreen';
 
@@ -110,7 +110,7 @@ const FavoritesScreen = ({ onGoHome }) => {
   // ── Маршрутизація під-екранів ────────────────────────────────────────────
   if (view === 'property-detail' && selected) {
     return (
-      <PropertyDetailScreen
+      <AccommodationDetailScreen
         property={selected}
         onBack={() => {
           setView(previousView);

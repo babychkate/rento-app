@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useFavorites } from '../Context/FavouritesContext'; // ← Підключаємо контекст
+import { useFavorites } from '../Context/FavouritesContext';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
 import { TYPE_LABELS, TYPE_SECTION_LABELS } from '../../data/properties';
-import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
+import AccommodationDetailScreen from '../AccommodationDetail/AccommodationDetailScreen';
 import VerticalAccommodationCard from '../../components/Cards/VerticalAccommodationCard/VerticalAccommodationCard';
 import { BackIcon, StarIcon, HeartIcon } from '../../components/Icons/Icons';
 import { GRADIENTS } from '../../visual effects/headerGradient';
@@ -19,7 +19,7 @@ const AccommodationListScreen = ({ city, filteredProperties, onBack, onLogoClick
 
   if (selectedProperty) {
     return (
-      <PropertyDetailScreen
+      <AccommodationDetailScreen
         property={selectedProperty}
         onBack={() => setSelectedProperty(null)}
       />

@@ -82,3 +82,27 @@ export const ChevronDown = () => (
     <polyline points="6 9 12 15 18 9"/>
   </svg>
 );
+
+export const LocationIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M18.5 11.033C18.5 14.4127 15.093 17.5642 12.8905 19.314C12.3685 19.7287 11.6315 19.7287 11.1095 19.314C8.90697 17.5642 5.5 14.4127 5.5 11.033C5.5 7.14877 8.13401 4 12 4C15.866 4 18.5 7.14877 18.5 11.033Z"
+      stroke="#0052FF" strokeWidth="1.5"/>
+    <path d="M14.5 10.5C14.5 11.8807 13.3807 13 12 13C10.6193 13 9.5 11.8807 9.5 10.5C9.5 9.11929 10.6193 8 12 8C13.3807 8 14.5 9.11929 14.5 10.5Z"
+      stroke="#0052FF" strokeWidth="1.5"/>
+  </svg>
+);
+
+export const ArrowRightIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M8 4L16 12L8 20" stroke="#0052FF" strokeWidth="3"
+      strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+export const PhotoTourIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+    stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="9 18 15 12 9 6"/>
+  </svg>
+);
+
