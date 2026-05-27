@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../auth/AuthContext';
-import CategoryCard from '../../components/CategoryCard/CategoryCard';
+import CategoryCard from '../../components/Cards/CategoryCard/CategoryCard';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import { BackIcon } from '../../components/Icons/Icons';
 import { ONBOARDING_CATEGORIES } from '../../data/onboardingCategories';

@@ -6,7 +6,7 @@ import FilterChip from '../../components/FilterChip/FilterChip';
 import { SearchIcon } from '../../components/Icons/Icons';
 import AllRoommatesScreen from '../Roommate/AllRoomatesScreen';
 import RoommateScreen from '../Roommate/RoommateScreen';
-import { UserCard } from '../../components/UserCard/UserCard';
+import { UserCard } from '../../components/Cards/UserCard/UserCard';
 import { BackIcon, StarIcon, FilterIcon, ArrowIcon, ArrowWhiteIcon } from '../../components/Icons/Icons';
 
 // ІМПОРТ ТВОЇХ ОКРЕМИХ СТОРІНОК-ЗАГЛУШОК (для синхронізації табів)

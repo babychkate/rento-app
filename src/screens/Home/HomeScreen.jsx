@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
 import { useAuth } from '../../auth/AuthContext';
 import FilterChip from '../../components/FilterChip/FilterChip';
-import AccommodationCard from '../../components/AccommodationCard/AccommodationCard';
+import AccommodationCard from '../../components/Cards/AccommodationCard/AccommodationCard';
 import BottomNav from '../../components/BottomNav/BottomNav';
-import CityListingsScreen from '../Accommodation/AccommodationListScreen';
+import AccommodationListScreen from '../Accommodation/AccommodationListScreen';
 import FiltersScreen from '../Filters/FiltersScreen';
 import PropertyDetailScreen from '../PropertyDetail/PropertyDetailScreen';
 import FavoritesScreen from '../Favourites/FavouritesScreen';
@@ -75,6 +75,7 @@ const HomeScreen = ({ onLogout }) => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+    setCityView(null); // ← додати
   };
 
   // Фільтрація
@@ -107,47 +108,50 @@ const HomeScreen = ({ onLogout }) => {
 
   const byCity = (city) => filtered.filter(p => p.city === city);
 
-  if (selectedProperty) {
-    return <PropertyDetailScreen property={selectedProperty} onBack={() => setSelectedProperty(null)} />;
-  }
+if (selectedProperty) {
+  return <PropertyDetailScreen property={selectedProperty} onBack={() => setSelectedProperty(null)} />;
+}
 
-  if (showFilters) {
-    return (
-      <FiltersScreen
-        initialFilters={filters}
-        onBack={() => setShowFilters(false)}
-        onApply={(newFilters) => {
-          setFilters(newFilters);
-          setShowFilters(false);
-        }}
-      />
-    );
-  }
+if (showFilters) {
+  return (
+    <FiltersScreen
+      initialFilters={filters}
+      onBack={() => setShowFilters(false)}
+      onApply={(newFilters) => {
+        setFilters(newFilters);
+        setShowFilters(false);
+      }}
+    />
+  );
+}
 
-  if (cityView) {
-    return (
-      <CityListingsScreen
-        city={cityView.city}
-        filteredProperties={filtered}
-        onBack={() => setCityView(null)}
-        onLogoClick={() => setCityView(null)}
-      />
-    );
-  }
+if (showProfile) {
+  return (
+    <ProfileScreen
+      onBack={() => setShowProfile(false)}
+      onLogout={onLogout}
+    />
+  );
+}
 
-  if (showProfile) {
-    return (
-      <ProfileScreen
-        onBack={() => setShowProfile(false)}
-        onLogout={onLogout}
-      />
-    );
-  }
-  
-  if (showNotifications) {
-    return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
-  }
+if (showNotifications) {
+  return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
+}
 
+if (cityView) {
+  return (
+    <AccommodationListScreen
+      city={cityView.city}
+      filteredProperties={filtered}
+      onBack={() => setCityView(null)}
+      onLogoClick={() => setCityView(null)}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+      onNotifications={() => setShowNotifications(true)}
+      onProfile={() => setShowProfile(true)}
+    />
+  );
+}
   // --- ДИНАМІЧНИЙ РЕНДЕР КОНТЕНТУ ВКЛАДОК ---
   const renderMainContent = () => {
     switch (activeTab) {

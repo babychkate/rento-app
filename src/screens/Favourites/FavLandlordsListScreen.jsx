@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFavorites } from '../Context/FavouritesContext'; 
 import BottomNav from '../../components/BottomNav/BottomNav';
 import { RentoLogo, BellIcon, ProfileIcon } from '../../components/Icons/NavIcons';
-import { LandlordCard } from '../../components/LandlordCard/LandlordCard'; // Впевнись, що шлях правильний
+import { LandlordCard } from '../../components/Cards/LandlordCard/LandlordCard'; // Впевнись, що шлях правильний
 
 const BackIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

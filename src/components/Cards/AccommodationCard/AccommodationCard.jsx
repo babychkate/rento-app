@@ -1,5 +1,5 @@
-import { useFavorites } from '../../screens/Context/FavouritesContext';
-import { StarIcon, HeartIcon } from '../Icons/Icons';
+import { useFavorites } from '../../../screens/Context/FavouritesContext';
+import { StarIcon, HeartIcon } from '../../Icons/Icons';
 
 const AccommodationCard = ({ property, onClick }) => {
   const { isPropertyLiked, toggleProperty } = useFavorites();

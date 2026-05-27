@@ -1,7 +1,6 @@
-import React from 'react';
-import { StarIcon, HeartIcon } from "../Icons/Icons";
+import { StarIcon, HeartIcon } from "../../Icons/Icons";
 
-export const RoommateCard = ({ name, age, avatar, rating, subtitle, onLike, onClick, isLiked }) => (
+export const LandlordCard = ({ name, avatar, rating, address, onLike, onClick, isLiked }) => (
   <div 
     onClick={onClick} 
     className="w-full h-[250px] rounded-[28px] overflow-hidden relative cursor-pointer shadow-[0_8px_24px_rgba(0,30,140,0.12)]"
@@ -18,10 +17,8 @@ export const RoommateCard = ({ name, age, avatar, rating, subtitle, onLike, onCl
     }}>
       <div className="px-4 pb-4 pt-8 flex justify-between items-end gap-1">
         <div className="flex flex-col text-white min-w-0">
-          <span className="font-bold text-[15px] leading-tight truncate">
-            {name?.split(' ')[0]}, {age}
-          </span>
-          <span className="text-[11px] opacity-85 truncate">{subtitle}</span>
+          <span className="font-bold text-[15px] leading-tight truncate">{name}</span>
+          <span className="text-[11px] opacity-85 truncate">{address}</span>
         </div>
         <button 
           onClick={(e) => { e.stopPropagation(); onLike?.(); }}

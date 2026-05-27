@@ -3,7 +3,7 @@ import { ROOMMATES } from '../../data/properties';
 import FilterChip from '../../components/FilterChip/FilterChip';
 import { SearchIcon } from '../../components/Icons/Icons';
 import RoommateScreen from './RoommateScreen';
-import { UserCard } from '../../components/UserCard/UserCard';
+import { UserCard } from '../../components/Cards/UserCard/UserCard';
 import { BackIcon, StarIcon, ArrowIcon } from '../../components/Icons/Icons';
 
 // ─── УСІ ТЕГИ ─────────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-import { BackIcon, StarIcon, ArrowIcon } from '../../components/Icons/Icons';
+import { BackIcon, StarIcon, ArrowIcon } from '../../Icons/Icons';
 
 export const UserCard = ({ roommate, onClick }) => {
   const preview = roommate.tags.slice(0, 2).join(' · ');
