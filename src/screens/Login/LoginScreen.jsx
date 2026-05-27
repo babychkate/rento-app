@@ -4,20 +4,11 @@ import InputField from '../../components/InputField/InputField';
 import BtnPill from '../../components/BtnPill/BtnPill';
 import StepIndicator from '../../components/StepIndicator/StepIndicator';
 import { GoogleIcon, AppleIcon, DiaIcon } from '../../components/Icons/SocialIcons';
-
-const BackIcon = () => (
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-    stroke="#0052ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-);
-
-const FieldError = ({ message }) =>
-  message ? <p className="text-red-500 text-[12px] font-medium mt-1 mb-1">{message}</p> : null;
+import { BackIcon } from '../../components/Icons/Icons';
+import { FieldError } from '../../components/FieldError/FieldError';
 
 const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
   const { login } = useAuth();
-
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors]     = useState({});
@@ -33,14 +24,11 @@ const LoginScreen = ({ onBack, onNext, onForgot, onRegister }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full bg-[#f1f2f6] font-montserrat px-6">
+    <div className="flex flex-col w-full min-h-full bg-[#f1f2f6] font-montserrat px-6">
 
       {/* Top bar */}
       <div className="flex items-center justify-center relative pt-13 pb-7 shrink-0">
-        <button
-          onClick={onBack}
-          className="absolute left-0 flex items-center bg-transparent border-none cursor-pointer"
-        >
+        <button onClick={onBack} className="absolute left-0 bg-transparent border-none cursor-pointer">
           <BackIcon />
         </button>
         <span className="text-[22px] font-bold text-[#012A81]">Увійти</span>
