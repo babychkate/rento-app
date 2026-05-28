@@ -176,7 +176,13 @@ if (activeTab === 'messages') {
 }
 
 if (activeTab === 'tinder') {
-  return <TinderScreen onBack={() => setActiveTab('home')} />;
+  return (
+    <TinderScreen
+      onBack={() => setActiveTab('home')}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+    />
+  );
 }
 
 if (activeTab === 'favorites') {
