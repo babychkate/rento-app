@@ -64,9 +64,15 @@ const CommunityScreen = ({ onBack, activeTab, onTabChange }) => {
     );
   }
   
-  if (innerView === 'bazaar') {
-    return <BazaarScreen onBack={() => setInnerView(null)} />;
-  }
+if (innerView === 'bazaar') {
+  return (
+    <BazaarScreen
+      onBack={() => setInnerView(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   if (activeTab === 'home') {
     onBack?.();

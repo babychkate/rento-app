@@ -180,7 +180,15 @@ if (activeTab === 'tinder') {
 }
 
 if (activeTab === 'favorites') {
-  return <FavoritesScreen onBack={() => setActiveTab('home')} onGoHome={() => setActiveTab('home')} />;
+  return (
+    <FavoritesScreen
+      onGoHome={() => setActiveTab('home')}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+      onNotifications={() => setShowNotifications(true)}
+      onProfile={() => setShowProfile(true)}
+    />
+  );
 }
   // --- ДИНАМІЧНИЙ РЕНДЕР КОНТЕНТУ ВКЛАДОК ---
   const renderMainContent = () => {
