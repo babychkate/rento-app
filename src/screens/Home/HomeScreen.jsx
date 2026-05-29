@@ -147,9 +147,17 @@ if (showProfile) {
 }
 
 if (showNotifications) {
-  return <NotificationsScreen onBack={() => setShowNotifications(false)} />;
+  return (
+    <NotificationsScreen
+      onBack={() => setShowNotifications(false)}
+      onLogout={onLogout}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+      onProfile={() => setShowProfile(true)}
+      onNotifications={() => setShowNotifications(true)}
+    />
+  );
 }
-
 if (cityView) {
   return (
     <AccommodationListScreen
