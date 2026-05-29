@@ -52,7 +52,7 @@ const ChatScreen = ({ chat, onBack, onGoHome, onNotifications, onProfile, active
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat overflow-hidden"
-      style={{ background: '#f4f6fa' }}>
+      style={{ background: 'white' }}>
 
       {/* ── ХЕДЕР ── */}
 <div className="relative shrink-0">
