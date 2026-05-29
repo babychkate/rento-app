@@ -184,7 +184,15 @@ if (cityView) {
 }
 
 if (activeTab === 'messages') {
-  return <MessagesScreen onBack={() => setActiveTab('home')} />;
+  return (
+    <MessagesScreen
+      onBack={() => setActiveTab('home')}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
+      onProfile={() => setShowProfile(true)}
+      onNotifications={() => setShowNotifications(true)}
+    />
+  );
 }
 
 if (activeTab === 'tinder') {

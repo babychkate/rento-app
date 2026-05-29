@@ -24,9 +24,9 @@ return (
 
     {/* Градієнт + хедер */}
     <div className="relative shrink-0">
-      <div className="absolute inset-0 pointer-events-none z-0 h-35"
+      <div className="absolute inset-0 pointer-events-none z-0"
         style={{ background: GRADIENTS.homeHeader }} />
-      <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-16">
+      <div className="relative z-10 flex items-center justify-between px-6 pt-20 pb-16 h-35">
         <div className="flex items-center gap-2">
           <button onClick={onBack}
             className="bg-transparent border-none cursor-pointer p-0 flex items-center justify-center">
