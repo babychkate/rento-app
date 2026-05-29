@@ -1,60 +1,44 @@
 import { useState } from 'react';
 import { useAuth } from '../../auth/AuthContext';
 import BottomNav from '../../components/BottomNav/BottomNav';
+import PrivacyScreen from '../Privacy/PrivacyScreen';
 import SecurityScreen from '../Security/SecurityScreen';
 import AccountSettingsScreen from '../AccountSettings/AccountSettingsScreen';
+import { AccountIcon, SecurityMenuIcon, PrivacyIcon } from '../../components/Icons/ProfileIcons';
+import { BackIcon, ArrowIcon } from '../../components/Icons/Icons';
 
 // ─── ГОЛОВНИЙ КОМПОНЕНТ ───────────────────────────────────────────────────────
 
-const ProfileScreen = ({ onBack, onLogout }) => {
+const ProfileScreen = ({ onBack, onLogout, activeTab, onTabChange }) => {
   const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState('plant');
   const [innerView, setInnerView] = useState(null);
-  // innerView: null | 'account' | 'security' | 'privacy'
 
-  // ── Підекрани ────────────────────────────────────────────────────────────
-  if (innerView === 'security') {
-    return <SecurityScreen onBack={() => setInnerView(null)} />;
+if (innerView === 'security') {
+    return (
+      <SecurityScreen
+        onBack={() => setInnerView(null)}
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+      />
+    );
   }
   if (innerView === 'account') {
   return <AccountSettingsScreen onBack={() => setInnerView(null)} />;
+  }
+if (innerView === 'privacy') {
+  return (
+    <PrivacyScreen
+      onBack={() => setInnerView(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
 }
 
   const menuItems = [
-    {
-      key: 'account',
-      label: 'Налаштування акаунта',
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-          stroke="#0052FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-        </svg>
-      ),
-    },
-    {
-      key: 'security',
-      label: 'Центр питань та безпеки',
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-          stroke="#0052FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="16" x2="12" y2="12" />
-          <line x1="12" y1="8" x2="12.01" y2="8" />
-        </svg>
-      ),
-    },
-    {
-      key: 'privacy',
-      label: 'Конфіденційність',
-      icon: (
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-          stroke="#0052FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-        </svg>
-      ),
-    },
+    { key: 'account', label: 'Налаштування акаунта', icon: <AccountIcon /> },
+    { key: 'security', label: 'Центр питань та безпеки', icon: <SecurityMenuIcon /> },
+    { key: 'privacy', label: 'Конфіденційність', icon: <PrivacyIcon /> },
   ];
 
   return (
@@ -124,10 +108,7 @@ const ProfileScreen = ({ onBack, onLogout }) => {
                   {icon}
                   <span className="font-semibold text-[14px] text-[#012A81]">{label}</span>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 5l7 7-7 7" stroke="#0052FF" strokeWidth="2.5"
-                    strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <ArrowIcon />
               </button>
               {idx < arr.length - 1 && (
                 <div className="h-px bg-[rgba(41,121,255,0.1)]" />
@@ -154,13 +135,13 @@ const ProfileScreen = ({ onBack, onLogout }) => {
 
       {/* BOTTOM NAV */}
       <div className="relative z-10">
-        <BottomNav
-          activeTab={activeTab}
-          onTabChange={(tab) => {
-            if (tab === 'home') { onBack?.(); return; }
-            setActiveTab(tab);
-          }}
-        />
+         <BottomNav
+    activeTab={activeTab}
+    onTabChange={(tab) => {
+      if (tab === 'home') { onBack?.(); return; }
+      onTabChange(tab);
+    }}
+  />
       </div>
     </div>
   );

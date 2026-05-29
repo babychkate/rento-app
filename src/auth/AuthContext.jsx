@@ -25,8 +25,8 @@ const generateId = () =>
 // ─── валідація email ────────────────────────────────────────────────────────
 
 const ALLOWED_DOMAINS = [
-  'gmail.com', 'ukr.net', 'outlook.com', 'hotmail.com',
-  'yahoo.com', 'icloud.com', 'meta.ua', 'ukrpost.ua',
+  'gmail.com', 'ukr.net', 'i.ua', 'meta.ua', 'ukrpost.ua',
+  'outlook.com', 'hotmail.com', 'yahoo.com', 'icloud.com',
   'lnu.edu.ua', 'lnam.edu.ua', 'kpi.ua', 'nau.edu.ua',
 ];
 

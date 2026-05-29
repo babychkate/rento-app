@@ -14,9 +14,15 @@ const LandlordScreen = ({ property, onBack, activeTab, onTabChange }) => {
   const isLiked = landlord?.id ? isLandlordLiked(landlord.id) : false;
   const reviews = property?.reviews ?? [];
 
-  if (verificationScreen === 'security') {
-    return <SecurityScreen onBack={() => setVerificationScreen(null)} />;
-  }
+if (verificationScreen === 'security') {
+  return (
+    <SecurityScreen
+      onBack={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
   if (verificationScreen) {
     return <VerificationScreen type={verificationScreen} onBack={() => setVerificationScreen(null)} />;
   }

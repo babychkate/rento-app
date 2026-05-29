@@ -1,22 +1,18 @@
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav/BottomNav';
+import { BackIcon } from '../../components/Icons/Icons';
 
-const SecurityScreen = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState('home');
+const SecurityScreen = ({ onBack, activeTab, onTabChange  }) => {
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
 
       {/* TOP BAR */}
-      <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-10">
+      <div className="relative z-10 flex items-center gap-3 px-6 pt-14 pb-10">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <BackIcon />
         </button>
         <span className="font-bold text-[22px] text-[#012A81]">Центр питань та безпеки</span>
-        <div className="w-8" />
       </div>
 
       {/* SCROLLABLE */}
@@ -164,7 +160,7 @@ const SecurityScreen = ({ onBack }) => {
 
       {/* BOTTOM NAV */}
       <div className="relative z-10">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );

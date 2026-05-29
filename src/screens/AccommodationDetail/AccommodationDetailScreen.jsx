@@ -87,8 +87,14 @@ if (screen === 'landlord') {
   );
 }
 
-  if (screen === 'security') {
-  return <SecurityScreen onBack={() => setScreen(null)} />;
+if (screen === 'security') {
+  return (
+    <SecurityScreen
+      onBack={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
 }
 
   if (screen === 'contract') {

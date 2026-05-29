@@ -12,9 +12,15 @@ const RoommateScreen = ({ roommate, onBack, activeTab, onTabChange }) => {
   const { isRoommateLiked, toggleRoommate } = useFavorites();
   const isLiked = roommate?.id ? isRoommateLiked(roommate.id) : false;
 
-  if (verificationScreen === 'security') {
-    return <SecurityScreen onBack={() => setVerificationScreen(null)} />;
-  }
+if (verificationScreen === 'security') {
+  return (
+    <SecurityScreen
+      onBack={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
   if (verificationScreen) {
     return <VerificationScreen type={verificationScreen} onBack={() => setVerificationScreen(null)} />;
   }

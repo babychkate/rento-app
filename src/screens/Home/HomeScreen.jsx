@@ -77,6 +77,8 @@ const HomeScreen = ({ onLogout }) => {
     setActiveTab(tab);
     setCityView(null); // ← додати
     setSelectedProperty(null); // ← додати
+      setShowProfile(false);       // ← додати
+  setShowNotifications(false); // ← додати
   };
 
   // Фільтрація
@@ -138,6 +140,8 @@ if (showProfile) {
     <ProfileScreen
       onBack={() => setShowProfile(false)}
       onLogout={onLogout}
+      activeTab={activeTab}
+      onTabChange={handleTabChange}
     />
   );
 }

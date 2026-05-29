@@ -1,20 +1,9 @@
 import { useState, useRef } from 'react';
 import { useAuth } from '../../auth/AuthContext';
-
-// ─── КОНСТАНТИ ────────────────────────────────────────────────────────────────
-
-const CITIES = [
-  'Київ', 'Львів', 'Одеса', 'Тернопіль',
-  'Харків', 'Івано-Франківськ', 'Луцьк', 'Чернівці',
-];
-
-const VALID_EMAIL_DOMAINS = [
-  'gmail.com', 'ukr.net', 'i.ua', 'meta.ua', 'ukrpost.ua',
-  'outlook.com', 'hotmail.com', 'yahoo.com', 'icloud.com',
-  'lnu.edu.ua', 'lnam.edu.ua', 'kpi.ua', 'nau.edu.ua',
-];
-
-// ─── ВАЛІДАЦІЯ ────────────────────────────────────────────────────────────────
+import { BackIcon } from '../../components/Icons/Icons';
+import { FieldError } from "../../components/FieldError/FieldError";
+import { CITIES, VALID_EMAIL_DOMAINS } from '../../data/accountSettings';
+import { GoogleLinkModal } from '../../modals/ModalGoogleLink';
 
 const hasDigits = (str) => /\d/.test(str);
 
@@ -39,19 +28,9 @@ const validatePhone = (phone) => {
 
 // ─── ДОПОМІЖНІ КОМПОНЕНТИ ────────────────────────────────────────────────────
 
-const BackIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M15 19l-7-7 7-7" stroke="#0052FF" strokeWidth="3"
-      strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 const SectionLabel = ({ children }) => (
   <p className="font-bold text-[14px] text-[#012A81] mt-6 mb-3 ml-3">{children}</p>
 );
-
-const FieldError = ({ msg }) =>
-  msg ? <p className="text-[12px] text-[#ef4444] font-medium mt-1.5 ml-3">{msg}</p> : null;
 
 const inputStyle = (hasError) =>
   [
@@ -66,10 +45,9 @@ const inputStyle = (hasError) =>
 
 const AccountSettingsScreen = ({ onBack }) => {
   const { user, updateUser } = useAuth();
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
+  const [googleStep, setGoogleStep] = useState('loading'); // 'loading' | 'success'
 
-  // user shape (розширений):
-  // { id, name, email, password, category, role, createdAt,
-  //   firstName?, lastName?, city?, phone?, bio?, avatar? }
   const nameParts = (user?.name ?? '').split(' ');
 
   const initial = {
@@ -131,6 +109,13 @@ const AccountSettingsScreen = ({ onBack }) => {
     reader.readAsDataURL(file);
   };
 
+  const handleGoogleLink = () => {
+  setGoogleStep('loading');
+  setShowGoogleModal(true);
+  setTimeout(() => setGoogleStep('success'), 2500);
+  setTimeout(() => setShowGoogleModal(false), 4500);
+};
+
   // ── Збереження → updateUser → localStorage ────────────────────────────────
   const handleSave = () => {
     if (!canSave) return;
@@ -161,10 +146,11 @@ const AccountSettingsScreen = ({ onBack }) => {
   };
 
   const avatarSrc = avatarPreview
-    ?? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80';
+    ?? 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80';
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat bg-[#f1f2f6]">
+      <GoogleLinkModal show={showGoogleModal} step={googleStep} />
       <div
         className="flex-1 min-h-0 pb-12"
         style={{ overflowY: 'auto', overflowX: 'hidden', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -225,9 +211,18 @@ const AccountSettingsScreen = ({ onBack }) => {
 
             <button onClick={() => fileRef.current?.click()}
               className="relative bg-transparent border-none cursor-pointer p-0">
-              <img src={avatarSrc} alt="Аватарка"
-                className="w-27.5 h-27.5 rounded-full object-cover"
-                style={{ border: '3px solid #0052FF' }} />
+              {avatarSrc ? (
+  <img src={avatarSrc} alt="Аватарка"
+    className="w-27.5 h-27.5 rounded-full object-cover"
+    style={{ border: '3px solid #0052FF' }} />
+) : (
+  <div className="w-27.5 h-27.5 rounded-full bg-[#dde5f6] flex items-center justify-center"
+    style={{ border: '3px solid #0052FF' }}>
+    <span className="text-[#0052FF] font-bold text-[32px]">
+      {user?.name?.charAt(0) ?? '?'}
+    </span>
+  </div>
+)}
               <div className="absolute bottom-0 right-0 w-8.5 h-8.5 rounded-full bg-[#0052FF] flex items-center justify-center"
                 style={{ border: '3px solid #f1f2f6', boxShadow: '0 4px 10px rgba(0,82,255,0.3)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -266,11 +261,12 @@ const AccountSettingsScreen = ({ onBack }) => {
           </div>
 
           {/* ─── GOOGLE ─── */}
-          <button className="w-full flex items-center justify-center gap-2.5 bg-transparent border-none cursor-pointer font-bold text-[14px] text-[#012A81] my-8">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-              alt="Google" className="w-5 h-5" />
-            Прив'язати до Google
-          </button>
+          <button onClick={handleGoogleLink}
+  className="w-full flex items-center justify-center gap-2.5 bg-transparent border-none cursor-pointer font-bold text-[14px] text-[#012A81] my-8">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+    alt="Google" className="w-5 h-5" />
+  Прив'язати до Google
+</button>
 
           {/* ─── КНОПКИ ─── */}
           <div className="flex flex-col gap-4 pb-6">
