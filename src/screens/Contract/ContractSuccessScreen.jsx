@@ -138,7 +138,7 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col font-montserrat bg-e">
+    <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
 
       {/* TOP BAR */}
       <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4 shrink-0">
@@ -186,10 +186,10 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
 
           {/* Після відео */}
           {videoPhase === 'finished' && (
+            <>
             <p className="font-bold text-[18px] text-[#0052FF] tracking-wide uppercase text-center">
               ДОГОВІР ПІДПИСАНО
             </p>
-          )}
 
           <button
             type="button"
@@ -208,7 +208,9 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
               bg-[linear-gradient(135deg,#60aaff_0%,#2979ff_35%,#1a5fff_70%,#0040dd_100%)]
               shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]">
             Завершити
-          </button>
+              </button>
+            </>
+            )}
         </div>
       </div>
 

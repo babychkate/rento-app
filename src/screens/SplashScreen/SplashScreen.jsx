@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const SplashScreen = ({ onFinish }) => {
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden"
-      style={{ background: '#a1a9f8' }}>
+      style={{ background: '#a0adfc' }}>
       <video
         src="/Intro.mp4"
         autoPlay
