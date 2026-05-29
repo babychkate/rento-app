@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ContractReviewScreen from './ContractReviewScreen';
 import BottomNav from '../../components/BottomNav/BottomNav';
+import { BackIcon } from '../../components/Icons/Icons';
 
 const Input = ({ label, placeholder, value, onChange, type = 'text' }) => (
   <div className="flex flex-col gap-2">
@@ -20,43 +21,12 @@ const Input = ({ label, placeholder, value, onChange, type = 'text' }) => (
   </div>
 );
 
-const Step2Stub = ({ onBack }) => (
-  <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
-    <div className="flex items-center justify-between px-6 pt-14 pb-6">
-      <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
-            strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
-      <span className="font-bold text-[22px] text-[#012A81]">Оформлення угоди</span>
-      <div className="w-8" />
-    </div>
-    <div className="flex-1 flex flex-col items-center justify-center px-6 gap-5">
-      <div className="w-20 h-20 rounded-full bg-[#eef3ff] flex items-center justify-center">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-          <path d="M9 12l2 2 4-4" stroke="#0052FF" strokeWidth="2"
-            strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="12" cy="12" r="9" stroke="#0052FF" strokeWidth="2"/>
-        </svg>
-      </div>
-      <p className="font-bold text-[20px] text-[#012A81] text-center">Крок 2/3</p>
-      <div className="bg-white rounded-2xl px-6 py-5 text-center max-w-xs shadow-[0_4px_16px_rgba(0,30,140,0.08)]">
-        <p className="text-[14px] text-[#4b5b7e] leading-relaxed">
-          Тут буде перегляд заповненого договору та підтвердження перед підписанням через ДІЯ
-        </p>
-      </div>
-    </div>
-  </div>
-);
-
-const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
+const ContractFormScreen = ({ property, onBack, onCancel, onFinish, activeTab, onTabChange }) => {
   const [name,       setName]       = useState('');
   const [surname,    setSurname]    = useState('');
   const [rnokpp,     setRnokpp]     = useState('');
   const [useProfile, setUseProfile] = useState(false);
   const [showStep2,  setShowStep2]  = useState(false);
-  const [activeTab,  setActiveTab]  = useState('home');
 
   const handleUseProfile = (checked) => {
     setUseProfile(checked);
@@ -93,15 +63,17 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
   const isValid = name.trim() && surname.trim() && rnokppValid;
 
   if (showStep2) {
-    return (
-      <ContractReviewScreen
-        property={property}
-        userData={{ name, surname, rnokpp }}
-        onBack={() => setShowStep2(false)}
-        onFinish={onFinish}
-      />
-    );
-  }
+  return (
+    <ContractReviewScreen
+      property={property}
+      userData={{ name, surname, rnokpp }}
+      onBack={() => setShowStep2(false)}
+      onFinish={onFinish}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   return (
     <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
@@ -109,10 +81,7 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
       {/* TOP BAR — як у ContractScreen */}
       <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <BackIcon/>
         </button>
         <span className="font-bold text-[22px] text-[#012A81]">Оформлення угоди</span>
         <div className="w-8" />
@@ -236,7 +205,7 @@ const ContractFormScreen = ({ property, onBack, onCancel, onFinish }) => {
 
       {/* BOTTOM NAV */}
       <div className="relative z-10">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );

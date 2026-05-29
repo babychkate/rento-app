@@ -97,15 +97,17 @@ if (screen === 'security') {
   );
 }
 
-  if (screen === 'contract') {
-    return (
-      <ContractScreen
-        property={property}
-        onBack={() => setScreen(null)}
-        onFinish={() => setScreen(null)} // ← додай
-      />
-    );
-  }
+if (screen === 'contract') {
+  return (
+    <ContractScreen
+      property={property}
+      onBack={() => setScreen(null)}
+      onFinish={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   const typeLabel = TYPE_LABELS[property.type] ?? 'Житло';
 

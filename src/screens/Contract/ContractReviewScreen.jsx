@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import ContractSuccessScreen from './ContractSuccessScreen';
 import BottomNav from '../../components/BottomNav/BottomNav';
+import { BackIcon } from '../../components/Icons/Icons';
+import { DiaIcon } from '../../components/Icons/SocialIcons';
 
 const S = ({ children }) => (
   <p className="font-bold text-[10px] text-center uppercase tracking-wide text-[#012A81] my-2"
@@ -16,16 +18,6 @@ const Li = ({ children }) => (
 );
 const Bold = ({ children }) => (
   <span className="font-bold text-[#012A81]">{children}</span>
-);
-
-const DiaIcon = () => (
-  <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M21 4C24.9722 4 27.9554 4.00275 30.3066 4.34766C32.6242 4.68765 34.2028 5.34534 35.4287 6.57129C36.6547 7.7973 37.3124 9.37524 37.6523 11.6924C37.9973 14.0433 38 17.0265 38 21C38 24.9735 37.9973 27.9567 37.6523 30.3076C37.3124 32.6248 36.6547 34.2027 35.4287 35.4287C34.2028 36.6547 32.6242 37.3123 30.3066 37.6523C27.9554 37.9973 24.9722 38 21 38C17.0278 38 14.0446 37.9973 11.6934 37.6523C9.37578 37.3123 7.79724 36.6547 6.57129 35.4287C5.34534 34.2028 4.68765 32.6242 4.34766 30.3066C4.00275 27.9554 4 24.9722 4 21C4 17.0278 4.00275 14.0446 4.34766 11.6934C4.68765 9.37578 5.34533 7.79724 6.57129 6.57129C7.79724 5.34533 9.37578 4.68765 11.6934 4.34766C14.0446 4.00275 17.0278 4 21 4Z" stroke="white" strokeOpacity="0.68" strokeWidth="2"/>
-    <path d="M27.5395 17C26.2184 17 25.2378 18.1306 25.2378 19.5256C25.2378 20.6646 25.9603 21.5533 26.8748 21.8163L25 25H26.7511L28.345 22.0371H29.538V25H31V17H27.5395ZM27.7406 20.6836C27.1393 20.6836 26.767 20.1605 26.767 19.5642C26.767 18.968 27.1082 18.3999 27.7406 18.3999H29.5399V20.6836H27.7406Z" fill="white"/>
-    <path d="M19.533 17L19 18.4477L21.1872 18.4354L19.8919 23.1223C19.5226 24.489 20.9663 25.5215 22.1982 24.7179L25 22.8426L24.175 21.6464L21.3767 23.5589L23.2629 17H19.533Z" fill="white"/>
-    <path d="M22 16C22.5523 16 23 15.7761 23 15.5C23 15.2239 22.5523 15 22 15C21.4477 15 21 15.2239 21 15.5C21 15.7761 21.4477 16 22 16Z" fill="white"/>
-    <path d="M17.0055 23.6593V16H11.5079V20.0879C11.5079 22.0114 10.969 23.2006 10.6514 23.656H10V26.9968H11.3941V25.0219H16.6065V27H18V23.6593H17.0055ZM12.8939 20.0037V17.3588H15.5759V23.6548H12.1139C12.4278 23.1241 12.8939 21.7737 12.8939 20.0037Z" fill="white"/>
-  </svg>
 );
 
 const PAGE_1 = (p) => (
@@ -88,11 +80,10 @@ const PAGE_4 = (p) => (
 
 const CONTRACT_PAGES = [PAGE_1, PAGE_2, PAGE_3, PAGE_4];
 
-const ContractReviewScreen = ({ property, userData, onBack, onFinish }) => {
+const ContractReviewScreen = ({ property, userData, onBack, onFinish, activeTab, onTabChange }) => {
   const [page, setPage] = useState(0);
   const [agreed, setAgreed] = useState(false);
   const [showDia, setShowDia] = useState(false);
-  const [activeTab, setActiveTab] = useState('home');
   const contractNumber = useRef(Math.floor(100000 + Math.random() * 900000)).current;
   const today = new Date().toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric' });
   const TOTAL = 4;
@@ -112,14 +103,19 @@ const ContractReviewScreen = ({ property, userData, onBack, onFinish }) => {
   };
 
   if (showDia) {
-    return (
-      <ContractSuccessScreen
-        property={property} userData={userData}
-        contractNumber={contractNumber} today={today}
-        onBack={() => setShowDia(false)} onFinish={onFinish}
-      />
-    );
-  }
+  return (
+    <ContractSuccessScreen
+      property={property}
+      userData={userData}
+      contractNumber={contractNumber}
+      today={today}
+      onBack={() => setShowDia(false)}
+      onFinish={onFinish}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   const PageContent = CONTRACT_PAGES[page];
 
@@ -212,7 +208,7 @@ const ContractReviewScreen = ({ property, userData, onBack, onFinish }) => {
       </div>
 
       <div className="relative z-10">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );

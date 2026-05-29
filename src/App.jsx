@@ -6,11 +6,22 @@ import WelcomeScreen  from './screens/Welcome/WelcomeScreen';
 import LoginScreen    from './screens/Login/LoginScreen';
 import RegisterScreen from './screens/Register/RegisterScreen';
 import CategoryScreen from './screens/Onboarding/Onboarding';
-import HomeScreen     from './screens/Home/HomeScreen';
+import HomeScreen from './screens/Home/HomeScreen';
+import SplashScreen from './screens/SplashScreen/SplashScreen';
 
 const App = () => {
   const [screen, setScreen] = useState('welcome');
+  const [showSplash, setShowSplash] = useState(true);
 
+  if (showSplash) {
+  return (
+    <div className="w-107.5 h-233 relative overflow-hidden mx-auto"
+      style={{ transform: 'translateZ(0)' }}>
+      <SplashScreen onFinish={() => setShowSplash(false)} />
+    </div>
+  );
+  }
+  
   return (
     <BrowserRouter>
       <AuthProvider>

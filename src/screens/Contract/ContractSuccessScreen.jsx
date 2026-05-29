@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav/BottomNav';
-
-const CheckIcon = () => (
-  <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M35.2912 9.97429C34.8714 9.45643 34.1227 8.6615 33.6489 8.19351C30.3979 4.98235 25.9305 3 21 3C11.0589 3 3 11.0589 3 21C3 30.9411 11.0589 39 21 39C30.9411 39 39 30.9411 39 21C39 18.8672 38.6291 16.821 37.9482 14.9225"
-      stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M13.1514 22.353L16.7953 27.0018C17.1654 27.474 17.8651 27.5162 18.2894 27.092L35.292 10.0894"
-      stroke="#0052FF" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
+import { BackIcon } from '../../components/Icons/Icons';
 
 const buildContractHTML = (data) => `
 <!DOCTYPE html>
@@ -100,8 +92,9 @@ const buildContractHTML = (data) => `
 </html>
 `;
 
-const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBack, onFinish }) => {
-  const [activeTab, setActiveTab] = useState('home');
+const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBack, onFinish, activeTab, onTabChange }) => {
+  const [downloading, setDownloading] = useState(false);
+  const [videoPhase, setVideoPhase] = useState('loading');
 
   const data = {
     name:           userData?.name    ?? '________',
@@ -120,6 +113,8 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
   };
 
   const handleDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
     try {
       await new Promise((resolve, reject) => {
         if (window.html2pdf) { resolve(); return; }
@@ -129,31 +124,26 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
         script.onerror = reject;
         document.head.appendChild(script);
       });
-
       const opt = {
-        margin:      15,
-        filename:    `Dohovir_${data.contractNumber}.pdf`,
-        image:       { type: 'jpeg', quality: 0.98 },
+        margin: 15,
+        filename: `Dohovir_${data.contractNumber}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, logging: false },
-        jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       };
-
       await window.html2pdf().set(opt).from(buildContractHTML(data), 'string').save();
-    } catch (err) {
-      console.error('PDF error:', err);
+    } finally {
+      setDownloading(false);
     }
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
+    <div className="relative w-full h-full flex flex-col font-montserrat bg-e">
 
       {/* TOP BAR */}
       <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4 shrink-0">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3"
-              strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <BackIcon />
         </button>
         <span className="font-bold text-[22px] text-[#012A81]">Статус підпису</span>
         <div className="w-8" />
@@ -163,34 +153,53 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
       <div className="relative z-10 flex-1 min-h-0 overflow-y-auto px-6 pb-28 flex flex-col"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
 
-        {/* Крок */}
         <div className="mt-4 mb-4 shrink-0">
           <span className="font-bold text-[17px] text-[#012A81]">Крок 3/3</span>
         </div>
 
-        {/* Центрований контент */}
         <div className="flex-1 flex flex-col items-center justify-center gap-5">
 
-          {/* Іконка */}
-          <div className="w-20 h-20 rounded-full bg-[#eef3ff] flex items-center justify-center
-            shadow-[0_8px_24px_rgba(41,121,255,0.15)]">
-            <CheckIcon />
-          </div>
+          {/* Відео */}
+          {videoPhase === 'loading' && (
+            <video
+              key="loading"
+              src="/Loading.mp4"
+              autoPlay
+              muted
+              playsInline
+              className="w-66 h-66 object-contain"
+              onEnded={() => setVideoPhase('done')}
+            />
+          )}
 
-          {/* Заголовок */}
-          <p className="font-bold text-[18px] text-[#0052FF] tracking-wide uppercase text-center">
-            ДОГОВІР ПІДПИСАНО
-          </p>
+          {videoPhase === 'done' && (
+            <video
+              key="done"
+              src="/Done.mp4"
+              autoPlay
+              muted
+              playsInline
+              className="w-66 h-66 object-contain"
+              onEnded={() => setVideoPhase('finished')}
+            />
+          )}
 
-          {/* Завантажити */}
+          {/* Після відео */}
+          {videoPhase === 'finished' && (
+            <p className="font-bold text-[18px] text-[#0052FF] tracking-wide uppercase text-center">
+              ДОГОВІР ПІДПИСАНО
+            </p>
+          )}
+
           <button
             type="button"
-            onClick={(e) => { e.preventDefault(); handleDownload(); }}
-            className="bg-transparent border-none cursor-pointer font-medium text-[15px] text-[#012A81] underline-none">
-            Завантажити підписаний pdf
+            onClick={handleDownload}
+            disabled={downloading}
+            className="bg-transparent border-none cursor-pointer font-medium text-[15px] text-[#012A81]"
+            style={{ opacity: downloading ? 0.6 : 1 }}>
+            {downloading ? '⏳ Завантаження...' : 'Завантажити підписаний pdf'}
           </button>
 
-          {/* Завершити */}
           <button
             type="button"
             onClick={onFinish}
@@ -200,13 +209,11 @@ const ContractSuccessScreen = ({ property, userData, contractNumber, today, onBa
               shadow-[0_4px_12px_rgba(41,121,255,0.35),inset_0_1.5px_0_rgba(255,255,255,0.5)]">
             Завершити
           </button>
-
         </div>
       </div>
 
-      {/* BOTTOM NAV */}
       <div className="relative z-10 shrink-0">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );

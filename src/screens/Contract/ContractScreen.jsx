@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav/BottomNav';
 import ContractFormScreen from './ContractFormScreen';
+import { BackIcon } from '../../components/Icons/Icons';
 
 const S = ({ children }) => (
   <p className="font-bold text-[10px] text-center uppercase tracking-wide text-[#012A81] my-2"
@@ -74,9 +75,8 @@ const PAGE_4 = (p) => (
 
 const CONTRACT_PAGES = [PAGE_1, PAGE_2, PAGE_3, PAGE_4];
 
-const ContractScreen = ({ property, onBack, onFinish }) => {
+const ContractScreen = ({ property, onBack, onFinish, activeTab, onTabChange }) => {
   const [page, setPage] = useState(0);
-  const [activeTab, setActiveTab] = useState('home');
   const [showRentStub, setShowRentStub] = useState(false);
   const TOTAL = 4;
 
@@ -89,16 +89,18 @@ const ContractScreen = ({ property, onBack, onFinish }) => {
     city: property?.city ?? '___',
   };
 
-  if (showRentStub) {
-    return (
-      <ContractFormScreen
-        property={property}
-        onBack={() => setShowRentStub(false)}
-        onCancel={() => setShowRentStub(false)}
-        onFinish={onFinish}
-      />
-    );
-  }
+if (showRentStub) {
+  return (
+    <ContractFormScreen
+      property={property}
+      onBack={() => setShowRentStub(false)}
+      onCancel={() => setShowRentStub(false)}
+      onFinish={onFinish}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   const PageContent = CONTRACT_PAGES[page];
 
@@ -106,9 +108,7 @@ const ContractScreen = ({ property, onBack, onFinish }) => {
     <div className="relative w-full h-full flex flex-col font-montserrat bg-white">
       <div className="relative z-10 flex items-center justify-between px-6 pt-14 pb-4">
         <button onClick={onBack} className="bg-transparent border-none cursor-pointer p-1">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 20L8 12L16 4" stroke="#0052FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <BackIcon/>
         </button>
         <span className="font-bold text-[22px] text-[#012A81]">Шаблон договору</span>
         <div className="w-8" />
@@ -167,7 +167,7 @@ const ContractScreen = ({ property, onBack, onFinish }) => {
       </div>
 
       <div className="relative z-10">
-        <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNav activeTab={activeTab} onTabChange={onTabChange} />
       </div>
     </div>
   );
