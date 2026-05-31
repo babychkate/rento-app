@@ -15,15 +15,22 @@ const RoommateScreen = ({ roommate, onBack, activeTab, onTabChange }) => {
 if (verificationScreen === 'security') {
   return (
     <SecurityScreen
-      onBack={() => setScreen(null)}
+      onBack={() => setVerificationScreen(null)}
       activeTab={activeTab}
       onTabChange={onTabChange}
     />
   );
 }
-  if (verificationScreen) {
-    return <VerificationScreen type={verificationScreen} onBack={() => setVerificationScreen(null)} />;
-  }
+if (verificationScreen === 'identity') {
+  return (
+    <VerificationScreen
+      type="identity"
+      onBack={() => setVerificationScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+}
 
   const contacts = [
     { Icon: PhoneIcon, value: roommate?.phone ?? '+380631234567' },

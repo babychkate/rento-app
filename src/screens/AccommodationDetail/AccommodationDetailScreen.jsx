@@ -61,11 +61,6 @@ const AmenityIcon = ({ name }) => {
 const AccommodationDetailScreen = ({ property, onBack, activeTab, onTabChange }) => {
   const [screen, setScreen] = useState(null); // null | 'phototour' | 'landlord' | 'identity' | 'security' | 'contract'
 
-  // Навігація до підекранів
-  if (screen === 'identity') {
-    return <VerificationScreen type={screen} onBack={() => setScreen(null)} />;
-  }
-
   if (screen === 'phototour') {
     return (
       <PhotoTourScreen
@@ -90,6 +85,17 @@ if (screen === 'landlord') {
 if (screen === 'security') {
   return (
     <SecurityScreen
+      onBack={() => setScreen(null)}
+      activeTab={activeTab}
+      onTabChange={onTabChange}
+    />
+  );
+  }
+  
+  if (screen === 'identity') {
+  return (
+    <VerificationScreen
+      type="identity"
       onBack={() => setScreen(null)}
       activeTab={activeTab}
       onTabChange={onTabChange}
