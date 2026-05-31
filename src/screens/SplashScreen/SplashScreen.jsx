@@ -9,7 +9,7 @@ const SplashScreen = ({ onFinish }) => {
         autoPlay
         muted
         playsInline
-        className="w-55 h-55 object-contain"
+        className="w-48 h-48 object-contain"
         onEnded={onFinish}
       />
     </div>
