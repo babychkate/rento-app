@@ -1,8 +1,8 @@
-# RENTO — Rental & Roommate Finding Platform
+# 🏠 RENTO — Rental & Roommate Finding Platform
 
 A mobile-first React web application for finding rental housing and roommates in Ukraine. Built as a frontend-focused project with a designer team, converting Figma mockups into a fully interactive UI.
 
-## Features
+## ✨ Features
 
 - Onboarding with animated tag cloud
 - Authentication (email, Google, ДІЯ, Apple — UI)
@@ -17,7 +17,7 @@ A mobile-first React web application for finding rental housing and roommates in
 - Rental contract template with 3-step signing flow (РНОКПП validation)
 - Safety & help center
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - React + Vite
 - Tailwind CSS
@@ -26,13 +26,14 @@ A mobile-first React web application for finding rental housing and roommates in
 - JSON (mock data, no backend)
 - Deployed on Vercel
 
-## Notes
+## 📝 Notes
 
 Frontend prototype built with a designer team. Navigation uses `useState` screen-state instead of React Router. Chat, phone calls, and OAuth are UI mockups. All data is hardcoded JSON.
 
-## Demo Video
+## 🚀 Live Demo
 
-[▶ Watch Demo](https://drive.google.com/file/d/1XMBj0RPwY16d293EH3WZ2bgEi-qymMmY/view?usp=drive_link)
 [rento-app-chi.vercel.app](https://rento-app-chi.vercel.app)
 
-## Demo Video
+## 🎬 Demo Video
+
+[▶ Watch Demo](https://drive.google.com/file/d/1XMBj0RPwY16d293EH3WZ2bgEi-qymMmY/view?usp=drive_link)
