@@ -1,16 +1,38 @@
-# React + Vite
+# RENTO — Rental & Roommate Finding Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first React web application for finding rental housing and roommates in Ukraine. Built as a frontend-focused project with a designer team, converting Figma mockups into a fully interactive UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Onboarding with animated tag cloud
+- Authentication (email, Google, ДІЯ, Apple — UI)
+- Apartment catalog with search and filters (type, radius, price, rooms, area)
+- Tinder-style swipe cards ("Вподобайка")
+- Detailed listing page with photo tour by room
+- Interactive map (Leaflet + OpenStreetMap)
+- Landlord profile with ratings and reviews
+- Favorites list
+- Roommate search with lifestyle filters
+- In-app chat with landlords and neighbors
+- Rental contract template with 3-step signing flow (РНОКПП validation)
+- Safety & help center
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React + Vite
+- Tailwind CSS
+- Leaflet.js
+- html2pdf.js (contract PDF generation)
+- JSON (mock data, no backend)
+- Deployed on Vercel
 
-## Expanding the ESLint configuration
+## Notes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend prototype built with a designer team. Navigation uses `useState` screen-state instead of React Router. Chat, phone calls, and OAuth are UI mockups. All data is hardcoded JSON.
+
+## Demo Video
+
+[▶ Watch Demo](https://drive.google.com/file/d/1XMBj0RPwY16d293EH3WZ2bgEi-qymMmY/view?usp=drive_link)
+[rento-app-chi.vercel.app](https://rento-app-chi.vercel.app)
+
+## Demo Video
