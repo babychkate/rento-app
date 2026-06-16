@@ -37,3 +37,5 @@ Frontend prototype built with a designer team. Navigation uses `useState` screen
 ## 🎬 Demo Video
 
 [▶ Watch Demo](https://drive.google.com/file/d/1XMBj0RPwY16d293EH3WZ2bgEi-qymMmY/view?usp=drive_link)
+
+Creator: **Kateryna Babych** — [LinkedIn](https://www.linkedin.com/in/babych-kate) | [Email](mailto:babychkatia14@gmail.com) | LNAM designers team & solo developer project, 2026
